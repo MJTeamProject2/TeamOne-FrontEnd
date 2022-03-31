@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_messageFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_messageFragment_to_bookMarkFragment"
+            app:destination="@id/bookMarkFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
