@@ -5,7 +5,12 @@
       <map>
         <entry key="..\:/Users/H/Documents/GitHub/Front_TeamOne/app/src/main/res/layout/activity_home.xml" value="0.2692502532928065" />
         <entry key="..\:/Users/H/Documents/GitHub/Front_TeamOne/app/src/main/res/layout/activity_main.xml" value="0.4107789855072464" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11550151975683891" />
+        <entry key="app/src/main/res/layout/activity_findid.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_findpass.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/activity_findpasswd.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.20462962962962963" />
       </map>
     </option>
   </component>
