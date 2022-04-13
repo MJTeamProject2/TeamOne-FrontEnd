@@ -7,6 +7,7 @@
         <entry key="..\:/Users/H/Documents/GitHub/Front_TeamOne/app/src/main/res/layout/activity_main.xml" value="0.4107789855072464" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2435" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.218" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/ic_baseline_bookmarks_24.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2435" />
@@ -14,17 +15,19 @@
         <entry key="app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_search_24.xml" value="0.2435" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2435" />
+        <entry key="app/src/main/res/drawable/textviewstroke.xml" value="0.218" />
         <entry key="app/src/main/res/layout/activity_findid.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_findpass.xml" value="0.20462962962962963" />
-        <entry key="app/src/main/res/layout/activity_findpasswd.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_findpasswd.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2595108695652174" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/activity_reset_passwd.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/layout/fragment_book_mark.xml" value="0.2595108695652174" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2595108695652174" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.2595108695652174" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2595108695652174" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
       </map>
     </option>
   </component>

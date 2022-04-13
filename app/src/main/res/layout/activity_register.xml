@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_register" />
 
     <EditText
-        android:id="@+id/rt_name2"
+        android:id="@+id/rt_department"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rt_name" />
 
     <EditText
-        android:id="@+id/rt_name3"
+        android:id="@+id/rt_schoolId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -75,10 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_name2" />
+        app:layout_constraintTop_toBottomOf="@+id/rt_department" />
 
     <EditText
-        android:id="@+id/rt_name4"
+        android:id="@+id/rt_phoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_name3" />
+        app:layout_constraintTop_toBottomOf="@+id/rt_schoolId" />
 
     <EditText
         android:id="@+id/rt_id"
@@ -107,41 +107,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_name4" />
-
-    <Button
-        android:id="@+id/btn_sendKeyNum"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:backgroundTint="#000000"
-        android:text="인증번호 전송"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/rt_email"
-        app:layout_constraintEnd_toEndOf="@+id/rt_email"
-        app:layout_constraintStart_toStartOf="@+id/rt_email"
-        app:layout_constraintTop_toTopOf="@+id/rt_email"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_checkID"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:backgroundTint="#000000"
-        android:text="중복확인"
-        android:textColor="#FFFFFF"
-        app:iconTint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/rt_id"
-        app:layout_constraintEnd_toEndOf="@+id/rt_id"
-        app:layout_constraintStart_toStartOf="@+id/rt_id"
-        app:layout_constraintTop_toTopOf="@+id/rt_id"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/rt_phoneNumber" />
 
     <EditText
-        android:id="@+id/rt_pass"
+        android:id="@+id/rt_nickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="닉네임"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rt_id" />
+
+    <EditText
+        android:id="@+id/rt_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -170,71 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_pass" />
-
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:backgroundTint="#000000"
-        android:text="인증번호 확인"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/rt_keyNum"
-        app:layout_constraintEnd_toEndOf="@+id/rt_keyNum"
-        app:layout_constraintStart_toStartOf="@+id/rt_keyNum"
-        app:layout_constraintTop_toTopOf="@+id/rt_keyNum"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/rt_keyNum"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="인증번호 입력"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_email" />
-
-    <Button
-        android:id="@+id/btn_checkNickname"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:backgroundTint="#000000"
-        android:text="중복확인"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/rt_nickname"
-        app:layout_constraintEnd_toEndOf="@+id/rt_nickname"
-        app:layout_constraintStart_toStartOf="@+id/rt_nickname"
-        app:layout_constraintTop_toTopOf="@+id/rt_nickname"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/rt_nickname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:hint="닉네임"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rt_id" />
+        app:layout_constraintTop_toBottomOf="@+id/rt_password" />
 
     <EditText
         android:id="@+id/rt_email"
@@ -252,8 +173,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rt_checkPass" />
 
+    <EditText
+        android:id="@+id/rt_keyNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:hint="인증번호 입력"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rt_email" />
+
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_checkID"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#000000"
+        android:text="중복확인"
+        android:textColor="#FFFFFF"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/rt_id"
+        app:layout_constraintEnd_toEndOf="@+id/rt_id"
+        app:layout_constraintStart_toStartOf="@+id/rt_id"
+        app:layout_constraintTop_toTopOf="@+id/rt_id"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_checkNickname"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#000000"
+        android:text="중복확인"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/rt_nickname"
+        app:layout_constraintEnd_toEndOf="@+id/rt_nickname"
+        app:layout_constraintStart_toStartOf="@+id/rt_nickname"
+        app:layout_constraintTop_toTopOf="@+id/rt_nickname"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_sendKeyNum"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#000000"
+        android:text="인증번호 전송"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/rt_email"
+        app:layout_constraintEnd_toEndOf="@+id/rt_email"
+        app:layout_constraintStart_toStartOf="@+id/rt_email"
+        app:layout_constraintTop_toTopOf="@+id/rt_email"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_checkKeyNum"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:backgroundTint="#000000"
+        android:text="인증번호 확인"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/rt_keyNum"
+        app:layout_constraintEnd_toEndOf="@+id/rt_keyNum"
+        app:layout_constraintStart_toStartOf="@+id/rt_keyNum"
+        app:layout_constraintTop_toTopOf="@+id/rt_keyNum"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_register2"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
