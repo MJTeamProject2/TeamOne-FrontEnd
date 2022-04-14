@@ -3,24 +3,32 @@ package com.team1.teamone
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
+import com.team1.teamone.databinding.ActivityRegisterBinding
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var register: ActivityRegisterBinding
     var TAG: String = "Register"
     var isExistBlank = false
     var isPWSame = false
+    var isNickCount = false
+    var isIdCount = false
+    var isPassCount = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        register = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
-        btn_register2.setOnClickListener {
+        register.btnRegister2.setOnClickListener {
             Log.d(TAG, "회원가입 버튼 클릭")
 
             val name = rt_name.text.toString()
@@ -43,7 +51,19 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            if (!isExistBlank && isPWSame) {
+            if (nickname.length > 2 && nickname.length < 10) {
+                isNickCount = true
+            }
+
+            if(id.length > 4 && id.length < 10) {
+                isIdCount = true
+            }
+
+            if(pw.length > 6 && pw.length <10) {
+                isPassCount = true
+            }
+
+            if (!isExistBlank && isPWSame && isNickCount && isIdCount && isPassCount) {
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
 
                 // 유저가 입력한 id, pw를 쉐어드에 저장한다.
