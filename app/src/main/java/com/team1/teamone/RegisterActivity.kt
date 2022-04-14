@@ -48,20 +48,16 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
                     isPWSame = true
+                } else if(nickname.length < 2 && nickname.length > 10) {
+                    isNickCount = true
+                } else if(id.length < 4 && id.length > 10) {
+                    isIdCount = true
+                } else if(pw.length > 6 && pw.length <10) {
+                    isPassCount = true
                 }
             }
 
-            if (nickname.length > 2 && nickname.length < 10) {
-                isNickCount = true
-            }
 
-            if(id.length > 4 && id.length < 10) {
-                isIdCount = true
-            }
-
-            if(pw.length > 6 && pw.length <10) {
-                isPassCount = true
-            }
 
             if (!isExistBlank && isPWSame && isNickCount && isIdCount && isPassCount) {
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
