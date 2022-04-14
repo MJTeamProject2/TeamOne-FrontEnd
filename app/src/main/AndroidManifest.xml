@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamOne">
         <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+            android:name=".loading.SplashActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,24 +19,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResetPasswd"
+            android:name=".auth.LoginActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".auth.ResetPasswd"
             android:exported="false" />
         <activity
-            android:name=".FindpasswdActivity"
-            android:exported="true"></activity>
+            android:name=".auth.FindpasswdActivity"
+            android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
-            android:exported="true"></activity>
+            android:name=".auth.RegisterActivity"
+            android:exported="true" />
         <activity
-            android:name=".FindidActivity"
+            android:name=".auth.FindidActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

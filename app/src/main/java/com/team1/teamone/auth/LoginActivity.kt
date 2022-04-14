@@ -1,4 +1,4 @@
-package com.team1.teamone
+package com.team1.teamone.auth
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityLoginBinding
-import com.team1.teamone.databinding.ActivityRegisterBinding
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

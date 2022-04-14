@@ -1,15 +1,16 @@
-package com.team1.teamone
+package com.team1.teamone.auth
 
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
+import com.team1.teamone.MainActivity
+import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityRegisterBinding
 import kotlinx.android.synthetic.main.activity_register.*
 
