@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
     android:layout_height="fill_parent"
     android:layout_width="fill_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -162,21 +162,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rt_password" />
 
-                <EditText
-                    android:id="@+id/rt_email"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:ems="10"
-                    android:hint="명지대 웹메일"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rt_checkPass" />
+        <EditText
+            android:id="@+id/rt_email"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="명지대 웹메일"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rt_checkPass" />
 
                 <EditText
                     android:id="@+id/rt_keyNum"
@@ -227,22 +224,20 @@
                     app:layout_constraintTop_toTopOf="@+id/rt_nickname"
                     app:layout_constraintVertical_bias="1.0" />
 
-                <Button
-                    android:id="@+id/btn_sendKeyNum"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="250dp"
-                    android:backgroundTint="#000000"
-                    android:text="인증번호 전송"
-                    android:textColor="#FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="@+id/rt_email"
-                    app:layout_constraintEnd_toEndOf="@+id/rt_email"
-                    app:layout_constraintStart_toStartOf="@+id/rt_email"
-                    app:layout_constraintTop_toTopOf="@+id/rt_email"
-                    app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/btn_sendKeyNum"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="26dp"
+            android:backgroundTint="#000000"
+            android:text="인증번호 전송"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/btn_checkKeyNum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rt_checkPass" />
 
-                <Button
+        <Button
                     android:id="@+id/btn_checkKeyNum"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="0dp"
@@ -272,6 +267,26 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="@mju.ac.kr"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_sendKeyNum"
+            app:layout_constraintStart_toEndOf="@+id/rt_email"
+            tools:layout_editor_absoluteY="560dp" />
+
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/btn_dialog"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 </layout>

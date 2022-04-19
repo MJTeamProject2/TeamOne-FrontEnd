@@ -39,6 +39,10 @@ class LoginActivity : AppCompatActivity() {
             if(id == savedId && pw == savedPw){
                 // 로그인 성공 다이얼로그 보여주기
                 dialog("success")
+
+                //로그인되면 다음화면으로 이동
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             else{
                 // 로그인 실패 다이얼로그 보여주기
@@ -49,6 +53,11 @@ class LoginActivity : AppCompatActivity() {
         // 회원가입 버튼
         btn_register.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_find.setOnClickListener{
+            val intent = Intent(this, FindidActivity::class.java)
             startActivity(intent)
         }
 
