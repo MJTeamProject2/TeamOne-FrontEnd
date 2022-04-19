@@ -18,19 +18,27 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var register: ActivityRegisterBinding
     var TAG: String = "Register"
-    var isExistBlank = false
-    var isPWSame = false
-    var isNickCount = false
-    var isIdCount = false
-    var isPassCount = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         register = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
+
+//        register.btnClose.setOnClickListener {
+//            val intent = Intent(this, LoginActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
         register.btnRegister2.setOnClickListener {
-            Log.d(TAG, "회원가입 버튼 클릭")
+            Log.d(TAG, "cc 버튼 클릭")
+            var isExistBlank = false
+            var isPWSame = false
+            var isNickCount = false
+            var isIdCount = false
+            var isPassCount = false
 
             val name = rt_name.text.toString()
             val dept = rt_department.text.toString()
@@ -41,23 +49,25 @@ class RegisterActivity : AppCompatActivity() {
             val pw = rt_password.text.toString()
             val checkPass = rt_checkPass.text.toString()
             val email = rt_email.text.toString()
-            var keyNum = rt_keyNum.text.toString()
+            var keyCheck = rt_keyNum.text.toString()
+
 
             //유저가 항목을 다 채우지 않았을 경우
-            if (name.isEmpty() || dept.isEmpty() || schoolId.isEmpty() || phoneNum.isEmpty() || nickname.isEmpty() || id.isEmpty() || pw.isEmpty() || checkPass.isEmpty() || email.isEmpty() || keyNum.isEmpty()) {
+            if (name.isEmpty() || dept.isEmpty() || schoolId.isEmpty() || phoneNum.isEmpty() || nickname.isEmpty() || id.isEmpty() || pw.isEmpty() || checkPass.isEmpty() || email.isEmpty() || keyCheck.isEmpty()) {
                 isExistBlank = true
-            } else {
-                if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
-                    isPWSame = true
-                } else if(nickname.length < 2 && nickname.length > 10) {
-                    isNickCount = true
-                } else if(id.length < 4 && id.length > 10) {
-                    isIdCount = true
-                } else if(pw.length > 6 && pw.length <10) {
-                    isPassCount = true
-                }
             }
-
+            if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
+                isPWSame = true
+            }
+            if(nickname.length >= 2 && nickname.length <= 10) {
+                isNickCount = true
+            }
+            if(id.length >= 4 && id.length <= 10) {
+                isIdCount = true
+            }
+            if(pw.length >= 6 && pw.length <= 10) {
+                isPassCount = true
+            }
 
 
             if (!isExistBlank && isPWSame && isNickCount && isIdCount && isPassCount) {
@@ -81,6 +91,12 @@ class RegisterActivity : AppCompatActivity() {
                     dialog("blank")
                 } else if (!isPWSame) { // 입력한 비밀번호가 다를 경우
                     dialog("not same")
+                } else if(!isIdCount) {
+                    dialog("id lack")
+                } else if(!isNickCount) {
+                    dialog("nickname lack")
+                } else if(!isPassCount) {
+                    dialog("password lack")
                 }
             }
 
@@ -102,6 +118,21 @@ class RegisterActivity : AppCompatActivity() {
             dialog.setMessage("비밀번호가 다릅니다")
         }
 
+        else if(type.equals("id lack")){
+            dialog.setTitle("회원가입 실패")
+            dialog.setMessage("아이디는 4~10자리로 지정해주세요")
+        }
+
+        else if(type.equals("nickname lack")){
+            dialog.setTitle("회원가입 실패")
+            dialog.setMessage("닉네임은 2~10자리로 지정해주세요")
+        }
+
+        else if(type.equals("password lack")){
+            dialog.setTitle("회원가입 실패")
+            dialog.setMessage("비밀번호는 6~10자리로 지정해주세요")
+        }
+
         val dialog_listener = object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when(which){
@@ -114,5 +145,6 @@ class RegisterActivity : AppCompatActivity() {
         dialog.setPositiveButton("확인",dialog_listener)
         dialog.show()
     }
+
 
 }

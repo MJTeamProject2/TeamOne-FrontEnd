@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.team1.teamone.MainActivity
 import com.team1.teamone.R
+import com.team1.teamone.auth.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler().postDelayed({
-            val Intent = Intent(this, MainActivity::class.java)
+            val Intent = Intent(this, LoginActivity::class.java)
             startActivity(Intent)
             finish()
         }, 3000)
