@@ -18,11 +18,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var register: ActivityRegisterBinding
     var TAG: String = "Register"
-    var isExistBlank = false
-    var isPWSame = false
-    var isNickCount = false
-    var isIdCount = false
-    var isPassCount = false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +34,11 @@ class RegisterActivity : AppCompatActivity() {
         }
         register.btnRegister2.setOnClickListener {
             Log.d(TAG, "cc 버튼 클릭")
+            var isExistBlank = false
+            var isPWSame = false
+            var isNickCount = false
+            var isIdCount = false
+            var isPassCount = false
 
             val name = rt_name.text.toString()
             val dept = rt_department.text.toString()
@@ -50,23 +51,34 @@ class RegisterActivity : AppCompatActivity() {
             val email = rt_email.text.toString()
             var keyCheck = rt_keyNum.text.toString()
 
+
+            Log.d(" asdasd", name)
+            Log.d(" asdasd", dept)
+            Log.d(" asdasd", schoolId)
+            Log.d(" asdasd", phoneNum)
+            Log.d(" asdasd", nickname)
+            Log.d(" asdasd", id)
+            Log.d(" asdasd", pw)
+            Log.d(" asdasd", checkPass)
+            Log.d(" asdasd", email)
+            Log.d(" asdasd", keyCheck)
             //유저가 항목을 다 채우지 않았을 경우
             if (name.isEmpty() || dept.isEmpty() || schoolId.isEmpty() || phoneNum.isEmpty() || nickname.isEmpty() || id.isEmpty() || pw.isEmpty() || checkPass.isEmpty() || email.isEmpty() || keyCheck.isEmpty()) {
                 isExistBlank = true
-            } else {
-                if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
-                    isPWSame = true
-                }
-                if(nickname.length >= 2 && nickname.length <= 10) {
-                    isNickCount = true
-                }
-                if(id.length >= 4 && id.length <= 10) {
-                    isIdCount = true
-                }
-                if(pw.length >= 6 && pw.length <= 10) {
-                    isPassCount = true
-                }
             }
+            if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
+                isPWSame = true
+            }
+            if(nickname.length >= 2 && nickname.length <= 10) {
+                isNickCount = true
+            }
+            if(id.length >= 4 && id.length <= 10) {
+                isIdCount = true
+            }
+            if(pw.length >= 6 && pw.length <= 10) {
+                isPassCount = true
+            }
+
 
 
 
