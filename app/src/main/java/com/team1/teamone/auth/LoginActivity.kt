@@ -55,9 +55,11 @@ class LoginActivity : AppCompatActivity() {
                     cm.setCookie(BASE_URL, sessionKey)
 
                     Log.d("sessionId", cm.getCookie(BASE_URL))
-                    if (cm.getCookie(BASE_URL) != null) {
+                    Log.d("sessionId2", sessionKey)
+                    if (sessionKey != "null") {
                         val loginSuccessIntent = Intent(applicationContext, MainActivity::class.java)
                         startActivity(loginSuccessIntent)
+                        finish()
                     } else {
                         Toast.makeText(applicationContext, "error id or pw", Toast.LENGTH_SHORT).show()
                     }
