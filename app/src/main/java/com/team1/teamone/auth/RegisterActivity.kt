@@ -12,10 +12,18 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.MainActivity
 import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityRegisterBinding
+import com.team1.teamone.retrofit2.MemberDto
+import com.team1.teamone.retrofit2.PostMemberDto
+import com.team1.teamone.retrofit2.PostRegisterModel
+import com.team1.teamone.retrofit2.RetrofitService
 import kotlinx.android.synthetic.main.activity_register.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-
+    val api = RetrofitService.create()
+    private val BASE_URL = "http://10.0.2.2:8080/"
     private lateinit var register: ActivityRegisterBinding
     var TAG: String = "Register"
 
@@ -26,12 +34,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         register = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
-
-//        register.btnClose.setOnClickListener {
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
         register.btnRegister2.setOnClickListener {
             Log.d(TAG, "cc 버튼 클릭")
             var isExistBlank = false
@@ -39,6 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             var isNickCount = false
             var isIdCount = false
             var isPassCount = false
+            var isEmail = false
 
             val name = rt_name.text.toString()
             val dept = rt_department.text.toString()
@@ -48,8 +51,21 @@ class RegisterActivity : AppCompatActivity() {
             val id = rt_id.text.toString()
             val pw = rt_password.text.toString()
             val checkPass = rt_checkPass.text.toString()
-            val email = rt_email.text.toString()
+            val email = rt_email.text.toString() + "@mju.ac.kr"
             var keyCheck = rt_keyNum.text.toString()
+
+            val dataModel = PostRegisterModel(
+                name,
+                dept,
+                schoolId,
+                phoneNum,
+                nickname,
+                id,
+                pw,
+                checkPass,
+                email,
+                keyCheck
+            )
 
 
             //유저가 항목을 다 채우지 않았을 경우
@@ -68,9 +84,12 @@ class RegisterActivity : AppCompatActivity() {
             if(pw.length >= 6 && pw.length <= 10) {
                 isPassCount = true
             }
+//            if(email.contains("@")) {
+//                isEmail = true
+//            }
 
 
-            if (!isExistBlank && isPWSame && isNickCount && isIdCount && isPassCount) {
+            if (!isExistBlank && isPWSame && isNickCount && isIdCount && isPassCount ) {
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
 
                 // 유저가 입력한 id, pw를 쉐어드에 저장한다.
@@ -80,9 +99,25 @@ class RegisterActivity : AppCompatActivity() {
                 editor.putString("pw", pw)
                 editor.apply()
 
-                // 로그인 화면으로 이동
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                api.postRegister(dataModel).enqueue(object : Callback<MemberDto> {
+                    override fun onResponse(call: Call<MemberDto>, response: Response<MemberDto>) {
+                        Log.d("log",response.toString())
+                        Log.d("log", response.body().toString())
+
+                        // 로그인 화면으로 이동
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    override fun onFailure(call: Call<MemberDto>, t: Throwable) {
+                        // 실패
+                        Log.d("log",t.message.toString())
+                        Log.d("log","fail")
+                    }
+
+                })
+
+
 
             } else {
 
@@ -98,6 +133,9 @@ class RegisterActivity : AppCompatActivity() {
                 } else if(!isPassCount) {
                     dialog("password lack")
                 }
+//                else if(!isEmail) {
+//                    dialog("email error")
+//                }
             }
 
         }
@@ -145,6 +183,5 @@ class RegisterActivity : AppCompatActivity() {
         dialog.setPositiveButton("확인",dialog_listener)
         dialog.show()
     }
-
 
 }

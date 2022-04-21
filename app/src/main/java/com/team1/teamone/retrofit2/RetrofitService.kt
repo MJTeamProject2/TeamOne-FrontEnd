@@ -12,9 +12,18 @@ interface RetrofitService {
     @POST("/users/login")
     @Headers("accept: application/json",
         "content-type: application/json")
-    fun post_users(
-        @Body jsonparams: PostModel
+    fun postLogin(
+        @Body jsonparams: PostLoginModel
     ): Call<PostMemberDto>
+
+    @POST("/users/new")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun postRegister(
+        @Body jsonparams: PostRegisterModel
+    ): Call<MemberDto>
+
+
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://10.0.2.2:8080/" // 주소
 
@@ -28,6 +37,4 @@ interface RetrofitService {
                 .create(RetrofitService::class.java)
         }
     }
-//    @POST("/users/login")
-//    fun getLoginResponse(@Body user: PostModel): Call<String>
 }

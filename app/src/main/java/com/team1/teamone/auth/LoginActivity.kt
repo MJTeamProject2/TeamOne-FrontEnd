@@ -1,7 +1,6 @@
 package com.team1.teamone.auth
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +13,7 @@ import com.team1.teamone.MainActivity
 import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityLoginBinding
 import com.team1.teamone.retrofit2.PostMemberDto
-import com.team1.teamone.retrofit2.PostModel
+import com.team1.teamone.retrofit2.PostLoginModel
 import com.team1.teamone.retrofit2.RetrofitService
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -41,10 +40,10 @@ class LoginActivity : AppCompatActivity() {
             var id = idEditArea_login.text.toString()
             var pw = passwordEditArea_login.text.toString()
 
-            val data = PostModel(id,pw)
+            val data = PostLoginModel(id,pw)
 
 
-            api.post_users(data).enqueue(object : Callback<PostMemberDto> {
+            api.postLogin(data).enqueue(object : Callback<PostMemberDto> {
                 override fun onResponse(call: Call<PostMemberDto>, response: Response<PostMemberDto>) {
                     Log.d("log",response.toString())
                     Log.d("log", response.body().toString())
