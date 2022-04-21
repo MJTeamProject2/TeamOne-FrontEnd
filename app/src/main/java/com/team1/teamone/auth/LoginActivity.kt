@@ -38,8 +38,8 @@ class LoginActivity : AppCompatActivity() {
         login.btnLogin.setOnClickListener {
 
             //editText로부터 입력된 값을 받아온다
-            var id = et_ID.text.toString()
-            var pw = et_pass.text.toString()
+            var id = idEditArea_login.text.toString()
+            var pw = passwordEditArea_login.text.toString()
 
             val data = PostModel(id,pw)
 
