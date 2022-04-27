@@ -23,6 +23,35 @@ interface RetrofitService {
         @Body jsonparams: PostRegisterModel
     ): Call<MemberDto>
 
+    @GET("/users/nickname-check/{nickname}")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun getNickName(
+        @Path("nickname") nickName : String
+    ): Call<GetBoolean>
+
+    @GET("/users/id-check/{id}")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun getUserId(
+        @Path("id") userId : String
+    ): Call<GetBoolean>
+
+    @POST("/users/auth/{userEmail}")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun postSendMail(
+        @Path("userEmail") userEmail : String
+    ): Call<PostAuthEmail>
+
+    @GET("/users/auth/{userEmail}/{authToken}")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun getCheckToken(
+        @Path("userEmail") userEmail : String,
+        @Path("authToken") authToken : String
+    ): Call<GetAuthToken>
+
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://10.0.2.2:8080/" // 주소

@@ -81,3 +81,32 @@ data class PostRegisterModel(
     var email: String? = null,
     var authToken: String? = null
 )
+
+data class GetBoolean(
+    @SerializedName("result")
+    var result : Boolean? = null
+)
+
+/*
+* {
+    "userEmail": "sectionr0@gmail.com",
+    "authToken": "69AlclT5"
+}
+* */
+
+data class PostAuthEmail(
+    var userEmail : String? = null,
+    var authToken: String? = null
+)
+
+/*
+{
+    "userEmail": "sectionr0@gmail.com",
+    "authToken": "706FT3Zv"
+}
+*/
+
+data class GetAuthToken(
+    var userEmail : String? = null,
+    var authToken: String? = null
+)
