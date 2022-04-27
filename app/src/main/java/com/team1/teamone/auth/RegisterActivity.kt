@@ -6,7 +6,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.MainActivity
@@ -19,10 +18,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-    val api = RetrofitService.create()
-    private val BASE_URL = "http://10.0.2.2:8080/"
+    private val api = RetrofitService.create()
     private lateinit var register: ActivityRegisterBinding
-    var TAG: String = "Register"
+    private var TAG: String = "Register"
 
 
 
@@ -104,8 +102,6 @@ class RegisterActivity : AppCompatActivity() {
                         } else {
                             dialog("error check nickname")
                         }
-
-
                     }
 
                     override fun onFailure(call: Call<GetBoolean>, t: Throwable) {
@@ -133,8 +129,8 @@ class RegisterActivity : AppCompatActivity() {
                         val authToken = response.body()?.authToken
                         val userEmail = response.body()?.userEmail
 
-                        emailCheck = userEmail.toString()!!
-                        tokenCheck = authToken.toString()!!
+                        emailCheck = userEmail.toString()
+                        tokenCheck = authToken.toString()
 
                         Log.d("btnSendKeyNum authToken", authToken.toString())
                         Log.d("btnSendKeyNum userEmail", userEmail.toString())
@@ -156,7 +152,7 @@ class RegisterActivity : AppCompatActivity() {
 
         register.btnCheckKeyNum.setOnClickListener {
             val email = rt_email.text.toString()
-            var keyCheck = rt_keyNum.text.toString()
+            val keyCheck = rt_keyNum.text.toString()
 
             Log.d("btnCheckKeyNum", keyCheck)
             register.btnCheckKeyNum.isEnabled = false
@@ -174,9 +170,9 @@ class RegisterActivity : AppCompatActivity() {
                         val emailChecking = emailCheck == userEmail
                         val tokenChecking = tokenCheck == authToken
 
-                        Log.d("emailCheck", emailCheck.toString())
+                        Log.d("emailCheck", emailCheck)
                         Log.d("userEmail", userEmail.toString())
-                        Log.d("tokenCheck", tokenCheck.toString())
+                        Log.d("tokenCheck", tokenCheck)
                         Log.d("authToken", authToken.toString())
 
                         isCheckToken = emailChecking && tokenChecking
@@ -221,7 +217,6 @@ class RegisterActivity : AppCompatActivity() {
 
         register.btnRegister2.setOnClickListener {
 
-//            var isEmail = false
             val name = rt_name.text.toString()
             val dept = rt_department.text.toString()
             val schoolId = rt_schoolId.text.toString()
@@ -232,12 +227,11 @@ class RegisterActivity : AppCompatActivity() {
             val checkPass = rt_checkPass.text.toString()
             val email = rt_email.text.toString()
             //val email = rt_email.text.toString() + "@mju.ac.kr"
-            var keyCheck = rt_keyNum.text.toString()
+            val keyCheck = rt_keyNum.text.toString()
 
             val dataModel = PostRegisterModel(
                 name, dept, schoolId, phoneNum, nickname, id, pw, checkPass, email, keyCheck
             )
-
 
             Log.d("testsetname", name.isNotBlank().toString())
             Log.d("testsetdept", dept.isNotBlank().toString())
@@ -256,13 +250,13 @@ class RegisterActivity : AppCompatActivity() {
             if (pw == checkPass) { //비밀번호와 비밀번호 확인이 동일하지 않은 경우
                 isPWSame = true
             }
-            if(nickname.length >= 2 && nickname.length <= 10) {
+            if(nickname.length in 2..10) {
                 isNickCount = true
             }
-            if(id.length >= 4 && id.length <= 10) {
+            if(id.length in 4..10) {
                 isIdCount = true
             }
-            if(pw.length >= 6 && pw.length <= 10) {
+            if(pw.length in 6..10) {
                 isPassCount = true
             }
 //            if(email.contains("@")) {
@@ -283,7 +277,6 @@ class RegisterActivity : AppCompatActivity() {
                 isNickCount && isIdCount &&
                 isPassCount && isCheckNickName &&
                 isCheckUserId && isCheckToken) {
-//                Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
 
                 // 유저가 입력한 id, pw를 쉐어드에 저장한다.
                 val sharedPreference = getSharedPreferences("file name", Context.MODE_PRIVATE)
@@ -310,10 +303,7 @@ class RegisterActivity : AppCompatActivity() {
                             register.btnCheckKeyNum.isEnabled = true
                             register.btnSendKeyNum.isEnabled = true
                             dialog("duplicate email")
-
                         }
-
-
                     }
 
                     override fun onFailure(call: Call<MemberDto>, t: Throwable) {
@@ -323,9 +313,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
                 })
-
-
-
+                
             } else {
 
                 // 상태에 따라 다른 다이얼로그 띄워주기
@@ -354,12 +342,7 @@ class RegisterActivity : AppCompatActivity() {
                 isNickCount = false
                 isIdCount = false
                 isPassCount = false
-//                isCheckUserId = false
-//                isCheckNickName = false
-//                isCheckToken = false
             }
-
-
         }
     }
 
@@ -368,88 +351,74 @@ class RegisterActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
 
         // 작성 안한 항목이 있을 경우
-        if(type.equals("blank")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("입력란을 모두 작성해주세요")
-        }
-        // 입력한 비밀번호가 다를 경우
-        else if(type.equals("not same")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("비밀번호가 다릅니다")
-        }
-
-        else if(type.equals("id lack")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("아이디는 4~10자리로 지정해주세요")
-        }
-
-        else if(type.equals("nickname lack")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("닉네임은 2~10자리로 지정해주세요")
-        }
-
-        else if(type.equals("password lack")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("비밀번호는 6~10자리로 지정해주세요")
-        }
-
-        else if(type.equals("duplicate userid")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("ID 중복을 확인해주세요")
-        }
-
-        else if(type.equals("duplicate nickname")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("닉네임 중복을 확인해 주세요")
-        }
-
-        else if(type.equals("duplicate email")){
-            dialog.setTitle("이메일 중복")
-            dialog.setMessage("이미 가입된 이메일 입니다.")
-        }
-
-        else if(type.equals("error token")){
-            dialog.setTitle("회원가입 실패")
-            dialog.setMessage("인증 번호를 확인해 주세요")
-        }
-
-        else if(type.equals("error check userid")){
-            dialog.setTitle("중복된 아이디")
-            dialog.setMessage("이미 가입된 아이디 입니다.")
-        }
-
-        else if(type.equals("error check nickname")){
-            dialog.setTitle("중복된 닉네임")
-            dialog.setMessage("이미 가입된 닉네임 입니다.")
-        }
-
-        else if(type.equals("error check token")){
-            dialog.setTitle("인증 번호 불일치")
-            dialog.setMessage("인증 번호를 확인해 주세요")
-        }
-
-        else if(type.equals("error blank")){
-            dialog.setTitle("빈칸 입니다.")
-            dialog.setMessage("입력 칸에 내용을 입력해 주세요")
-        }
-
-        else if(type.equals("error server")){
-            dialog.setTitle("알 수 없는 오류")
-            dialog.setMessage("관리자에게 문의 하세요")
-        }
-
-
-
-        val dialog_listener = object: DialogInterface.OnClickListener{
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE ->
-                        Log.d(TAG, "다이얼로그")
-                }
+        when (type) {
+            "blank" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("입력란을 모두 작성해 주세요.")
+            }
+            // 입력한 비밀번호가 다를 경우
+            "not same" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("비밀번호가 다릅니다.")
+            }
+            "id lack" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("아이디는 4~10자리로 지정해 주세요.")
+            }
+            "nickname lack" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("닉네임은 2~10자리로 지정해 주세요.")
+            }
+            "password lack" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("비밀번호는 6~10자리로 지정해 주세요.")
+            }
+            "duplicate userid" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("ID 중복을 확인해 주세요.")
+            }
+            "duplicate nickname" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("닉네임 중복을 확인해 주세요.")
+            }
+            "duplicate email" -> {
+                dialog.setTitle("이메일 중복")
+                dialog.setMessage("이미 가입된 이메일 입니다.")
+            }
+            "error token" -> {
+                dialog.setTitle("회원 가입 실패")
+                dialog.setMessage("인증 번호를 확인해 주세요.")
+            }
+            "error check userid" -> {
+                dialog.setTitle("중복된 아이디")
+                dialog.setMessage("이미 가입된 아이디 입니다.")
+            }
+            "error check nickname" -> {
+                dialog.setTitle("중복된 닉네임")
+                dialog.setMessage("이미 가입된 닉네임 입니다.")
+            }
+            "error check token" -> {
+                dialog.setTitle("인증 번호 불일치")
+                dialog.setMessage("인증 번호를 확인해 주세요.")
+            }
+            "error blank" -> {
+                dialog.setTitle("빈칸 입니다")
+                dialog.setMessage("입력 칸에 내용을 입력해 주세요.")
+            }
+            "error server" -> {
+                dialog.setTitle("알 수 없는 오류")
+                dialog.setMessage("관리자에게 문의 하세요.")
             }
         }
 
-        dialog.setPositiveButton("확인",dialog_listener)
+        val dialogListener = DialogInterface.OnClickListener { _, which ->
+            when(which){
+                DialogInterface.BUTTON_POSITIVE ->
+                    Log.d(TAG, "dialog message")
+            }
+        }
+
+        dialog.setPositiveButton("확인",dialogListener)
         dialog.show()
     }
 
