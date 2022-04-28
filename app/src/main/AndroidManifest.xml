@@ -27,7 +27,8 @@
         </activity>
         <activity
             android:name=".auth.ResetPasswd"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".auth.FindpasswdActivity"
             android:exported="true" />
