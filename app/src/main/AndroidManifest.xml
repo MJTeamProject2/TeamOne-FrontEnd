@@ -24,10 +24,12 @@
         <activity
             android:name=".auth.LoginActivity"
             android:exported="true">
+
         </activity>
         <activity
             android:name=".auth.ResetPasswd"
             android:exported="true">
+
         </activity>
         <activity
             android:name=".auth.FindpasswdActivity"
@@ -43,7 +45,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>
