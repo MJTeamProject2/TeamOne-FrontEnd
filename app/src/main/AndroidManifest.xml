@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.team1.teamone">
+    package="com.team1.teamone" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,10 +10,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.TeamOne">
+        android:theme="@style/Theme.TeamOne"
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name=".loading.SplashActivity"
+            android:name=".rating.view.RatingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".message.view.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".comment.view.CommentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".caution.view.CautionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bookmark.view.BookMarkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".util.view.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,32 +37,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".auth.LoginActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".auth.ResetPasswd"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".auth.FindpasswdActivity"
+            android:name=".member.view.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.RegisterActivity"
+            android:name=".member.ResetPasswd"
             android:exported="true" />
         <activity
-            android:name=".auth.FindIdActivity"
+            android:name=".member.view.ResetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".member.view.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".member.view.FindIdActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".util.view.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:name=".member.view.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

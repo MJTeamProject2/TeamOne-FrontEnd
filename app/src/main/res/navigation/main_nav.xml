@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bookMarkFragment"
-        android:name="com.team1.teamone.MainFragments.BookMarkFragment"
+        android:name="com.team1.teamone.board.view.BookMarkFragment"
         android:label="fragment_book_mark"
         tools:layout="@layout/fragment_book_mark" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.team1.teamone.MainFragments.MessageFragment"
+        android:name="com.team1.teamone.board.view.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.team1.teamone.MainFragments.ProfileFragment"
+        android:name="com.team1.teamone.board.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.team1.teamone.MainFragments.HomeFragment"
+        android:name="com.team1.teamone.board.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
