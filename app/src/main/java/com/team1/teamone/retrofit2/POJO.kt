@@ -110,3 +110,9 @@ data class GetAuthToken(
     var userEmail : String? = null,
     var authToken: String? = null
 )
+
+// 서버로 요청 보낼떄 사용하는 Model (Request)
+data class GetFindIdModel(
+    var email : String? = null,
+    var schoolId : String? = null
+)

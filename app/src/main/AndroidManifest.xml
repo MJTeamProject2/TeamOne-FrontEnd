@@ -38,7 +38,7 @@
             android:name=".auth.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.FindidActivity"
+            android:name=".auth.FindIdActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
