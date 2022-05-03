@@ -1,20 +1,26 @@
 package com.team1.teamone.board.view
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.team1.teamone.R
 import com.team1.teamone.databinding.FragmentHomeBinding
+import com.team1.teamone.board.presenter.PostFragmentStateAdapter
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
+    private val tabTitles = arrayListOf("text1", "text22", "text333")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,4 +50,23 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
+    // 새로 그리는 부분
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val appBar = view.findViewById<AppBarLayout>(R.id.appbar_homeFragment)
+        val viewPager2 = view.findViewById<ViewPager2>(R.id.viewpage2_homeFragment)
+        val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout_homeFragment)
+
+
+        viewPager2.adapter =
+            PostFragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
+
+        // Tablayout에 문자 추가
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
+
+    }
 }

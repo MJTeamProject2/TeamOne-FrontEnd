@@ -13,14 +13,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val profileList = arrayListOf(
-            Profiles(R.drawable.ic_baseline_emoji_emotions_24, "이범준", 27, "안드로이드앱 개발자"),
-            Profiles(R.drawable.ic_baseline_bookmark_24, "깇멀수", 28, "개발자")
-        )
-        rv_profile.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv_profile.setHasFixedSize(true)
-        rv_profile.adapter = ProfileAdapter(profileList)
     }
-
-
 }
