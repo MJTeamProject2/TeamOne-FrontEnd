@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.team1.teamone.R
 import com.team1.teamone.member.view.FindIdActivity
+import com.team1.teamone.member.view.LoginActivity
 import com.team1.teamone.member.view.MainActivity
 
 class SplashActivity : AppCompatActivity() {

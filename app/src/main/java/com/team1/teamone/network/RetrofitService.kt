@@ -14,36 +14,36 @@ interface RetrofitService {
     @Headers("accept: application/json",
         "content-type: application/json")
     fun postLogin(
-        @Body jsonparams: PostLoginModel
-    ): Call<PostMemberDto>
+        @Body loginRequestForm: LoginRequest
+    ): Call<MemberResponseWithSession>
 
     @POST("/users/new")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun postRegister(
-        @Body jsonparams: PostRegisterModel
-    ): Call<MemberDto>
+        @Body registerRequestForm: RegisterRequest
+    ): Call<MemberResponse>
 
     @GET("/users/nickname-check/{nickname}")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun getNickName(
         @Path("nickname") nickName : String
-    ): Call<GetBoolean>
+    ): Call<BoolResponse>
 
     @GET("/users/id-check/{id}")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun getUserId(
         @Path("id") userId : String
-    ): Call<GetBoolean>
+    ): Call<BoolResponse>
 
     @POST("/users/auth/{userEmail}")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun postSendMail(
         @Path("userEmail") userEmail : String
-    ): Call<PostAuthEmail>
+    ): Call<AuthMailResponse>
 
     @GET("/users/auth/{userEmail}/{authToken}")
     @Headers("accept: application/json",
@@ -51,21 +51,30 @@ interface RetrofitService {
     fun getCheckToken(
         @Path("userEmail") userEmail : String,
         @Path("authToken") authToken : String
-    ): Call<GetAuthToken>
+    ): Call<AuthMailResponse>
 
     @POST("/users/id")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun findId(
-        @Body jsonparams: GetFindIdModel
-    ): Call<MemberDto>
+        @Body findIdRequestForm: FindIdRequest
+    ): Call<MemberResponse>
 
-    fun getFreeBoards(
+    @GET("/boards/all")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun getAllBoards(
+    ): Call<BoardResponse>
 
+    @GET("/boards/{boardId}")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun getBoard(
+        @Path("boardId") boardId : Long
     ): Call<BoardResponse>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
-        private const val BASE_URL = "http://10.0.2.2:8080/" // 주소
+        private const val BASE_URL = "https://c7a3-121-136-173-243.jp.ngrok.io" // 주소
 
         fun create(): RetrofitService {
             val gson = GsonBuilder().setLenient().create();

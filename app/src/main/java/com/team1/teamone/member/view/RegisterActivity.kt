@@ -41,10 +41,10 @@ class RegisterActivity : AppCompatActivity() {
             val id = rt_id.text.toString()
             Log.d("btnCheckID", id)
             if (id.isNotEmpty()) {
-                api.getUserId(id).enqueue(object : Callback<GetBoolean> {
+                api.getUserId(id).enqueue(object : Callback<BoolResponse> {
                     override fun onResponse(
-                        call: Call<GetBoolean>,
-                        response: Response<GetBoolean>
+                        call: Call<BoolResponse>,
+                        response: Response<BoolResponse>
                     ) {
                         Log.d("btnCheckID", "success")
                         val body = response.body()?.result
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     }
 
-                    override fun onFailure(call: Call<GetBoolean>, t: Throwable) {
+                    override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
                         // 실패
                         Log.d("btnCheckID", t.message.toString())
                         Log.d("btnCheckID", "fail")
@@ -79,10 +79,10 @@ class RegisterActivity : AppCompatActivity() {
             val name = rt_nickname.text.toString()
             Log.d("btnCheckNickname", name)
             if (name.isNotEmpty()) {
-                api.getNickName(name).enqueue(object : Callback<GetBoolean> {
+                api.getNickName(name).enqueue(object : Callback<BoolResponse> {
                     override fun onResponse(
-                        call: Call<GetBoolean>,
-                        response: Response<GetBoolean>
+                        call: Call<BoolResponse>,
+                        response: Response<BoolResponse>
                     ) {
                         Log.d("btnCheckNickname", "success")
                         val body = response.body()?.result
@@ -101,7 +101,7 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<GetBoolean>, t: Throwable) {
+                    override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
                         // 실패
                         Log.d("btnCheckNickname", t.message.toString())
                         Log.d("btnCheckNickname", "fail")
@@ -117,10 +117,10 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("btnSendKeyNum", email)
             register.btnSendKeyNum.isEnabled = false
             if (email.isNotEmpty()) {
-                api.postSendMail(email).enqueue(object : Callback<PostAuthEmail> {
+                api.postSendMail(email).enqueue(object : Callback<AuthMailResponse> {
                     override fun onResponse(
-                        call: Call<PostAuthEmail>,
-                        response: Response<PostAuthEmail>
+                        call: Call<AuthMailResponse>,
+                        response: Response<AuthMailResponse>
                     ) {
                         Log.d("btnSendKeyNum", "success")
                         val authToken = response.body()?.authToken
@@ -134,7 +134,7 @@ class RegisterActivity : AppCompatActivity() {
                         register.btnSendKeyNum.isEnabled = true
                     }
 
-                    override fun onFailure(call: Call<PostAuthEmail>, t: Throwable) {
+                    override fun onFailure(call: Call<AuthMailResponse>, t: Throwable) {
                         // 실패
                         Log.d("btnSendKeyNum", t.message.toString())
                         Log.d("btnSendKeyNum", "fail")
@@ -154,10 +154,10 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("btnCheckKeyNum", keyCheck)
             register.btnCheckKeyNum.isEnabled = false
             if (keyCheck.isNotEmpty()) {
-                api.getCheckToken(email,keyCheck).enqueue(object : Callback<GetAuthToken> {
+                api.getCheckToken(email,keyCheck).enqueue(object : Callback<AuthMailResponse> {
                     override fun onResponse(
-                        call: Call<GetAuthToken>,
-                        response: Response<GetAuthToken>
+                        call: Call<AuthMailResponse>,
+                        response: Response<AuthMailResponse>
                     ) {
                         Log.d("btnCheckKeyNum", "success")
                         val authToken = response.body()?.authToken
@@ -198,7 +198,7 @@ class RegisterActivity : AppCompatActivity() {
 
                     }
 
-                    override fun onFailure(call: Call<GetAuthToken>, t: Throwable) {
+                    override fun onFailure(call: Call<AuthMailResponse>, t: Throwable) {
                         // 실패
                         Log.d("btnCheckKeyNum", t.message.toString())
                         Log.d("btnCheckKeyNum", "fail")
@@ -226,7 +226,7 @@ class RegisterActivity : AppCompatActivity() {
             //val email = rt_email.text.toString() + "@mju.ac.kr"
             val keyCheck = rt_keyNum.text.toString()
 
-            val dataModel = PostRegisterModel(
+            val dataModel = RegisterRequest(
                 name, dept, schoolId, phoneNum, nickname, id, pw, checkPass, email, keyCheck
             )
 
@@ -282,8 +282,8 @@ class RegisterActivity : AppCompatActivity() {
                 editor.putString("pw", pw)
                 editor.apply()
 
-                api.postRegister(dataModel).enqueue(object : Callback<MemberDto> {
-                    override fun onResponse(call: Call<MemberDto>, response: Response<MemberDto>) {
+                api.postRegister(dataModel).enqueue(object : Callback<MemberResponse> {
+                    override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>) {
                         Log.d("log",response.toString())
                         Log.d("log", response.body().toString())
 
@@ -303,7 +303,7 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<MemberDto>, t: Throwable) {
+                    override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
                         // 실패
                         Log.d("log",t.message.toString())
                         Log.d("log","fail")

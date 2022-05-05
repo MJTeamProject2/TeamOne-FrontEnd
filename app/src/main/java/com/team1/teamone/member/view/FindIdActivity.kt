@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityFindidBinding
-import com.team1.teamone.network.GetFindIdModel
-import com.team1.teamone.network.MemberDto
+import com.team1.teamone.network.FindIdRequest
+import com.team1.teamone.network.MemberResponse
 import com.team1.teamone.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_findid.*
 import retrofit2.Call
@@ -28,11 +28,11 @@ class FindIdActivity : AppCompatActivity() {
             val email = edt_email.text.toString()
             val schoolId = edt_schoolId.text.toString()
 
-            val data = GetFindIdModel(email, schoolId)
+            val data = FindIdRequest(email, schoolId)
 
             Log.d("data", data.toString())
-            api.findId(data).enqueue(object : Callback<MemberDto> {
-                override fun onResponse(call: Call<MemberDto>, response: Response<MemberDto>) {
+            api.findId(data).enqueue(object : Callback<MemberResponse> {
+                override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>) {
                     if (response.body() == null) {
                         tv_findId.text = "웹메일 또는 학번이 잘못 되었습니다."
                         return
@@ -41,7 +41,7 @@ class FindIdActivity : AppCompatActivity() {
                     tv_findId.text = email + "로 가입된 아이디는 " + userId + "입니다."
                 }
 
-                override fun onFailure(call: Call<MemberDto>, t: Throwable) {
+                override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
                     // 실패
                     Log.d("log", t.message.toString())
                     Log.d("log", "fail")

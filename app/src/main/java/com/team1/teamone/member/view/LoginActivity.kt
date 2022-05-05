@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.databinding.ActivityLoginBinding
-import com.team1.teamone.network.PostMemberDto
-import com.team1.teamone.network.PostLoginModel
+import com.team1.teamone.network.MemberResponseWithSession
+import com.team1.teamone.network.LoginRequest
 import com.team1.teamone.network.RetrofitService
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -39,11 +39,11 @@ class LoginActivity : AppCompatActivity() {
             var id = idEditArea_login.text.toString()
             var pw = passwordEditArea_login.text.toString()
 
-            val data = PostLoginModel(id,pw)
+            val data = LoginRequest(id,pw)
 
 
-            api.postLogin(data).enqueue(object : Callback<PostMemberDto> {
-                override fun onResponse(call: Call<PostMemberDto>, response: Response<PostMemberDto>) {
+            api.postLogin(data).enqueue(object : Callback<MemberResponseWithSession> {
+                override fun onResponse(call: Call<MemberResponseWithSession>, response: Response<MemberResponseWithSession>) {
                     Log.d("log",response.toString())
                     Log.d("log", response.body().toString())
                     val sessionKey = response.body()?.sessionId.toString()
@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<PostMemberDto>, t: Throwable) {
+                override fun onFailure(call: Call<MemberResponseWithSession>, t: Throwable) {
                     // 실패
                     Log.d("log",t.message.toString())
                     Log.d("log","fail")
