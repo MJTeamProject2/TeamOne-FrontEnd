@@ -1,8 +1,7 @@
 package com.team1.teamone.board.model
 
-import java.time.LocalDateTime
-
 data class BoardResponse(
+    var boardId: Long? = null,
     var title: String? = null,
     var content: String? = null,
     var viewCount: Int? = null,
@@ -16,4 +15,6 @@ data class BoardResponse(
     // var comments: List<comment> = null
 )
 
-/*data class BoardListResponse(Array<BoardResponse> boards)*/
+data class BoardListResponse(
+    val boards : ArrayList<BoardResponse> = ArrayList<BoardResponse>()
+)
