@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.team1.teamone.R
 import com.team1.teamone.member.view.LoginActivity
 import com.team1.teamone.member.view.RegisterActivity
@@ -20,7 +21,8 @@ import com.team1.teamone.util.presentation.OnBoardViewPagerAdapter
 class OnBoardingActivity : AppCompatActivity() {
 
     var onBoardingViewPagerAdapter : OnBoardViewPagerAdapter? = null
-    var tabLayout : TabLayout? = null
+//    var tabLayout : TabLayout? = null
+    var tabLayout : DotsIndicator? = null
     var onBoardingViewPager : ViewPager? = null
     var next: TextView? = null
     var position = 0
@@ -39,7 +41,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_on_boarding)
 
-        tabLayout = findViewById(R.id.tab_indicator_onboard)
+        tabLayout = findViewById(R.id.dots_indicator)
         next = findViewById(R.id.tv_next_onboard)
         startOnboardBtn = findViewById(R.id.btn_startOnboard)
         loginOnboard = findViewById(R.id.onboard_login)
@@ -82,24 +84,24 @@ class OnBoardingActivity : AppCompatActivity() {
 //            }
 //        }
 
-        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                position = tab!!.position
-//                if (tab.position == onBoardingData.size - 1) {
-//                    next!!.text = "Get Started"
-//                } else {
-//                    next!!.text = "Next"
-//                }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-        })
+//        tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+////                position = tab!!.position
+////                if (tab.position == onBoardingData.size - 1) {
+////                    next!!.text = "Get Started"
+////                } else {
+////                    next!!.text = "Next"
+////                }
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//
+//            }
+//        })
     }
 
     private fun setOnBoardingViewPagerAdapter(onBoardingData: List<OnBoardingData>){
@@ -107,8 +109,7 @@ class OnBoardingActivity : AppCompatActivity() {
         onBoardingViewPager = findViewById(R.id.screenPager)
         onBoardingViewPagerAdapter = OnBoardViewPagerAdapter(this,onBoardingData)
         onBoardingViewPager!!.adapter = onBoardingViewPagerAdapter
-        tabLayout?.setupWithViewPager(onBoardingViewPager)
-
+        tabLayout?.attachTo(onBoardingViewPager!!)
     }
 
     private fun savePrefDate() {
