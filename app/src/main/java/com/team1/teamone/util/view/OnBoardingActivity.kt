@@ -45,10 +45,10 @@ class OnBoardingActivity : AppCompatActivity() {
         loginOnboard = findViewById(R.id.onboard_login)
 
         val onBoardingData : MutableList<OnBoardingData> = ArrayList()
-        onBoardingData.add(OnBoardingData("팀원은 어디서 구하지?", "이번 학기에도 팀플이 있는 당신.. \n 아직도 팀원을 못 구했나요? \n 같이 수업을 듣는 사람이 없다고요?", R.drawable.solo1))
-        onBoardingData.add(OnBoardingData("원하는 팀원을 빠르게!", "같은 수업을 듣고 있는 사람을 찾아봐요! \n 게시판 별로 팀원을 찾을 수도 있고 \n 자기 자신을 어필할 수 있습니다!", R.drawable.board2))
-        onBoardingData.add(OnBoardingData("자신과 맞는 팀원을 구하세요!", "팀원들의 평가를 한 눈에 보고 \n 자신과 어울리는 팀원을 찾으세요!", R.drawable.review2))
-        onBoardingData.add(OnBoardingData("성공적인 팀플을 위하여", "더 이상 팀원 때문에 고민 하지 말고 \n TeamOne 어플을 통해 \n 손 쉽게 팀원을 구하세요!", R.drawable.team1))
+        onBoardingData.add(OnBoardingData("팀원은 어디서 구하지?", "이번 학기에도 팀플이 있는 당신.. \n 아직도 팀원을 못 구했나요? \n 같이 수업을 듣는 사람이 없다고요?", R.drawable.solo1, "조별과제 / 팀플"))
+        onBoardingData.add(OnBoardingData("원하는 팀원을 빠르게!", "같은 수업을 듣고 있는 사람을 찾아봐요! \n 게시판 별로 팀원을 찾을 수도 있고 \n 자기 자신을 어필할 수 있습니다!", R.drawable.board2, "팀원 찾기를 통해"))
+        onBoardingData.add(OnBoardingData("팀원을 구하세요!", "팀원들의 평가를 한 눈에 보고 \n 자신과 어울리는 팀원을 찾으세요! \n 팀플이 종료 되면 평가도 남길 수 있어요!", R.drawable.review2, "자신과 어울리는"))
+        onBoardingData.add(OnBoardingData("성공적인 팀플을 위하여", "더 이상 팀원 때문에 고민 하지 말고 \n TeamOne 어플을 통해 \n 손 쉽게 팀원을 구하세요!", R.drawable.team1, "A+를 위하여"))
 
         setOnBoardingViewPagerAdapter(onBoardingData)
 

@@ -29,10 +29,12 @@ class OnBoardViewPagerAdapter(private var context : Context, private var onBoard
         val imageView : ImageView = view.findViewById(R.id.image_onboard)
         val title : TextView = view.findViewById(R.id.tv_title_onboard)
         val desc : TextView = view.findViewById(R.id.tv_desc_onboard)
+        val subtitle : TextView = view.findViewById(R.id.tv_subtitle_onboard)
 
         imageView.setImageResource(onBoardingDataList[position].imageUrl)
         title.text = onBoardingDataList[position].title
         desc.text = onBoardingDataList[position].desc
+        subtitle.text = onBoardingDataList[position].subtitle
 
         container.addView(view)
         return view
