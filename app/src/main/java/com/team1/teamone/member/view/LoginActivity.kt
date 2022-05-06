@@ -81,6 +81,16 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btn_findId.setOnClickListener {
+            val intent = Intent(this, FindActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_findPw.setOnClickListener {
+            val intent = Intent(this, FindActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     // 로그인 성공/실패 시 다이얼로그를 띄워주는 메소드

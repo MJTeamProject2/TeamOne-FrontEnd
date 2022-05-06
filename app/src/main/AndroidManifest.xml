@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TeamOne"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".member.view.FindActivity"
+            android:exported="false" />
+        <activity
             android:name=".util.view.OnBoardingActivity"
             android:exported="false" />
         <activity
