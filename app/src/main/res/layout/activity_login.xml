@@ -34,6 +34,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/filledTextField1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:backgroundTint="@color/main_color1"
+                android:fontFamily="@font/sd4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -63,6 +65,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEditArea_login"
+                    android:backgroundTint="@color/main_color1"
+                    android:fontFamily="@font/sd4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_lock_24"
@@ -73,12 +77,16 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
+                android:fontFamily="@font/sd5"
+                android:backgroundTint="@color/main_color1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:text="Login" />
+                android:layout_marginBottom="16dp"
+                android:textSize="16dp"
+                android:text="로그인 하기" />
 
 
         </LinearLayout>
@@ -88,8 +96,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/btn_register"
@@ -100,6 +110,7 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginBottom="16dp"
                 android:text="Register"
+                android:fontFamily="@font/sd4"
                 android:textAlignment="textStart"
                 android:textSize="20sp" />
 
@@ -112,6 +123,7 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginBottom="16dp"
                 android:text="Find ID"
+                android:fontFamily="@font/sd4"
                 android:textAlignment="textStart"
                 android:textSize="20sp" />
         </LinearLayout>
