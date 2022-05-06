@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
+import com.team1.teamone.board.view.MainActivity
 import com.team1.teamone.databinding.ActivityRegisterBinding
 import com.team1.teamone.network.*
 import kotlinx.android.synthetic.main.activity_register.*

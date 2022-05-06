@@ -10,6 +10,7 @@ import android.webkit.CookieManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
+import com.team1.teamone.board.view.MainActivity
 import com.team1.teamone.databinding.ActivityLoginBinding
 import com.team1.teamone.network.MemberResponseWithSession
 import com.team1.teamone.network.LoginRequest
@@ -77,6 +78,16 @@ class LoginActivity : AppCompatActivity() {
         // 회원가입 버튼
         btn_register.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_findId.setOnClickListener {
+            val intent = Intent(this, FindActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_findPw.setOnClickListener {
+            val intent = Intent(this, FindActivity::class.java)
             startActivity(intent)
         }
 

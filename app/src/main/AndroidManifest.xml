@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.team1.teamone" >
+    package="com.team1.teamone">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamOne"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".member.view.FindActivity"
+            android:exported="false" />
+        <activity
+            android:name=".util.view.OnBoardingActivity"
+            android:exported="false" />
         <activity
             android:name=".rating.view.RatingActivity"
             android:exported="false" />
@@ -29,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".util.view.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +61,7 @@
             android:name=".util.view.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".member.view.MainActivity"
+            android:name=".board.view.MainActivity"
             android:exported="true" />
     </application>
 
