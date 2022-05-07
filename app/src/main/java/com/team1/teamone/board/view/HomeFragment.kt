@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.team1.teamone.R
-import com.team1.teamone.databinding.FragmentBookMarkBinding
+import com.team1.teamone.databinding.FragmentHomeBinding
 
 
-class BookMarkFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private lateinit var binding : FragmentBookMarkBinding
+    private lateinit var binding : FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +24,7 @@ class BookMarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_book_mark, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         return binding.root
     }
