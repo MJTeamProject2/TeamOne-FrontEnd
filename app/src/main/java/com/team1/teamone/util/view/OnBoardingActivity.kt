@@ -58,7 +58,6 @@ class OnBoardingActivity : AppCompatActivity() {
             savePrefDate()
             val i = Intent(applicationContext, RegisterActivity::class.java)
             startActivity(i)
-            finish()
         }
 
         loginOnboard?.setOnClickListener {
