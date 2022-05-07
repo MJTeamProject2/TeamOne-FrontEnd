@@ -61,8 +61,7 @@ data class AuthMailResponse(
 //    var authToken: String? = null
 //)
 
-// 서버로 요청 보낼떄 사용하는 Model (Request)
-data class FindIdRequest(
+data class FindIdPasswordRequest(
     var email : String? = null,
     var schoolId : String? = null
 )

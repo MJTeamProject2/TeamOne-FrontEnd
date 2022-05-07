@@ -57,8 +57,15 @@ interface RetrofitService {
     @Headers("accept: application/json",
         "content-type: application/json")
     fun findId(
-        @Body findIdRequestForm: FindIdRequest
+        @Body findIdPasswordRequestForm: FindIdPasswordRequest
     ): Call<MemberResponse>
+
+    @POST("/users/password")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun resetPassword(
+        @Body resetPasswordForm : FindIdPasswordRequest
+    ): Call<BoolResponse>
 
     @GET("/boards/all")
     @Headers("accept: application/json",
