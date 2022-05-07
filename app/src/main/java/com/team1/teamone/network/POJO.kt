@@ -65,3 +65,8 @@ data class FindIdPasswordRequest(
     var email : String? = null,
     var schoolId : String? = null
 )
+
+data class FreeBoardRequest(
+    var title: String? = null,
+    var content: String? = null
+)
