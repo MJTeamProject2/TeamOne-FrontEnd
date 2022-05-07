@@ -20,7 +20,7 @@ object RetrofitClient {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://c7a3-121-136-173-243.jp.ngrok.io")
+            .baseUrl("https://f7e6-121-125-152-82.jp.ngrok.io")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

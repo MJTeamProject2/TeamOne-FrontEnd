@@ -73,15 +73,30 @@ interface RetrofitService {
     fun getAllBoards(
     ): Call<BoardResponse>
 
+
     @GET("/boards/{boardId}")
     @Headers("accept: application/json",
         "content-type: application/json")
     fun getBoard(
         @Path("boardId") boardId : Long
     ): Call<BoardResponse>
+/*
+    @POST("/boards/new/free")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun postFreeBoard(
+        @Body freeBoardRequestForm : FreeBoardRequest
+    ): Call<BoardResponse>
+*/
+    @POST("/boards/new/free/no-login")
+    @Headers("accept: application/json",
+        "content-type: application/json")
+    fun postFreeBoard(
+        @Body freeBoardRequestForm : FreeBoardRequest
+    ): Call<BoardResponse>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
-        private const val BASE_URL = "http:10.0.2.2:8080" // 주소
+        private const val BASE_URL = "https://f7e6-121-125-152-82.jp.ngrok.io" // 주소
 
         fun create(): RetrofitService {
             val gson = GsonBuilder().setLenient().create();
