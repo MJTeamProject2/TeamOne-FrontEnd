@@ -27,20 +27,6 @@ class BookMarkFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_book_mark, container, false)
 
-        // 네비게이션바 클릭 시
-
-        binding.homeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookMarkFragment_to_homeFragment)
-        }
-
-        binding.messageTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookMarkFragment_to_messageFragment)
-        }
-
-        binding.profileTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookMarkFragment_to_profileFragment)
-        }
-
         return binding.root
     }
 

@@ -26,20 +26,6 @@ class MessageFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false)
 
-        // 네비게이션바 클릭 시
-
-        binding.homeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_messageFragment_to_homeFragment)
-        }
-
-        binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_messageFragment_to_bookMarkFragment)
-        }
-
-        binding.profileTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_messageFragment_to_profileFragment)
-        }
-
         return binding.root
     }
 }

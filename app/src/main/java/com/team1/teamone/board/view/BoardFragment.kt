@@ -1,25 +1,23 @@
 package com.team1.teamone.board.view
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team1.teamone.R
-import com.team1.teamone.databinding.FragmentHomeBinding
 import com.team1.teamone.board.presenter.PostFragmentStateAdapter
+import com.team1.teamone.databinding.FragmentBoardBinding
 
 
-class HomeFragment : Fragment() {
+class BoardFragment : Fragment() {
 
-    private lateinit var binding : FragmentHomeBinding
+    private lateinit var binding : FragmentBoardBinding
     private val tabTitles = arrayListOf("text1", "text22", "text333")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,21 +29,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board, container, false)
 
-        // 네비게이션바 클릭 시
-
-        binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_bookMarkFragment)
-        }
-
-        binding.messageTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_messageFragment)
-        }
-
-        binding.profileTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
-        }
 
         return binding.root
     }

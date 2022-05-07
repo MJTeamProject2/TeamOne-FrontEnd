@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/bookMarkFragment">
 
     <fragment
         android:id="@+id/bookMarkFragment"
@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_book_mark" >
         <action
             android:id="@+id/action_bookMarkFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/boardFragment" />
         <action
             android:id="@+id/action_bookMarkFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_message" >
         <action
             android:id="@+id/action_messageFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/boardFragment" />
         <action
             android:id="@+id/action_messageFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -48,13 +48,13 @@
             app:destination="@id/bookMarkFragment" />
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/boardFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.team1.teamone.board.view.HomeFragment"
+        android:id="@+id/boardFragment"
+        android:name="com.team1.teamone.board.view.BoardFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_board" >
         <action
             android:id="@+id/action_homeFragment_to_messageFragment"
             app:destination="@id/messageFragment" />

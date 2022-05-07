@@ -58,10 +58,10 @@
             android:name=".member.view.FindIdActivity"
             android:exported="false" />
         <activity
-            android:name=".util.view.HomeActivity"
+            android:name=".board.view.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.MainActivity"
+            android:name=".util.view.MainActivity"
             android:exported="true" />
     </application>
 
