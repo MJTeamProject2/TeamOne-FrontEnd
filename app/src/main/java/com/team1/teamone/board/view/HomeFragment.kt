@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
+import com.team1.teamone.board.presenter.HomeFragmentStateAdapter
 import com.team1.teamone.databinding.FragmentHomeBinding
 
 
@@ -25,6 +26,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        // viewpager2 연결
+        binding.viewPager2HomeFragement.adapter = HomeFragmentStateAdapter(this)
 
         return binding.root
     }

@@ -18,7 +18,7 @@ import com.team1.teamone.databinding.FragmentBoardBinding
 class BoardFragment : Fragment() {
 
     private lateinit var binding : FragmentBoardBinding
-    private val tabTitles = arrayListOf("text1", "text22", "text333")
+    private val tabTitles = arrayListOf("팀원 구해요", "어필해요", "자유 게시판")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,7 @@ class BoardFragment : Fragment() {
         // Tablayout에 문자 추가
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             tab.text = tabTitles[position]
+
         }.attach()
 
     }
