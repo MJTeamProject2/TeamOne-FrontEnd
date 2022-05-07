@@ -74,7 +74,7 @@ interface RetrofitService {
     ): Call<BoardResponse>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
-        private const val BASE_URL = "https://c7a3-121-136-173-243.jp.ngrok.io" // 주소
+        private const val BASE_URL = "http:10.0.2.2:8080" // 주소
 
         fun create(): RetrofitService {
             val gson = GsonBuilder().setLenient().create();
