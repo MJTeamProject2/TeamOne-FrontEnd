@@ -7,16 +7,149 @@
         android:layout_height="match_parent"
         tools:context=".board.view.HomeFragment">
 
-        <TextView
-            android:text="Bookmark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:context=".Home.HomeActivity">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:elevation="0dp"
+                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbar"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:fitsSystemWindows="true"
+                    android:layout_height="200dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:background="@color/main_color1"
+                        android:layout_marginBottom="32dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintVertical_bias="0.3"
+                            app:layout_constraintHorizontal_bias="0.12"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/sd6"
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp"
+                                    android:text="어서오세요. " />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:fontFamily="@font/sd6"
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp"
+                                    android:text="닉네임" />
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:layout_marginTop="6dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/sd4"
+                                android:textColor="@color/white"
+                                android:text="팀원을 구해보세요!" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_baseline_notes_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.927"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:elevation="0dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_collapseMode="pin"
+                        android:layout_gravity="top"
+                        android:layout_marginBottom="?attr/actionBarSize" />
+
+
+                    <LinearLayout
+                        android:id="@+id/tabLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/main_first_box"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:tabIconTint="#F57C00"
+                        app:tabIndicatorColor="#F57C00"
+                        app:tabIndicatorHeight="4dp"
+                        app:tabMode="fixed"
+                        app:tabSelectedTextColor="@color/black"
+                        app:tabTextColor="#999999" >
+
+                        <androidx.appcompat.widget.SearchView
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginEnd="30dp"
+                            android:background="@drawable/search_box"
+                            app:searchIcon="@drawable/ic_baseline_search_24"
+                            app:closeIcon="@drawable/ic_baseline_close_24_black"
+                            android:layout_marginBottom="16dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/constraintLayout"
+                android:background="@color/main_color1"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+<!--                app:behavior_overlapTop="60dp"-->
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:background="@drawable/main_second_box"
+                    android:id="@+id/viewPager2_home_fragement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </FrameLayout>
 </layout>
