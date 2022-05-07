@@ -8,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
-import com.team1.teamone.databinding.ActivityFindidBinding
 import com.team1.teamone.databinding.FragmentFindIdBinding
-import com.team1.teamone.network.FindIdRequest
+import com.team1.teamone.network.FindIdPasswordRequest
 import com.team1.teamone.network.MemberResponse
 import com.team1.teamone.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_findid.*
+import kotlinx.android.synthetic.main.fragment_find_id.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,17 +38,17 @@ class FindIdFragment : Fragment() {
             val email = edt_email.text.toString()
             val schoolId = edt_schoolId.text.toString()
 
-            val data = FindIdRequest(email, schoolId)
+            val request = FindIdPasswordRequest(email, schoolId)
 
-            Log.d("data", data.toString())
-            api.findId(data).enqueue(object : Callback<MemberResponse> {
+            Log.d("data", request.toString())
+            api.findId(request).enqueue(object : Callback<MemberResponse> {
                 override fun onResponse(call: Call<MemberResponse>, response: Response<MemberResponse>) {
                     if (response.body() == null) {
-                        tv_findId.text = "웹메일 또는 학번이 잘못 되었습니다."
+                        tv_result_findId.text = "웹메일 또는 학번이 잘못 되었습니다."
                         return
                     }
                     val userId = response.body()?.userId.toString()
-                    tv_findId.text = email + "로 가입된 아이디는 " + userId + "입니다."
+                    tv_result_findId.text = email + "로 가입된 아이디는 " + userId + "입니다."
                 }
 
                 override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
