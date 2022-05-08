@@ -7,15 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.databinding.FragmentHomeList1Binding
-import com.team1.teamone.member.presenter.BoardAdapter
-import com.team1.teamone.member.view.RegisterActivity
+import com.team1.teamone.board.presenter.BoardAdapter
 import com.team1.teamone.network.RetrofitService
-import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
