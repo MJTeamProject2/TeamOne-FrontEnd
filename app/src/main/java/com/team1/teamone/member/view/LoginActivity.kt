@@ -10,6 +10,7 @@ import android.webkit.CookieManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
+import com.team1.teamone.board.view.HomeActivity
 import com.team1.teamone.util.view.MainActivity
 import com.team1.teamone.databinding.ActivityLoginBinding
 import com.team1.teamone.network.MemberResponseWithSession
@@ -35,35 +36,29 @@ class LoginActivity : AppCompatActivity() {
 
         // 로그인 버튼
         login.btnLogin.setOnClickListener {
-
-            //editText로부터 입력된 값을 받아온다
-            var id = idEditArea_login.text.toString()
-            var pw = passwordEditArea_login.text.toString()
+            val id = idEditArea_login.text.toString()
+            val pw = passwordEditArea_login.text.toString()
 
             val data = LoginRequest(id,pw)
 
-
             api.postLogin(data).enqueue(object : Callback<MemberResponseWithSession> {
                 override fun onResponse(call: Call<MemberResponseWithSession>, response: Response<MemberResponseWithSession>) {
-                    Log.d("log",response.toString())
-                    Log.d("log", response.body().toString())
                     val sessionKey = response.body()?.sessionId.toString()
-                    Toast.makeText(applicationContext, "connection success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
                     val cm : CookieManager = CookieManager.getInstance()
                     cm.setCookie(BASE_URL, sessionKey)
 
-                    Log.d("sessionId", cm.getCookie(BASE_URL))
-                    Log.d("sessionId2", sessionKey)
+                    Log.d("sessionId From CookieManager", cm.getCookie(BASE_URL))
+                    Log.d("sessionId From Server", sessionKey)
                     if (sessionKey != "null") {
-                        val loginSuccessIntent = Intent(applicationContext, MainActivity::class.java)
+                        val loginSuccessIntent = Intent(applicationContext, HomeActivity::class.java)
                         startActivity(loginSuccessIntent)
                         finish()
                     } else {
                         Toast.makeText(applicationContext, "error id or pw", Toast.LENGTH_SHORT).show()
                     }
                 }
-
                 override fun onFailure(call: Call<MemberResponseWithSession>, t: Throwable) {
                     // 실패
                     Log.d("log",t.message.toString())
@@ -95,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
 
     // 로그인 성공/실패 시 다이얼로그를 띄워주는 메소드
     fun dialog(type: String){
-        var dialog = AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
 
         if(type.equals("success")){
             dialog.setTitle("로그인 성공")
@@ -106,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
             dialog.setMessage("아이디와 비밀번호를 확인해주세요")
         }
 
-        var dialog_listener = object: DialogInterface.OnClickListener{
+        val dialog_listener = object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when(which){
                     DialogInterface.BUTTON_POSITIVE ->

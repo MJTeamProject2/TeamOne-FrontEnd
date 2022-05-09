@@ -1,9 +1,8 @@
-package com.team1.teamone.member.presenter
+package com.team1.teamone.board.presenter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
@@ -30,9 +29,9 @@ class BoardAdapter(val boardList: ArrayList<BoardResponse>) : RecyclerView.Adapt
 
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val classTitle = itemView.findViewById<TextView>(R.id.tv_name2)   //이름
+        val classTitle = itemView.findViewById<TextView>(R.id.tv_title)   //이름
         val title= itemView.findViewById<TextView>(R.id.tv_age)   //나이
-        val content = itemView.findViewById<TextView>(R.id.tv_job)  //직업
+        val content = itemView.findViewById<TextView>(R.id.tv_type)  //직업
        // val viewCount
     }
 
