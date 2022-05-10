@@ -3,6 +3,7 @@ package com.team1.teamone.network
 import android.util.Log
 import android.webkit.CookieManager
 import com.google.gson.GsonBuilder
+import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
 import okhttp3.Interceptor
 import okhttp3.JavaNetCookieJar
@@ -77,7 +78,7 @@ interface RetrofitService {
     @Headers("accept: application/json",
         "content-type: application/json")
     fun getAllBoards(
-    ): Call<BoardResponse>
+    ): Call<BoardListResponse>
 
 
     @GET("/boards/{boardId}")
