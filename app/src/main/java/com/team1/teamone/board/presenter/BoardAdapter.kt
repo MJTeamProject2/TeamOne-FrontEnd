@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.model.BoardSimpleModel
 
-class BoardAdapter(val boardList: ArrayList<BoardResponse>) : RecyclerView.Adapter<BoardAdapter.CustomViewHolder>() {
+class BoardAdapter(val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<BoardAdapter.CustomViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -22,17 +23,20 @@ class BoardAdapter(val boardList: ArrayList<BoardResponse>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.classTitle.text = boardList.get(position).classTitle
-        holder.title.text = boardList.get(position).title
-        holder.content.text = boardList.get(position).content
+        holder.bindItems(boardList[position])
     }
 
 
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val classTitle = itemView.findViewById<TextView>(R.id.tv_title)   //이름
         val title= itemView.findViewById<TextView>(R.id.tv_age)   //나이
         val content = itemView.findViewById<TextView>(R.id.tv_type)  //직업
-       // val viewCount
+
+        fun bindItems(item: BoardResponse){
+            title.text = item.title
+            content.text = item.content
+            classTitle.text = item.classTitle
+        }
     }
 
 }

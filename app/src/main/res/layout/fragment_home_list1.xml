@@ -20,9 +20,19 @@
         android:text="글 작성"
         />
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_gettest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="불러오기 GET"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_profile"

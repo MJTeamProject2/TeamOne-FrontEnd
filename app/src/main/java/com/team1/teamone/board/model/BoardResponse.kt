@@ -16,5 +16,5 @@ data class BoardResponse(
 )
 
 data class BoardListResponse(
-    val boards : ArrayList<BoardResponse> = ArrayList<BoardResponse>()
+    val boards: List<BoardResponse>
 )
