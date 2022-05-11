@@ -1,4 +1,4 @@
-package com.team1.teamone.member.view
+package com.team1.teamone.member.view.activity
 
 import android.content.Context
 import android.content.DialogInterface

@@ -1,4 +1,4 @@
-package com.team1.teamone.member.view
+package com.team1.teamone.member.view.activity
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -10,8 +10,7 @@ import android.webkit.CookieManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
-import com.team1.teamone.board.view.HomeActivity
-import com.team1.teamone.util.view.MainActivity
+import com.team1.teamone.board.view.activity.HomeActivity
 import com.team1.teamone.databinding.ActivityLoginBinding
 import com.team1.teamone.network.MemberResponseWithSession
 import com.team1.teamone.network.LoginRequest
@@ -47,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
 
                     val cm : CookieManager = CookieManager.getInstance()
+                    cm.removeAllCookie()
                     cm.setCookie(BASE_URL, sessionKey)
 
                     Log.d("sessionId From CookieManager", cm.getCookie(BASE_URL))
@@ -92,16 +92,16 @@ class LoginActivity : AppCompatActivity() {
     fun dialog(type: String){
         val dialog = AlertDialog.Builder(this)
 
-        if(type.equals("success")){
+        if(type == "success"){
             dialog.setTitle("로그인 성공")
             dialog.setMessage("로그인 성공!")
         }
-        else if(type.equals("fail")){
+        else if(type == "fail"){
             dialog.setTitle("로그인 실패")
             dialog.setMessage("아이디와 비밀번호를 확인해주세요")
         }
 
-        val dialog_listener = object: DialogInterface.OnClickListener{
+        val dialogListener = object: DialogInterface.OnClickListener{
             override fun onClick(dialog: DialogInterface?, which: Int) {
                 when(which){
                     DialogInterface.BUTTON_POSITIVE ->
@@ -110,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        dialog.setPositiveButton("확인",dialog_listener)
+        dialog.setPositiveButton("확인",dialogListener)
         dialog.show()
     }
 }

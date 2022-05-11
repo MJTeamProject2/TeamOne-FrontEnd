@@ -13,10 +13,10 @@
         android:theme="@style/Theme.TeamOne"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".board.view.WriteFreeBoardActivity"
+            android:name=".board.view.activity.WriteFreeBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".member.view.FindActivity"
+            android:name=".member.view.activity.FindActivity"
             android:exported="false" />
         <activity
             android:name=".util.view.OnBoardingActivity"
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".member.view.LoginActivity"
+            android:name=".member.view.activity.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".member.ResetPasswd"
@@ -55,13 +55,13 @@
             android:name=".member.view.ResetPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".member.view.RegisterActivity"
+            android:name=".member.view.activity.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".member.view.FindIdActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.HomeActivity"
+            android:name=".board.view.activity.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".util.view.MainActivity"

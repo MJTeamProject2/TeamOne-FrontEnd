@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view
+package com.team1.teamone.board.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,13 +15,14 @@ import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.databinding.FragmentHomeList1Binding
 import com.team1.teamone.board.presenter.BoardAdapter
+import com.team1.teamone.board.view.activity.WriteFreeBoardActivity
 import com.team1.teamone.network.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class HomeFragmentList1 : Fragment() {
+class BoardListFragment : Fragment() {
     private lateinit var binding : FragmentHomeList1Binding
     val api = RetrofitService.create()
     private val boardDataList = mutableListOf<BoardResponse>()
@@ -62,7 +63,7 @@ class HomeFragmentList1 : Fragment() {
                     binding.rvProfile.adapter = boardRVAdater
 
                     // 리사이클러뷰 보기 형식
-                    binding.rvProfile.layoutManager = LinearLayoutManager(this@HomeFragmentList1.context, LinearLayoutManager.VERTICAL, false)
+                    binding.rvProfile.layoutManager = LinearLayoutManager(this@BoardListFragment.context, LinearLayoutManager.VERTICAL, false)
 
                 }
 

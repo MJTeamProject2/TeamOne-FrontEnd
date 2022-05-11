@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".member.view.FindActivity">
+    tools:context=".member.view.activity.FindActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_find"

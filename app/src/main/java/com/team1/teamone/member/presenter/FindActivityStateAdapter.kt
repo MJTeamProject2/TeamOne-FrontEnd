@@ -3,8 +3,8 @@ package com.team1.teamone.member.presenter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.team1.teamone.member.view.FindIdFragment
-import com.team1.teamone.member.view.ResetPasswordFragment
+import com.team1.teamone.member.view.fragment.FindIdFragment
+import com.team1.teamone.member.view.fragment.ResetPasswordFragment
 
 class FindActivityStateAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {

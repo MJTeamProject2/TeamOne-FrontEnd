@@ -5,6 +5,7 @@ import android.webkit.CookieManager
 import com.google.gson.GsonBuilder
 import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.model.FreeBoardRequest
 import okhttp3.Interceptor
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
@@ -25,72 +26,52 @@ interface RetrofitService {
     ): Call<MemberResponseWithSession>
 
     @POST("/users/new")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun postRegister(
         @Body registerRequestForm: RegisterRequest
     ): Call<MemberResponse>
 
     @GET("/users/nickname-check/{nickname}")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun getNickName(
         @Path("nickname") nickName : String
     ): Call<BoolResponse>
 
     @GET("/users/id-check/{id}")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun getUserId(
         @Path("id") userId : String
     ): Call<BoolResponse>
 
     @POST("/users/auth/{userEmail}")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun postSendMail(
         @Path("userEmail") userEmail : String
     ): Call<AuthMailResponse>
 
     @GET("/users/auth/{userEmail}/{authToken}")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun getCheckToken(
         @Path("userEmail") userEmail : String,
         @Path("authToken") authToken : String
     ): Call<AuthMailResponse>
 
     @POST("/users/id")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun findId(
         @Body findIdPasswordRequestForm: FindIdPasswordRequest
     ): Call<MemberResponse>
 
     @POST("/users/password")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun resetPassword(
         @Body resetPasswordForm : FindIdPasswordRequest
     ): Call<BoolResponse>
 
     @GET("/boards/all")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun getAllBoards(
     ): Call<BoardListResponse>
 
 
     @GET("/boards/{boardId}")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun getBoard(
         @Path("boardId") boardId : Long
     ): Call<BoardResponse>
 
     @POST("/boards/new/free")
-    @Headers("accept: application/json",
-        "content-type: application/json")
     fun postFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
@@ -111,7 +92,7 @@ interface RetrofitService {
             override fun intercept(chain: Interceptor.Chain): Response = with(chain) {
                 Log.d("interceptor Session", tokenFromCookieManager)
                 val newRequest = request().newBuilder()
-                    .addHeader("cookie", "JESSIONID="+tokenFromCookieManager)
+                    .addHeader("cookie", tokenFromCookieManager)
                     .build()
                 proceed(newRequest)
             }
