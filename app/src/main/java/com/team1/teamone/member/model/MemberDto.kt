@@ -1,6 +1,7 @@
 package com.team1.teamone.network
 
 import com.google.gson.annotations.SerializedName
+import com.team1.teamone.board.model.BoardResponse
 
 
 data class MemberResponse(
@@ -50,23 +51,12 @@ data class BoolResponse(
     var result : Boolean? = null
 )
 
-
 data class AuthMailResponse(
     var userEmail : String? = null,
     var authToken: String? = null
 )
 
-//data class GetAuthToken(
-//    var userEmail : String? = null,
-//    var authToken: String? = null
-//)
-
 data class FindIdPasswordRequest(
     var email : String? = null,
     var schoolId : String? = null
-)
-
-data class FreeBoardRequest(
-    var title: String? = null,
-    var content: String? = null
 )

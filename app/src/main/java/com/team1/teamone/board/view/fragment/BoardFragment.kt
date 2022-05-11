@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view
+package com.team1.teamone.board.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

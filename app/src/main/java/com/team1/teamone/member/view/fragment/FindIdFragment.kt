@@ -1,4 +1,4 @@
-package com.team1.teamone.member.view
+package com.team1.teamone.member.view.fragment
 
 import android.os.Bundle
 import android.util.Log

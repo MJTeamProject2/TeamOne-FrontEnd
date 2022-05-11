@@ -11,7 +11,7 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardSimpleModel
 import com.team1.teamone.board.presenter.HomeFragementMainAdapter
 
-// HomeFragement에 보여줄 내용
+// HomeFragment 에 보여줄 내용
 class HomeFragmentMain : Fragment() {
     private lateinit var homeMainRVAdapter : HomeFragementMainAdapter
     private val boardDataList = mutableListOf<BoardSimpleModel>()

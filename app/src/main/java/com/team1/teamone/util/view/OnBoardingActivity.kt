@@ -11,8 +11,8 @@ import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.team1.teamone.R
-import com.team1.teamone.member.view.LoginActivity
-import com.team1.teamone.member.view.RegisterActivity
+import com.team1.teamone.member.view.activity.LoginActivity
+import com.team1.teamone.member.view.activity.RegisterActivity
 import com.team1.teamone.util.model.OnBoardingData
 import com.team1.teamone.util.presenter.OnBoardViewPagerAdapter
 

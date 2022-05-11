@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view
+package com.team1.teamone.board.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.model.FreeBoardRequest
 import com.team1.teamone.databinding.ActivityWriteFreeBoardBinding
 import com.team1.teamone.network.*
 import kotlinx.android.synthetic.main.activity_write_free_board.*

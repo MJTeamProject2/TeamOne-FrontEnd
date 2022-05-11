@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view
+package com.team1.teamone.board.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
-        val bottomNavigatinView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        setupWithNavController(bottomNavigatinView, navController)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        setupWithNavController(bottomNavigationView, navController)
     }
 }

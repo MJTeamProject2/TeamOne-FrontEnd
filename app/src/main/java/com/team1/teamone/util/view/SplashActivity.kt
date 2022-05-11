@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.team1.teamone.R
-import com.team1.teamone.board.view.HomeActivity
-import com.team1.teamone.member.view.LoginActivity
+import com.team1.teamone.member.view.activity.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
