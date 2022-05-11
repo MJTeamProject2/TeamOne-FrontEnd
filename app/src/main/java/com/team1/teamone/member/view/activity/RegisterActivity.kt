@@ -11,14 +11,16 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.util.view.MainActivity
 import com.team1.teamone.databinding.ActivityRegisterBinding
-import com.team1.teamone.network.*
+import com.team1.teamone.member.model.MemberApi
+import com.team1.teamone.util.network.*
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
-    private val api = RetrofitService.create()
+//    private val api = RetrofitService.create()
+    private val api = RetrofitClient.create(MemberApi::class.java)
     private lateinit var register: ActivityRegisterBinding
     private var TAG: String = "Register"
 

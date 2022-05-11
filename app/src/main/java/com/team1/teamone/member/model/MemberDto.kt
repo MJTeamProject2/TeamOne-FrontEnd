@@ -1,7 +1,6 @@
-package com.team1.teamone.network
+package com.team1.teamone.util.network
 
 import com.google.gson.annotations.SerializedName
-import com.team1.teamone.board.model.BoardResponse
 
 
 data class MemberResponse(

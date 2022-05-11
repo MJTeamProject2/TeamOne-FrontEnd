@@ -12,9 +12,10 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.view.activity.HomeActivity
 import com.team1.teamone.databinding.ActivityLoginBinding
-import com.team1.teamone.network.MemberResponseWithSession
-import com.team1.teamone.network.LoginRequest
-import com.team1.teamone.network.RetrofitService
+import com.team1.teamone.member.model.MemberApi
+import com.team1.teamone.util.network.MemberResponseWithSession
+import com.team1.teamone.util.network.LoginRequest
+import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +23,8 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     val TAG: String = "LoginActivity"
-    val api = RetrofitService.create()
+//    val api = RetrofitService.create()
+    val api = RetrofitClient.create(MemberApi::class.java)
     private val BASE_URL = "http://10.0.2.2:8080/"
     private lateinit var login: ActivityLoginBinding
 

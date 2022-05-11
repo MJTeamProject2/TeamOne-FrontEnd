@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.databinding.FragmentFindIdBinding
-import com.team1.teamone.network.FindIdPasswordRequest
-import com.team1.teamone.network.MemberResponse
-import com.team1.teamone.network.RetrofitService
+import com.team1.teamone.member.model.MemberApi
+import com.team1.teamone.util.network.FindIdPasswordRequest
+import com.team1.teamone.util.network.MemberResponse
+import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.fragment_find_id.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,7 +20,8 @@ import retrofit2.Response
 
 
 class FindIdFragment : Fragment() {
-    val api = RetrofitService.create()
+//    val api = RetrofitService.create()
+    val api = RetrofitClient.create(MemberApi::class.java)
     private lateinit var binding : FragmentFindIdBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
