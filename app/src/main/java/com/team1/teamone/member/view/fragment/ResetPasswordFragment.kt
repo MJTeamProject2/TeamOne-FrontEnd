@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.databinding.FragmentResetPasswordBinding
-import com.team1.teamone.network.BoolResponse
-import com.team1.teamone.network.FindIdPasswordRequest
-import com.team1.teamone.network.RetrofitService
-import kotlinx.android.synthetic.main.fragment_find_id.*
+import com.team1.teamone.member.model.MemberApi
+import com.team1.teamone.util.network.BoolResponse
+import com.team1.teamone.util.network.FindIdPasswordRequest
+import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.fragment_reset_password.*
 import kotlinx.android.synthetic.main.fragment_reset_password.edt_email
 import kotlinx.android.synthetic.main.fragment_reset_password.edt_schoolId
@@ -22,7 +22,8 @@ import retrofit2.Response
 
 
 class ResetPasswordFragment : Fragment() {
-    val api = RetrofitService.create()
+//    val api = RetrofitService.create()
+    val api = RetrofitClient.create(MemberApi::class.java)
     private lateinit var binding : FragmentResetPasswordBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

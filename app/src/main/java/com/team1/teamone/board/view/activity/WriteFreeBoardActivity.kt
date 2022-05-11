@@ -6,17 +6,19 @@ import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
+import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.FreeBoardRequest
 import com.team1.teamone.databinding.ActivityWriteFreeBoardBinding
-import com.team1.teamone.network.*
+import com.team1.teamone.util.network.*
 import kotlinx.android.synthetic.main.activity_write_free_board.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class WriteFreeBoardActivity : AppCompatActivity() {
-    private val api = RetrofitService.create(RetrofitService.getAuth())
+//    private val api = RetrofitService.create(RetrofitService.getAuth())
+    private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private lateinit var register: ActivityWriteFreeBoardBinding
     private var TAG: String = "Register"
 
@@ -34,7 +36,7 @@ class WriteFreeBoardActivity : AppCompatActivity() {
 
             api.postFreeBoard(request).enqueue(object : Callback<BoardResponse> {
                 override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>){ //서버에서 보낸 메서드
-                    Log.d("auth", RetrofitService.getAuth())
+                    Log.d("auth", RetrofitClient.getAuth())
                     if (response.body() == null ) {
                         Log.d("log", "blank")
                         return
