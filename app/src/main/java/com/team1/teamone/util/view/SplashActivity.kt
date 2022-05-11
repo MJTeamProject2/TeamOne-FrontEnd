@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.team1.teamone.R
+import com.team1.teamone.board.view.activity.WriteFreeBoardActivity
+import com.team1.teamone.board.view.activity.WriteRecruitmentBoardActivity
 import com.team1.teamone.member.view.activity.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -14,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, WriteFreeBoardActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)

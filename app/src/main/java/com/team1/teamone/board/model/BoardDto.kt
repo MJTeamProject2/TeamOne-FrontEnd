@@ -31,3 +31,18 @@ data class FreeBoardRequest(
     val title : String = "",
     val content : String = ""
 )
+
+data class AppealBoardRequest(
+    var title: String = "",
+    var className: String = "",
+    var classTime: String = "",
+    val content: String = ""
+)
+
+data class RecruitmentBoardRequest(
+    var title: String = "",
+    var personCount: String = "",
+    var className: String = "",
+    var classTime: String = "",
+    var content: String = ""
+)
