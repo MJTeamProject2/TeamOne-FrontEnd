@@ -20,4 +20,14 @@ interface BoardApi {
     fun postFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
+
+    @POST("/boards/new/free")
+    fun postRecruitmentBoard(
+        @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
+    ): Call<BoardResponse>
+
+    @POST("/boards/new/free")
+    fun postAppealBoard(
+        @Body appealBoardRequestForm : AppealBoardRequest
+    ): Call<BoardResponse>
 }
