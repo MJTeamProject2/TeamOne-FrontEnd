@@ -1,10 +1,7 @@
 package com.team1.teamone.board.model
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface BoardApi {
     @GET("/boards/all")
@@ -21,13 +18,18 @@ interface BoardApi {
         @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
 
-    @POST("/boards/new/free")
+    @POST("/boards/new/recruitment")
     fun postRecruitmentBoard(
         @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
     ): Call<BoardResponse>
 
-    @POST("/boards/new/free")
+    @POST("/boards/new/appeal")
     fun postAppealBoard(
         @Body appealBoardRequestForm : AppealBoardRequest
+    ): Call<BoardResponse>
+
+    @PUT("/boards/modify/free")
+    fun putFreeBoard(
+        @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
 }

@@ -125,6 +125,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
 
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_baseline_check_24" />
+
         </LinearLayout>
 
         <TextView
