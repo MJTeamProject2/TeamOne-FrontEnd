@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
-import com.team1.teamone.board.model.BoardSimpleModel
 
 class BoardAdapter(val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<BoardAdapter.CustomViewHolder>() {
 

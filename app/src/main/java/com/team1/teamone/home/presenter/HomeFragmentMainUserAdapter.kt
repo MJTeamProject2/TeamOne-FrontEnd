@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
-import com.team1.teamone.home.model.BoardSimpleModel
+import com.team1.teamone.home.model.UserSimpleModel
 
-class HomeFragementMainAdapter(val items : MutableList<BoardSimpleModel>) : RecyclerView.Adapter<HomeFragementMainAdapter.CustomViewHolder>() {
+class HomeFragmentMainUserAdapter(val items : MutableList<UserSimpleModel>) :
+    RecyclerView.Adapter<HomeFragmentMainUserAdapter.CustomViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.homefragment_main_rv_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.homefragement_main_user_rv_item, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -35,15 +37,13 @@ class HomeFragementMainAdapter(val items : MutableList<BoardSimpleModel>) : Recy
     }
 
     inner class CustomViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        private val title = itemView.findViewById<TextView>(R.id.rvTitle)
-        private val content = itemView.findViewById<TextView>(R.id.rvContents)
-        private val classname = itemView.findViewById<TextView>(R.id.rvClassName)
-        private val createDate = itemView.findViewById<TextView>(R.id.rvDate)
-        fun bindItems(item: BoardSimpleModel){
-            title.text = item.title
-            content.text = item.content
-            classname.text = item.classname
-            createDate.text = item.createdDate
+        private val memberName = itemView.findViewById<TextView>(R.id.rvMemberName)
+        private val introduce = itemView.findViewById<TextView>(R.id.rvIntroduce)
+        fun bindItems(item: UserSimpleModel){
+            memberName.text = item.userName
+            introduce.text = item.userInfo
+
         }
     }
+
 }
