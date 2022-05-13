@@ -26,7 +26,6 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
     LayoutManager : 스크롤을 위로할지 아래로할지 등등 옵션을 정하는 녀석 (더 많은 기능이 있음)
      */
 
-
     /*
     getItemCount 호출 된 후 호출되는 메소드
     이름과 같이, ViewHolder 를 생성한다

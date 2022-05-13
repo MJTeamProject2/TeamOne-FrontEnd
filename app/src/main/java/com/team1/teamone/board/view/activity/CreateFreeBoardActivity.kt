@@ -9,33 +9,34 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.FreeBoardRequest
-import com.team1.teamone.databinding.ActivityUpdateFreeBoardBinding
+import com.team1.teamone.databinding.ActivityCreateFreeBoardBinding
 import com.team1.teamone.home.view.HomeActivity
-import com.team1.teamone.util.network.RetrofitClient
-import kotlinx.android.synthetic.main.activity_update_free_board.*
+import com.team1.teamone.util.network.*
+import kotlinx.android.synthetic.main.activity_create_free_board.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModifyFreeBoardActivity : AppCompatActivity() {
+class CreateFreeBoardActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
-    private lateinit var updateFreeBoardBinding: ActivityUpdateFreeBoardBinding
+    private lateinit var freeBoardBinding: ActivityCreateFreeBoardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_free_board)
+        setContentView(R.layout.activity_create_free_board)
+        var isContentBlank = false
 
-        updateFreeBoardBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_free_board)
-        updateFreeBoardBinding.btnModifyFreeBoard.setOnClickListener{
+        freeBoardBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_free_board)
+        freeBoardBinding.btnWriteFreeBoard.setOnClickListener{
             val title = et_title.text.toString()
             val content = et_content.text.toString()
             val request = FreeBoardRequest(title, content)
-            updateFreeBoard(request)
+            createFreeBoard(request)
         }
     }
 
-    private fun updateFreeBoard(request: FreeBoardRequest) {
-        api.putFreeBoard(request).enqueue(object : Callback<BoardResponse> {
+    private fun createFreeBoard(request: FreeBoardRequest) {
+        api.postFreeBoard(request).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body() == null) {
@@ -56,3 +57,4 @@ class ModifyFreeBoardActivity : AppCompatActivity() {
         })
     }
 }
+

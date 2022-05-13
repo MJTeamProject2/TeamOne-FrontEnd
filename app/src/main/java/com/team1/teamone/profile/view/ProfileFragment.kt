@@ -10,15 +10,10 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.bookmark.view.BookMarkActivity
 import com.team1.teamone.databinding.FragmentProfileBinding
-import com.team1.teamone.home.view.HomeActivity
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +23,13 @@ class ProfileFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
 
         binding.btnProfileEdit.setOnClickListener {
-            val intent = Intent(context, ProfileDetailActivity::class.java)
-            startActivity(intent)
+            val profileEditIntent = Intent(context, ProfileDetailActivity::class.java)
+            startActivity(profileEditIntent)
+        }
+
+        binding.btnBookMark.setOnClickListener {
+            val bookMarkIntent = Intent(context, BookMarkActivity::class.java)
+            startActivity(bookMarkIntent)
         }
         return binding.root
     }

@@ -13,9 +13,8 @@ class FindActivityStateAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         return if(position ==1){
             ResetPasswordFragment()
-        }else {
+        } else {
             FindIdFragment()
         }
     }
-
 }
