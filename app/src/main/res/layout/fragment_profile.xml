@@ -169,7 +169,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <ImageButton
+                            android:id="@+id/btn_bookMark"
                             android:src="@drawable/ic_baseline_bookmarks_24"
                             android:layout_width="55dp"
                             android:layout_height="70dp"/>

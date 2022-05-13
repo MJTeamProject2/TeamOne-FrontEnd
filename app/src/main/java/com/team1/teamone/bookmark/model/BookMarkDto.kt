@@ -9,7 +9,6 @@ data class BookMarkResponse(
     val writer : MemberResponse,
     val board : BoardResponse,
     val createdAt : String
-
 )
 
 data class BookMarkListResponse(

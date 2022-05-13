@@ -30,10 +30,6 @@ class BoardDetailActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-//        detail.imageButton2.setOnClickListener{
-//
-//        }
     }
 
 

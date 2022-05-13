@@ -16,33 +16,33 @@ interface MemberApi {
     ): Call<MemberResponse>
 
     @GET("/users/nickname-check/{nickname}")
-    fun getNickName(
+    fun getNickNameCheck(
         @Path("nickname") nickName : String
     ): Call<BoolResponse>
 
     @GET("/users/id-check/{id}")
-    fun getUserId(
+    fun getUserIdCheck(
         @Path("id") userId : String
     ): Call<BoolResponse>
 
     @POST("/users/auth/{userEmail}")
-    fun postSendMail(
+    fun postSendAuthMail(
         @Path("userEmail") userEmail : String
     ): Call<AuthMailResponse>
 
     @GET("/users/auth/{userEmail}/{authToken}")
-    fun getCheckToken(
+    fun getAuthTokenCheck(
         @Path("userEmail") userEmail : String,
         @Path("authToken") authToken : String
     ): Call<AuthMailResponse>
 
     @POST("/users/id")
-    fun findId(
+    fun postFindId(
         @Body findIdPasswordRequestForm: FindIdPasswordRequest
     ): Call<MemberResponse>
 
     @POST("/users/password")
-    fun resetPassword(
+    fun postResetPassword(
         @Body resetPasswordForm : FindIdPasswordRequest
     ): Call<BoolResponse>
 }

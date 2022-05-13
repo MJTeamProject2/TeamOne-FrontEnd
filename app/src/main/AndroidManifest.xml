@@ -22,10 +22,10 @@
             android:name=".board.view.activity.WirteRecruitmentBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.activity.WriteAppealBoardActivity"
+            android:name=".board.view.activity.CreateAppealBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.activity.WriteFreeBoardActivity"
+            android:name=".board.view.activity.CreateFreeBoardActivity"
             android:exported="false" />
         <activity
             android:name=".member.view.activity.FindActivity"

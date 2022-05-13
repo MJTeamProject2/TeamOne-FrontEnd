@@ -17,7 +17,7 @@ import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.databinding.FragmentHomeList1Binding
 import com.team1.teamone.board.presenter.BoardAdapter
 import com.team1.teamone.board.view.activity.BoardDetailActivity
-import com.team1.teamone.board.view.activity.WriteFreeBoardActivity
+import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,7 +42,7 @@ class BoardListFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_list1, container, false)
         binding.btnTest.setOnClickListener{
-            val intent = Intent(getActivity(), WriteFreeBoardActivity::class.java)
+            val intent = Intent(getActivity(), CreateFreeBoardActivity::class.java)
             startActivity(intent)
         }
 
