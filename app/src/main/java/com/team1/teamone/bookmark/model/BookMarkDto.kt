@@ -8,7 +8,7 @@ data class BookMarkResponse(
     val bookMarkId : Long,
     val writer : MemberResponse,
     val board : BoardResponse,
-    val createdAt : LocalDateTime
+    val createdAt : String
 
 )
 

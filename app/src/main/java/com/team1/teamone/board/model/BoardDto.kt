@@ -5,7 +5,7 @@ data class BoardResponse(
     var title: String? = null,
     var content: String? = null,
     var viewCount: Int? = null,
-   // var boardType: BoardType? = null,
+    var boardType: String? = null,
     var memberCount: Int? = null,
     var classTitle: String? = null,
     var classDate: String? = null

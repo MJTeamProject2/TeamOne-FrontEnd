@@ -22,10 +22,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
-    val TAG: String = "LoginActivity"
-//    val api = RetrofitService.create()
     val api = RetrofitClient.create(MemberApi::class.java)
-    private val BASE_URL = "http://10.0.2.2:8080/"
     private lateinit var login: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,20 +42,21 @@ class LoginActivity : AppCompatActivity() {
             api.postLogin(data).enqueue(object : Callback<MemberResponseWithSession> {
                 override fun onResponse(call: Call<MemberResponseWithSession>, response: Response<MemberResponseWithSession>) {
                     val sessionKey = response.body()?.sessionId.toString()
-                    Toast.makeText(applicationContext, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                    val userName = response.body()?.member?.userName.toString()
+                    Toast.makeText(applicationContext, userName + "님 환영합니다 :)", Toast.LENGTH_SHORT).show()
 
                     val cm : CookieManager = CookieManager.getInstance()
                     cm.removeAllCookie()
-                    cm.setCookie(BASE_URL, sessionKey)
+                    cm.setCookie(RetrofitClient.BASE_URL, sessionKey)
 
-                    Log.d("sessionId From CookieManager", cm.getCookie(BASE_URL))
+                    Log.d("sessionId From CookieManager", cm.getCookie(RetrofitClient.BASE_URL))
                     Log.d("sessionId From Server", sessionKey)
                     if (sessionKey != "null") {
                         val loginSuccessIntent = Intent(applicationContext, HomeActivity::class.java)
                         startActivity(loginSuccessIntent)
                         finish()
                     } else {
-                        Toast.makeText(applicationContext, "error id or pw", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "아이디 또는 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<MemberResponseWithSession>, t: Throwable) {
@@ -66,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("log",t.message.toString())
                     Log.d("log","fail")
 
-                    Toast.makeText(applicationContext, "connection fail", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "서버와 연결이 되어있지 않습니다. 고객센터에 문의해주세요.", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -103,12 +101,9 @@ class LoginActivity : AppCompatActivity() {
             dialog.setMessage("아이디와 비밀번호를 확인해주세요")
         }
 
-        val dialogListener = object: DialogInterface.OnClickListener{
-            override fun onClick(dialog: DialogInterface?, which: Int) {
-                when(which){
-                    DialogInterface.BUTTON_POSITIVE ->
-                        Log.d(TAG, "")
-                }
+        val dialogListener = DialogInterface.OnClickListener { dialog, which ->
+            when(which){
+                DialogInterface.BUTTON_POSITIVE -> Log.d("응애", "응애")
             }
         }
 

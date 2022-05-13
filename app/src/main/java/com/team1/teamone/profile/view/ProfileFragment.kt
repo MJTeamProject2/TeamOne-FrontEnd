@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.team1.teamone.R
+import com.team1.teamone.bookmark.view.BookMarkActivity
 import com.team1.teamone.databinding.FragmentProfileBinding
 import com.team1.teamone.home.view.HomeActivity
 
