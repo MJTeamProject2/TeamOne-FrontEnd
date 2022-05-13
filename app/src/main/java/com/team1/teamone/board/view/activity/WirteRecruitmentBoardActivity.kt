@@ -8,10 +8,9 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
-import com.team1.teamone.board.model.FreeBoardRequest
 import com.team1.teamone.board.model.RecruitmentBoardRequest
 import com.team1.teamone.databinding.ActivityWirteRecruitmentBoardBinding
-import com.team1.teamone.databinding.ActivityWriteAppealBoardBinding
+import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_wirte_recruitment_board.*
 import kotlinx.android.synthetic.main.activity_wirte_recruitment_board.et_class_name

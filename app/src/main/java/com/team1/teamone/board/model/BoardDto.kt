@@ -19,14 +19,6 @@ data class BoardListResponse(
     val boards: List<BoardResponse>
 )
 
-// 기천이형이 만든 DTO인데 무얼까요?
-data class BoardSimpleModel(
-    val title : String = "",
-    val content : String = "",
-    val classname : String = "",
-    val createdDate : String = ""
-)
-
 data class FreeBoardRequest(
     val title : String = "",
     val content : String = ""

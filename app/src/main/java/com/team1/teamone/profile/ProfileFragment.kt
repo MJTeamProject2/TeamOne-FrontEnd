@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view.fragment
+package com.team1.teamone.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.team1.teamone.R
-import com.team1.teamone.databinding.FragmentMessageBinding
+import com.team1.teamone.databinding.FragmentProfileBinding
 
+class ProfileFragment : Fragment() {
 
-class MessageFragment : Fragment() {
-
-    private lateinit var binding : FragmentMessageBinding
+    private lateinit var binding : FragmentProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,10 @@ class MessageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        binding.btnBookmark.setOnClickListener{
+
+        }
 
         return binding.root
     }
