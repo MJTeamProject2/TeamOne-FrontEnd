@@ -29,7 +29,7 @@ class BookMarkAdapter(val bookMarkList : MutableList<BookMarkResponse>) : Recycl
     }
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        val btnBookMark = itemView.findViewById<ImageView>(R.id.btn_bookmark)
+        //val btnBookMark = itemView.findViewById<ImageView>(R.id.btn_bookmark)
         val tvTitle = itemView.findViewById<TextView>(R.id.tv_title)
         val tvType = itemView.findViewById<TextView>(R.id.tv_type)
 

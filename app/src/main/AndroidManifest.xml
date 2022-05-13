@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TeamOne"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".profile.view.ProfileDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".board.view.activity.ModifyFreeBoardActivity"
             android:exported="false" />
         <activity
@@ -77,8 +80,8 @@
             android:exported="true" />
         <activity
             android:name=".board.view.activity.BoardDetailActivity"
-            android:parentActivityName = ""
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName="" />
     </application>
 
 </manifest>

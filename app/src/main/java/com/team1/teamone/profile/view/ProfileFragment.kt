@@ -1,5 +1,6 @@
-package com.team1.teamone.profile
+package com.team1.teamone.profile.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.team1.teamone.R
 import com.team1.teamone.databinding.FragmentProfileBinding
+import com.team1.teamone.home.view.HomeActivity
 
 class ProfileFragment : Fragment() {
 
@@ -24,10 +26,11 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
-        binding.btnBookmark.setOnClickListener{
 
+        binding.btnProfileEdit.setOnClickListener {
+            val intent = Intent(context, ProfileDetailActivity::class.java)
+            startActivity(intent)
         }
-
         return binding.root
     }
 }
