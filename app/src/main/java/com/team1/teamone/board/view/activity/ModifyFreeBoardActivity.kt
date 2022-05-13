@@ -21,7 +21,6 @@ class ModifyFreeBoardActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private lateinit var modifyFree: ActivityModifyFreeBoardBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modify_free_board)

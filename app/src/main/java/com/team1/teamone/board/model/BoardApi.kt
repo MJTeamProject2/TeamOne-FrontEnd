@@ -18,7 +18,7 @@ interface BoardApi {
         @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
 
-    @POST("/boards/new/recruitment")
+    @POST("/boards/new/wanted")
     fun postRecruitmentBoard(
         @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
     ): Call<BoardResponse>
@@ -28,8 +28,18 @@ interface BoardApi {
         @Body appealBoardRequestForm : AppealBoardRequest
     ): Call<BoardResponse>
 
-    @PUT("/boards/modify/free")
+    @PUT("/boards/free/{boardId}")
     fun putFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest
+    ): Call<BoardResponse>
+
+    @PUT("/boards/appeal/{boardId}")
+    fun putAppealBoard(
+        @Body appealBoardRequestForm : AppealBoardRequest
+    ): Call<BoardResponse>
+
+    @PUT("/boards/wanted/{boardId}")
+    fun putRecruitmentBoard(
+        @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
     ): Call<BoardResponse>
 }

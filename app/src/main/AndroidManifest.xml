@@ -75,6 +75,10 @@
         <activity
             android:name=".util.view.MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".board.view.activity.BoardDetailActivity"
+            android:parentActivityName = ""
+            android:exported="false" />
     </application>
 
 </manifest>

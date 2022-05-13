@@ -7,13 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
-import com.team1.teamone.board.model.BoardSimpleModel
 
 class BoardAdapter(val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<BoardAdapter.CustomViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recruitment_list_item, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -24,7 +23,21 @@ class BoardAdapter(val boardList: MutableList<BoardResponse>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindItems(boardList[position])
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+    // (3) 외부에서 클릭 시 이벤트 설정
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
+    }
+    // (4) setItemClickListener로 설정한 함수 실행
+    private lateinit var itemClickListener : OnItemClickListener
+
+
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
