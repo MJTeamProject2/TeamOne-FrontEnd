@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view
+package com.team1.teamone.home.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardSimpleModel
-import com.team1.teamone.board.presenter.HomeFragementMainAdapter
+import com.team1.teamone.home.presenter.HomeFragementMainAdapter
 
 // HomeFragment 에 보여줄 내용
 class HomeFragmentMain : Fragment() {

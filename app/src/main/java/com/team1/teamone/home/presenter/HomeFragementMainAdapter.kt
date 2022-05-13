@@ -1,4 +1,4 @@
-package com.team1.teamone.board.presenter
+package com.team1.teamone.home.presenter
 
 import android.view.LayoutInflater
 import android.view.View

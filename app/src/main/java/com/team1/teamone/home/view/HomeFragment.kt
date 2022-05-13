@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view.fragment
+package com.team1.teamone.home.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
-import com.team1.teamone.board.presenter.HomeFragmentStateAdapter
 import com.team1.teamone.databinding.FragmentHomeBinding
+import com.team1.teamone.home.presenter.HomeFragmentStateAdapter
 
 
 class HomeFragment : Fragment() {

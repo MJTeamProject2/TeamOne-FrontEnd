@@ -10,7 +10,7 @@ import android.webkit.CookieManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
-import com.team1.teamone.board.view.activity.HomeActivity
+import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.databinding.ActivityLoginBinding
 import com.team1.teamone.member.model.MemberApi
 import com.team1.teamone.util.network.MemberResponseWithSession

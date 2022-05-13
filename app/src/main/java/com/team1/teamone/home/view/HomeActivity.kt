@@ -1,4 +1,4 @@
-package com.team1.teamone.board.view.activity
+package com.team1.teamone.home.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
