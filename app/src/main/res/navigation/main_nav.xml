@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.team1.teamone.profile.ProfileFragment"
+        android:name="com.team1.teamone.profile.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
