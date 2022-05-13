@@ -16,6 +16,7 @@ import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.databinding.FragmentHomeList1Binding
 import com.team1.teamone.board.presenter.BoardAdapter
+import com.team1.teamone.board.view.activity.BoardDetailActivity
 import com.team1.teamone.board.view.activity.WriteFreeBoardActivity
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
@@ -28,7 +29,8 @@ class BoardListFragment : Fragment() {
 //    val api = RetrofitService.create()
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private val boardDataList = mutableListOf<BoardResponse>()
-    private lateinit var boardRVAdapter : BoardAdapter
+    private lateinit var boardAdapter : BoardAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +45,6 @@ class BoardListFragment : Fragment() {
             val intent = Intent(getActivity(), WriteFreeBoardActivity::class.java)
             startActivity(intent)
         }
-
-
 
         binding.btnGettest.setOnClickListener {
             api.getAllBoards().enqueue(object : Callback<BoardListResponse> {
@@ -61,12 +61,32 @@ class BoardListFragment : Fragment() {
                     response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
 
                     // 리사이클러뷰 - 어뎁터 연결
-                    boardRVAdapter = BoardAdapter(boardDataList)
-                    binding.rvProfile.adapter = boardRVAdapter
+                    boardAdapter = BoardAdapter(boardDataList)
+                    binding.rvProfile.adapter = boardAdapter
 
                     // 리사이클러뷰 보기 형식
                     binding.rvProfile.layoutManager = LinearLayoutManager(this@BoardListFragment.context, LinearLayoutManager.VERTICAL, false)
 
+                    boardAdapter.setItemClickListener(object: BoardAdapter.OnItemClickListener{
+                        override fun onClick(v: View, position: Int) {
+                            // 클릭 시 이벤트 작성
+                            val intent = Intent(getActivity(), BoardDetailActivity::class.java)
+                            //intent.putExtra("id",id)
+                            intent.putExtra("detailBoardId",boardDataList[position].boardId)
+                            intent.putExtra("detailTitle",boardDataList[position].title)
+                            intent.putExtra("detailContent",boardDataList[position].content)
+                            intent.putExtra("detailViewCount",boardDataList[position].viewCount)
+                            //intent.putExtra("detailBoardType",boardDataList[position].boardType)
+                            intent.putExtra("detail",boardDataList[position].memberCount)
+                            intent.putExtra("detail",boardDataList[position].classTitle)
+                            intent.putExtra("detail",boardDataList[position].classDate)
+//                            intent.putExtra("detail",boardDataList[position].deadLine)
+//                            intent.putExtra("detail",boardDataList[position].createdAt)
+//                            intent.putExtra("detail",boardDataList[position].boardStatus)
+//                            intent.putExtra("detail",boardDataList[position].comments)
+                            startActivity(intent)
+                        }
+                    })
                 }
 
                 override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {

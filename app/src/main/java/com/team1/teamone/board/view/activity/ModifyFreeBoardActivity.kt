@@ -9,33 +9,29 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.FreeBoardRequest
+import com.team1.teamone.databinding.ActivityModifyFreeBoardBinding
 import com.team1.teamone.databinding.ActivityWriteFreeBoardBinding
-import com.team1.teamone.home.view.HomeActivity
-import com.team1.teamone.util.network.*
+import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_write_free_board.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-        var isTitleBlank = false
-class WriteFreeBoardActivity : AppCompatActivity() {
-//    private val api = RetrofitService.create(RetrofitService.getAuth())
+class ModifyFreeBoardActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
-    private lateinit var free: ActivityWriteFreeBoardBinding
-    private var TAG: String = "Register"
+    private lateinit var modifyFree: ActivityModifyFreeBoardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_write_free_board)
-        var isContentBlank = false
+        setContentView(R.layout.activity_modify_free_board)
 
-        free = DataBindingUtil.setContentView(this, R.layout.activity_write_free_board)
-        free.btnWriteFreeBoard.setOnClickListener{
+        modifyFree = DataBindingUtil.setContentView(this, R.layout.activity_modify_free_board)
+        modifyFree.btnModifyFreeBoard.setOnClickListener{
             val title = et_title.text.toString()
             val content = et_content.text.toString()
             val request = FreeBoardRequest(title, content)
 
-            api.postFreeBoard(request).enqueue(object : Callback<BoardResponse> {
+            api.putFreeBoard(request).enqueue(object : Callback<BoardResponse> {
                 override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>){ //서버에서 보낸 메서드
                     Log.d("auth", RetrofitClient.getAuth())
                     if (response.body() == null ) {
@@ -56,4 +52,3 @@ class WriteFreeBoardActivity : AppCompatActivity() {
         }
     }
 }
-
