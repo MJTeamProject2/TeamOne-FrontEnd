@@ -24,9 +24,6 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
-        binding.btnBookmark.setOnClickListener{
-
-        }
 
         return binding.root
     }

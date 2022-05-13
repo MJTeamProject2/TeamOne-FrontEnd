@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
-import com.team1.teamone.board.presenter.BoardAdapter
-import com.team1.teamone.board.presenter.HomeFragementMainAdapter
-import com.team1.teamone.board.view.fragment.BoardListFragment
 import com.team1.teamone.databinding.ActivityBoardDetailBinding
+import com.team1.teamone.home.view.HomeActivity
 
 class BoardDetailActivity : AppCompatActivity() {
 
