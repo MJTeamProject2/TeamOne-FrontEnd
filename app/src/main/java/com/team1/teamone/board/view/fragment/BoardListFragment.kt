@@ -31,7 +31,6 @@ class BoardListFragment : Fragment() {
     private val boardDataList = mutableListOf<BoardResponse>()
     private lateinit var boardAdapter : BoardAdapter
 
-    private val id = "배애애애성흥"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,9 +72,19 @@ class BoardListFragment : Fragment() {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
                             //intent.putExtra("id",id)
+                            intent.putExtra("detailBoardId",boardDataList[position].boardId)
                             intent.putExtra("detailTitle",boardDataList[position].title)
+                            intent.putExtra("detailContent",boardDataList[position].content)
+                            intent.putExtra("detailViewCount",boardDataList[position].viewCount)
+                            //intent.putExtra("detailBoardType",boardDataList[position].boardType)
+                            intent.putExtra("detail",boardDataList[position].memberCount)
+                            intent.putExtra("detail",boardDataList[position].classTitle)
+                            intent.putExtra("detail",boardDataList[position].classDate)
+//                            intent.putExtra("detail",boardDataList[position].deadLine)
+//                            intent.putExtra("detail",boardDataList[position].createdAt)
+//                            intent.putExtra("detail",boardDataList[position].boardStatus)
+//                            intent.putExtra("detail",boardDataList[position].comments)
                             startActivity(intent)
-
                         }
                     })
                 }
