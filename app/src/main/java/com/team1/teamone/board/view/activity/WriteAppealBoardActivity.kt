@@ -10,6 +10,7 @@ import com.team1.teamone.board.model.AppealBoardRequest
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.databinding.ActivityWriteAppealBoardBinding
+import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_wirte_recruitment_board.*
 import kotlinx.android.synthetic.main.activity_write_free_board.et_content

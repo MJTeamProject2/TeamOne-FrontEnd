@@ -70,7 +70,7 @@
             android:name=".member.view.FindIdActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.activity.HomeActivity"
+            android:name=".home.view.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".util.view.MainActivity"

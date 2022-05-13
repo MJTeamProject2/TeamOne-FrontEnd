@@ -10,6 +10,7 @@ import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.FreeBoardRequest
 import com.team1.teamone.databinding.ActivityWriteFreeBoardBinding
+import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.*
 import kotlinx.android.synthetic.main.activity_write_free_board.*
 import retrofit2.Call

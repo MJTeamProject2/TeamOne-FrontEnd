@@ -10,6 +10,7 @@ import com.team1.teamone.board.view.activity.WriteFreeBoardActivity
 import com.team1.teamone.board.view.activity.WriteRecruitmentBoardActivity
 import com.team1.teamone.member.view.activity.LoginActivity
 
+
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)

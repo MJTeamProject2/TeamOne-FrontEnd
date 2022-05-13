@@ -1,9 +1,9 @@
-package com.team1.teamone.board.presenter
+package com.team1.teamone.home.presenter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.team1.teamone.board.view.fragment.HomeFragment
-import com.team1.teamone.board.view.HomeFragmentMain
+import com.team1.teamone.home.view.HomeFragment
+import com.team1.teamone.home.view.HomeFragmentMain
 
 class HomeFragmentStateAdapter(fragmentActivity: HomeFragment) :
     FragmentStateAdapter(fragmentActivity) {

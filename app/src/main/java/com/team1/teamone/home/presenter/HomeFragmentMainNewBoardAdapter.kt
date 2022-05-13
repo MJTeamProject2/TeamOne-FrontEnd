@@ -1,4 +1,4 @@
-package com.team1.teamone.board.presenter
+package com.team1.teamone.home.presenter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
-import com.team1.teamone.board.model.BoardSimpleModel
+import com.team1.teamone.home.model.BoardSimpleModel
 
-class HomeFragementMainAdapter(val items : MutableList<BoardSimpleModel>) : RecyclerView.Adapter<HomeFragementMainAdapter.CustomViewHolder>() {
+class HomeFragmentMainNewBoardAdapter (val items : MutableList<BoardSimpleModel>) : RecyclerView.Adapter<HomeFragmentMainNewBoardAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.homefragment_main_rv_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.homefragment_main_rv_item_new, parent, false)
         return CustomViewHolder(view)
     }
 
