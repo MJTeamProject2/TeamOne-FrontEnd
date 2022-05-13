@@ -22,7 +22,7 @@ data class MemberResponse(
 
 data class MemberResponseWithSession(
     @SerializedName("member")
-    var member: List<MemberResponse>,
+    var member: MemberResponse,
     @SerializedName("sessionId")
     var sessionId: String? = null
 )
