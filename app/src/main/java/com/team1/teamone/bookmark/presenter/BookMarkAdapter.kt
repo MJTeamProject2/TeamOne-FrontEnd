@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.bookmark.model.BookMarkListResponse
+import com.team1.teamone.bookmark.model.BookMarkResponse
 
-class BookMarkAdapter(val bookMarkList : ArrayList<BoardResponse>) : RecyclerView.Adapter<BookMarkAdapter.ViewHolder>(){
+class BookMarkAdapter(val bookMarkList : MutableList<BookMarkResponse>) : RecyclerView.Adapter<BookMarkAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.bookmark_summary, parent, false)
@@ -22,7 +24,7 @@ class BookMarkAdapter(val bookMarkList : ArrayList<BoardResponse>) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTitle.text = bookMarkList.get(position).title
+//        holder.tvTitle.text = bookMarkList.get(position).title
 
     }
 
