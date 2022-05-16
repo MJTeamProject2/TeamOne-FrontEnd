@@ -19,32 +19,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_classTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_classTitle" />
-
-        <TextView
-            android:id="@+id/tv_classDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="2dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/tv_classTitle"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -57,14 +36,21 @@
             app:layout_constraintStart_toEndOf="@+id/tv_memberCount" />
 
         <TextView
-            android:id="@+id/tv_memberCount"
+            android:id="@+id/tv_createdAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_classDate" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_createdAt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
