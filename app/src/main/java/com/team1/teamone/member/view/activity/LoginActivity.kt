@@ -14,6 +14,8 @@ import com.team1.teamone.member.model.MemberApi
 import com.team1.teamone.util.network.MemberResponseWithSession
 import com.team1.teamone.util.network.LoginRequest
 import com.team1.teamone.util.network.RetrofitClient
+import com.team1.teamone.util.view.PreferenceUtil
+import com.team1.teamone.util.view.PreferenceUtil.Companion.prefs
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginBinding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        prefs = PreferenceUtil(applicationContext)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -70,11 +73,14 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MemberResponseWithSession>, response: Response<MemberResponseWithSession>) {
                 val sessionId = response.body()?.sessionId.toString()
                 val userName = response.body()?.member?.userName.toString()
-                Toast.makeText(applicationContext, userName + "님 환영합니다 :)", Toast.LENGTH_SHORT).show()
+                val userid = response.body()?.member?.memberId
 
+                // userid 저장
+                prefs.setString("userid", userid.toString())
                 setSession(sessionId)
 
                 if (sessionId != "null") {
+                    Toast.makeText(applicationContext, userName + "님 환영합니다 :)", Toast.LENGTH_SHORT).show()
                     val loginSuccessIntent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(loginSuccessIntent)
                     finish()
