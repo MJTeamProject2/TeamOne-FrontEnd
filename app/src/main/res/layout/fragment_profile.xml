@@ -194,6 +194,7 @@
 
                         <ImageView
                             android:src="@drawable/ic_baseline_assignment_24"
+                            android:id="@+id/btn_writtenBoard"
                             android:layout_width="55dp"
                             android:layout_height="70dp"/>
 

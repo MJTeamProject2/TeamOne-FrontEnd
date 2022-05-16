@@ -13,12 +13,10 @@ class PostFragmentStateAdapter(fragmentManager: FragmentManager, lifecycle: Life
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        if(position == 0) {
-            return BoardListFragment()
-        }else if(position == 1){
-            return FreeBoardListFragment()
-        }else{
-            return BoardListFragment()
+        return when(position) {
+            0 -> BoardListFragment()
+            1 -> FreeBoardListFragment()
+            else -> FreeBoardListFragment()
         }
     }
 }

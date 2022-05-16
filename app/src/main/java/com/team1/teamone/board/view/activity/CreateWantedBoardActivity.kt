@@ -17,7 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class WriteRecruitmentBoardActivity : AppCompatActivity() {
+class CreateWantedBoardActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private lateinit var wantedBoardBinding: ActivityCreateWantedBoardBinding
 

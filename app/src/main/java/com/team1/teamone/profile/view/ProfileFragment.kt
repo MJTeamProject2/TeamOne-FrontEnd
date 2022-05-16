@@ -69,6 +69,11 @@ class ProfileFragment : Fragment() {
             val bookMarkIntent = Intent(context, BookMarkActivity::class.java)
             startActivity(bookMarkIntent)
         }
+
+        binding.btnWrittenBoard.setOnClickListener {
+            val writtenBoardIntent = Intent(context, WrittenBoardActivity::class.java)
+            startActivity(writtenBoardIntent)
+        }
         return binding.root
     }
 }

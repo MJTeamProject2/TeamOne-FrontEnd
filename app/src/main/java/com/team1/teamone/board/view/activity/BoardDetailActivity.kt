@@ -16,9 +16,9 @@ class BoardDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_board_detail)
 
         val title = intent.getStringExtra("detailTitle")
-        var classTitle = intent.getStringExtra("detailClassTitle")
-        var classTime = intent.getStringExtra("detailClassTime")
-        var content = intent.getStringExtra("detailContent")
+        val classTitle = intent.getStringExtra("detailClassTitle")
+        val classTime = intent.getStringExtra("detailClassTime")
+        val content = intent.getStringExtra("detailContent")
         val memberCount = intent.getStringExtra("detailMemberCount")
 
         detail = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
@@ -35,14 +35,10 @@ class BoardDetailActivity : AppCompatActivity() {
         }
 
         detail.imageButton7.setOnClickListener {
-            val intent = Intent(applicationContext, ModifyFreeBoardActivity::class.java)
+            val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
-
-
-
-
 
 }

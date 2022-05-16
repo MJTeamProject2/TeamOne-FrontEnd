@@ -13,6 +13,16 @@ interface BoardApi {
         @Path("boardId") boardId : Long
     ): Call<BoardResponse>
 
+    @GET("/boards/written-all/{boardType}")
+    fun getAllWrittenBoardsByType(
+        @Path("boardType") boardType : String
+    ): Call<BoardListResponse>
+
+    @GET("/boards/all/{boardType}")
+    fun getAllBoardsByType(
+        @Path("boardType") boardType : String
+    ): Call<BoardListResponse>
+
     @POST("/boards/new/free")
     fun postFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest

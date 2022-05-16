@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.model.CommentResponse
+import com.team1.teamone.util.network.MemberResponse
 
 class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<FreeBoardAdapter.CustomViewHolder>() {
 
@@ -29,27 +31,27 @@ class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : Recy
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }
-    // (3) 외부에서 클릭 시 이벤트 설정
+
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }
-    // (4) setItemClickListener 로 설정한 함수 실행
+
     private lateinit var itemClickListener : OnItemClickListener
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //private val classTitle: TextView = itemView.findViewById(R.id.tv_classTitle)
-        private val title: TextView = itemView.findViewById(R.id.tv_freeTitle)
-        //private val content: TextView = itemView.findViewById(R.id.tv_content)
-        //private val memberCount: TextView = itemView.findViewById(R.id.tv_memberCount)
-        //private val classDate: TextView = itemView.findViewById(R.id.tv_classDate)  //직업
+        private val title: TextView = itemView.findViewById(R.id.tv_freeBoardTitle)
+        private val writerNickname: TextView = itemView.findViewById(R.id.tv_freeBoardWriter)
+        private val type: TextView = itemView.findViewById(R.id.tv_freeBoardType)
+        private val createdDate: TextView = itemView.findViewById(R.id.tv_freeBoardCreatedDate)
+        private val viewCount: TextView = itemView.findViewById(R.id.tv_freeBoardViewCount)
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
-            //content.text = item.content
-           /* classTitle.text = item.classTitle
-            memberCount.text = item.memberCount.toString()
-            classDate.text = item.classDate*/
+            writerNickname.text = item.writer?.nickname.toString()
+            type.text = item.boardType.toString()
+            createdDate.text = item.createdDate
+            viewCount.text = item.viewCount.toString()
         }
     }
 
