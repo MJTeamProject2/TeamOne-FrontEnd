@@ -72,14 +72,14 @@ class BoardListFragment : Fragment() {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
                             //intent.putExtra("id",id)
-                            intent.putExtra("detailBoardId",boardDataList[position].boardId)
+                            //intent.putExtra("detailBoardId",boardDataList[position].boardId)
                             intent.putExtra("detailTitle",boardDataList[position].title)
                             intent.putExtra("detailContent",boardDataList[position].content)
-                            intent.putExtra("detailViewCount",boardDataList[position].viewCount)
+                            //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
                             //intent.putExtra("detailBoardType",boardDataList[position].boardType)
-                            intent.putExtra("detail",boardDataList[position].memberCount)
-                            intent.putExtra("detail",boardDataList[position].classTitle)
-                            intent.putExtra("detail",boardDataList[position].classDate)
+                            intent.putExtra("detailMemberCount",boardDataList[position].memberCount)
+                            intent.putExtra("detailClassTitle",boardDataList[position].classTitle)
+                            intent.putExtra("detailClassDate",boardDataList[position].classDate)
 //                            intent.putExtra("detail",boardDataList[position].deadLine)
 //                            intent.putExtra("detail",boardDataList[position].createdAt)
 //                            intent.putExtra("detail",boardDataList[position].boardStatus)
@@ -100,7 +100,6 @@ class BoardListFragment : Fragment() {
 //        api.getBoard(3).enqueue(object : Callback<BoardResponse> {
 //
 //            override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
-////                print("tlqkf")
 ////                Log.d("response", response.message())
 ////                val boards = response.body()?.boards
 ////                Log.d("size", boardList.size.toString())

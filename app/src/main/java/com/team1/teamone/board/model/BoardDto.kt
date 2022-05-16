@@ -11,7 +11,7 @@ data class BoardResponse(
     var classDate: String? = null
     // var deadline: LocalDateTime = null,
     // var createdAt: LocalDateTime = null
-    // var boardStatus: BoardStatus = null, '
+    // var boardStatus: BoardStatus = null,
     // var comments: List<comment> = null
 )
 

@@ -16,8 +16,17 @@ class BoardDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_board_detail)
 
         val title = intent.getStringExtra("detailTitle")
+        var classTitle = intent.getStringExtra("detailClassTitle")
+        var classTime = intent.getStringExtra("detailClassTime")
+        var content = intent.getStringExtra("detailContent")
+        val memberCount = intent.getStringExtra("detailMemberCount")
+
         detail = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
         detail.detailTitle.text = title
+        detail.tvDetailClassTitle.text = classTitle
+        detail.tvDetailClassTime.text = classTime
+        detail.tvDetailContent.text = content
+        detail.tvDetailMemberCount.text = memberCount
 
         detail.imageButton5.setOnClickListener{
             val intent = Intent(applicationContext, HomeActivity::class.java)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color1"
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/tv_detailClassTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
@@ -84,6 +84,17 @@
                         android:textSize="18dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_detailClassTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="수업 시간"
+                        android:textSize="18dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tv_detailClassTitle"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -115,6 +126,7 @@
 
 
             <TextView
+                android:id="@+id/tv_detailMemberCount"
                 android:textSize="40dp"
                 android:text="1 / 4"
                 android:layout_marginStart="24dp"
@@ -138,6 +150,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_detailContent"
             android:textSize="18dp"
             android:text="게시글 모집 내용 입니다.게시글 모집 내용 입니다.게시글 모집 내용 입니다.게시글 모집 내용 입니다.게시글 모집 내용 입니다.게시글 모집 내용 입니다."
             android:layout_margin="20dp"

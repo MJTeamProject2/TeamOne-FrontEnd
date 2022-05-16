@@ -38,14 +38,18 @@ class BoardAdapter(private val boardList: MutableList<BoardResponse>) : Recycler
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val classTitle: TextView = itemView.findViewById(R.id.tv_title)   //이름
-        private val title: TextView = itemView.findViewById(R.id.tv_age)   //나이
-        private val content: TextView = itemView.findViewById(R.id.tv_type)  //직업
+        private val classTitle: TextView = itemView.findViewById(R.id.tv_classTitle)
+        private val title: TextView = itemView.findViewById(R.id.tv_title)
+        //private val content: TextView = itemView.findViewById(R.id.tv_content)
+        private val memberCount: TextView = itemView.findViewById(R.id.tv_memberCount)
+        private val classDate: TextView = itemView.findViewById(R.id.tv_classDate)  //직업
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
-            content.text = item.content
+            //content.text = item.content
             classTitle.text = item.classTitle
+            memberCount.text = item.memberCount.toString()
+            classDate.text = item.classDate
         }
     }
 
