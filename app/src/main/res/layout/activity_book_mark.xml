@@ -20,12 +20,12 @@
                 android:layout_marginBottom="15dp"
                 android:text="내 즐겨찾기 리스트"
                 android:textSize="30dp"
-                app:layout_constraintBottom_toTopOf="@+id/rv_bookmark"
+                app:layout_constraintBottom_toTopOf="@+id/rv_bookMark"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_bookmark"
+                android:id="@+id/rv_bookMark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="75dp"
@@ -45,7 +45,7 @@
                 android:backgroundTint="@color/main_color1"
                 android:fontFamily="@font/sd5"
                 android:text="전체 삭제"
-                app:layout_constraintBottom_toTopOf="@+id/rv_bookmark"
+                app:layout_constraintBottom_toTopOf="@+id/rv_bookMark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />

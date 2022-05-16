@@ -13,7 +13,7 @@ data class BoardResponse(
     var comments: List<CommentResponse>,
     var writer: MemberResponse? = null,
     var boardType: String? = null,
-    //var boardStatus: BoardStatus? = null
+    var boardStatus: String? = null,
     //어필 추가 속성
     var classTitle: String? = null,
     var classDate: String? = null,

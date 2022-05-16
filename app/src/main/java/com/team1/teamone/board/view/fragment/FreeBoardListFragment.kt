@@ -30,18 +30,13 @@ class FreeBoardListFragment : Fragment() {
     private val boardDataList = mutableListOf<BoardResponse>()
     private lateinit var freeBoardAdapter : FreeBoardAdapter
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_free_board_list, container, false)
         binding.btnTest.setOnClickListener{
-            val intent = Intent(getActivity(), CreateFreeBoardActivity::class.java)
+            val intent = Intent(activity, CreateFreeBoardActivity::class.java)
             startActivity(intent)
         }
 

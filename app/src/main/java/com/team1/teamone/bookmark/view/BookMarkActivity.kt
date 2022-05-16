@@ -83,8 +83,8 @@ class BookMarkActivity : AppCompatActivity() {
                 response.body()?.bookMarks?.let { it1 -> bookMarkDataList.addAll(it1) }
                 Log.d("북마크 통신 성공", bookMarkDataList.toString())
                 bookMarkAdapter = BookMarkAdapter(bookMarkDataList)
-                binding.rvBookmark.adapter = bookMarkAdapter
-                binding.rvBookmark.layoutManager =
+                binding.rvBookMark.adapter = bookMarkAdapter
+                binding.rvBookMark.layoutManager =
                     LinearLayoutManager(this@BookMarkActivity, LinearLayoutManager.VERTICAL, false)
                 
                 // 북마크 하나 별 눌렀을때 북마크 해제

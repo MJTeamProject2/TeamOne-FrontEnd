@@ -19,7 +19,7 @@
             android:name=".profile.view.ProfileDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".board.view.activity.ModifyFreeBoardActivity"
+            android:name=".board.view.activity.UpdateFreeBoardActivity"
             android:exported="false" />
         <activity
             android:name=".board.view.activity.WirteRecruitmentBoardActivity"
@@ -50,6 +50,9 @@
             android:exported="false" />
         <activity
             android:name=".bookmark.view.BookMarkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.view.WrittenBoardActivity"
             android:exported="false" />
         <activity
             android:name=".util.view.SplashActivity"
