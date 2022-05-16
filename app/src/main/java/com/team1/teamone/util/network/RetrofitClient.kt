@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
     companion object {
-        const val BASE_URL = "http://10.0.2.2:8080" // 주소
+        const val BASE_URL = "https://087e-121-125-152-82.jp.ngrok.io" // 주소
 
         // 로그인 인터셉터 : 생성할때 세션값을 넣어주면 헤더에 cookie : JSESSIONID=ASDASDAS 이런식으로 넣어주록 해줍니다.
         // 인터셉터의 역할은 모든 요청 메시지가 처리되기전에 호출되서 헤더에 특정 값을 넣어주는 역할을 함

@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardResponse
 
-class BoardAdapter(private val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<BoardAdapter.CustomViewHolder>() {
+class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<FreeBoardAdapter.CustomViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.wanted_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.free_list_item, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -38,16 +38,18 @@ class BoardAdapter(private val boardList: MutableList<BoardResponse>) : Recycler
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val classTitle: TextView = itemView.findViewById(R.id.tv_classTitle)
-        private val title: TextView = itemView.findViewById(R.id.tv_title)
-        private val memberCount: TextView = itemView.findViewById(R.id.tv_memberCount)
-        private val classDate: TextView = itemView.findViewById(R.id.tv_classDate)  //직업
+        //private val classTitle: TextView = itemView.findViewById(R.id.tv_classTitle)
+        private val title: TextView = itemView.findViewById(R.id.tv_freeTitle)
+        //private val content: TextView = itemView.findViewById(R.id.tv_content)
+        //private val memberCount: TextView = itemView.findViewById(R.id.tv_memberCount)
+        //private val classDate: TextView = itemView.findViewById(R.id.tv_classDate)  //직업
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
-            classTitle.text = item.classTitle
+            //content.text = item.content
+           /* classTitle.text = item.classTitle
             memberCount.text = item.memberCount.toString()
-            classDate.text = item.classDate
+            classDate.text = item.classDate*/
         }
     }
 
