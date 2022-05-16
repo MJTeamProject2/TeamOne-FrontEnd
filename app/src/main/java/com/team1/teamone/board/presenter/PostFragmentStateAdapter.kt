@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.team1.teamone.board.view.fragment.BoardListFragment
+import com.team1.teamone.board.view.fragment.FreeBoardListFragment
 
 class PostFragmentStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -12,6 +13,12 @@ class PostFragmentStateAdapter(fragmentManager: FragmentManager, lifecycle: Life
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        return BoardListFragment()
+        if(position == 0) {
+            return BoardListFragment()
+        }else if(position == 1){
+            return FreeBoardListFragment()
+        }else{
+            return BoardListFragment()
+        }
     }
 }

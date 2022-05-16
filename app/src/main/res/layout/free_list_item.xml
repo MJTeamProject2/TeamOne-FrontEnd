@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_freeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
@@ -36,7 +36,7 @@
             app:layout_constraintStart_toEndOf="@+id/tv_memberCount" />
 
         <TextView
-            android:id="@+id/tv_createdAt"
+            android:id="@+id/tv_freeCreatedAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

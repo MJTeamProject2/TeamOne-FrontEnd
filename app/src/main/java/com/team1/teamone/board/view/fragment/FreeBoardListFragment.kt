@@ -14,22 +14,21 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
-import com.team1.teamone.databinding.FragmentHomeList1Binding
-import com.team1.teamone.board.presenter.BoardAdapter
+import com.team1.teamone.board.presenter.FreeBoardAdapter
 import com.team1.teamone.board.view.activity.BoardDetailActivity
 import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
+import com.team1.teamone.databinding.FragmentFreeBoardListBinding
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class BoardListFragment : Fragment() {
-    private lateinit var binding : FragmentHomeList1Binding
-//    val api = RetrofitService.create()
+class FreeBoardListFragment : Fragment() {
+    private lateinit var binding : FragmentFreeBoardListBinding
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private val boardDataList = mutableListOf<BoardResponse>()
-    private lateinit var boardAdapter : BoardAdapter
+    private lateinit var freeBoardAdapter : FreeBoardAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,7 @@ class BoardListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_list1, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_free_board_list, container, false)
         binding.btnTest.setOnClickListener{
             val intent = Intent(getActivity(), CreateFreeBoardActivity::class.java)
             startActivity(intent)
@@ -61,20 +60,17 @@ class BoardListFragment : Fragment() {
                     response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
 
                     // 리사이클러뷰 - 어뎁터 연결
-                    boardAdapter = BoardAdapter(boardDataList)
-                    binding.rvProfile.adapter = boardAdapter
+                    freeBoardAdapter = FreeBoardAdapter(boardDataList)
+                    binding.rvProfile.adapter = freeBoardAdapter
 
                     // 리사이클러뷰 보기 형식
-                    binding.rvProfile.layoutManager = LinearLayoutManager(this@BoardListFragment.context, LinearLayoutManager.VERTICAL, false)
+                    binding.rvProfile.layoutManager = LinearLayoutManager(this@FreeBoardListFragment.context, LinearLayoutManager.VERTICAL, false)
 
-                    boardAdapter.setItemClickListener(object: BoardAdapter.OnItemClickListener{
+                    freeBoardAdapter.setItemClickListener(object: FreeBoardAdapter.OnItemClickListener{
                         override fun onClick(v: View, position: Int) {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
-                            //intent.putExtra("id",id)
-                            //intent.putExtra("detailBoardId",boardDataList[position].boardId)
-
-                            intent.putExtra("detailTitle",boardDataList[position].title)
+                            intent.putExtra("detailTitle",boardDataList[position].updateDate)
                             intent.putExtra("detailContent",boardDataList[position].content)
                             //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
                             //intent.putExtra("detailBoardType",boardDataList[position].boardType)
@@ -98,48 +94,7 @@ class BoardListFragment : Fragment() {
 
             })
         }
-//        api.getBoard(3).enqueue(object : Callback<BoardResponse> {
-//
-//            override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
-////                Log.d("response", response.message())
-////                val boards = response.body()?.boards
-////                Log.d("size", boardList.size.toString())
-////                //for (i in boards.orEmpty()) {
-////                    Log.d("dmd",i.title.toString())
-//////                    profileList.add(Profiles(R.drawable.ic_baseline_bookmark_24, i.title.toString()+"1", 28, "안드로이드 앱 개발자"))
-////                    boardList.add(boards[0])
-////                //}
-////                val board = response.body()
-////                if (board != null) {
-////                    boardList.add(board)
-////                }
-//
-////                binding.rvProfile.layoutManager = LinearLayoutManager(this@HomeFragmentList1.context, LinearLayoutManager.VERTICAL, false)
-////                binding.rvProfile.setHasFixedSize(true)
-////                binding.rvProfile.adapter = BoardAdapter(boardList)
-//
-//            }
-//
-//
-//            override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
-//
-//            }
-//        })
-
 
         return binding.root
     }
 }
-
-
-/*
-    val profileList = arrayListOf(
-        Profiles(R.drawable.ic_baseline_bookmark_24,"홍드로이",28,"안드로이드 앱 개발자"),
-        Profiles(R.drawable.ic_baseline_account_circle_24,"배성흥",25,"돼지")
-    )
-
-    binding.rvProfile.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-    binding.rvProfile.setHasFixedSize(true)
-    binding.rvProfile.adapter = ProfileAdapter(profileList)
-    return binding.root
-}*/
