@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 
 data class MemberResponse(
-    var id: Long? = null,
+    var memberId: Long? = null,
     var userId: String? = null,
     var password: String? = null,
     var email: String? = null,

@@ -134,7 +134,7 @@
                                     android:textSize="24sp" />
 
                                 <TextView
-                                    android:id="@+id/tv_profile_point"
+                                    android:id="@+id/tvProfilePoint"
                                     android:layout_marginTop="4dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/btn_bookMark"
                             android:src="@drawable/ic_baseline_bookmarks_24"
                             android:layout_width="55dp"
