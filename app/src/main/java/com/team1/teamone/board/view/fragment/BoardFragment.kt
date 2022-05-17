@@ -20,21 +20,13 @@ class BoardFragment : Fragment() {
     private lateinit var binding : FragmentBoardBinding
     private val tabTitles = arrayListOf("팀원 구해요", "어필해요", "자유 게시판")
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board, container, false)
-
-
         return binding.root
     }
-
 
     // 새로 그리는 부분
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +35,6 @@ class BoardFragment : Fragment() {
         val appBar = view.findViewById<AppBarLayout>(R.id.appbar_homeFragment)
         val viewPager2 = view.findViewById<ViewPager2>(R.id.viewpage2_homeFragment)
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout_homeFragment)
-
 
         viewPager2.adapter =
             PostFragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)

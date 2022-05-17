@@ -33,13 +33,19 @@ class WrittenFreeBoardListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_written_board_list, container, false)
+        drawWrittenFreeBoardList()
+        return binding.root
+    }
 
+    private fun drawWrittenFreeBoardList() {
         api.getAllWrittenBoardsByType("FREE").enqueue(object : Callback<BoardListResponse> {
-            override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
-                Toast.makeText(context, "연결 성공.", Toast.LENGTH_SHORT).show()
-                Log.d("GET Board ALL",response.toString())
-                Log.d("GET Board ALL",response.body().toString())
-                Log.d("GET Board ALL33 ",response.body()?.boards.toString())
+            override fun onResponse(
+                call: Call<BoardListResponse>,
+                response: Response<BoardListResponse>
+            ) {
+                Log.d("GET Board ALL", response.toString())
+                Log.d("GET Board ALL", response.body().toString())
+                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
 
                 // 받아온 리스트 boardDataList 안에 넣기
                 response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
@@ -49,33 +55,33 @@ class WrittenFreeBoardListFragment : Fragment() {
                 binding.rvWrittenBoard.adapter = freeBoardAdapter
 
                 // 리사이클러뷰 보기 형식
-                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(this@WrittenFreeBoardListFragment.context, LinearLayoutManager.VERTICAL, false)
+                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(
+                    this@WrittenFreeBoardListFragment.context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
 
-                freeBoardAdapter.setItemClickListener(object: FreeBoardAdapter.OnItemClickListener{
+                freeBoardAdapter.setItemClickListener(object :
+                    FreeBoardAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {
                         // 클릭 시 이벤트 작성
                         val intent = Intent(activity, BoardDetailActivity::class.java)
-                        intent.putExtra("detailTitle",boardDataList[position].updatedDate)
-                        intent.putExtra("detailContent",boardDataList[position].content)
-                        //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
-                        //intent.putExtra("detailBoardType",boardDataList[position].boardType)
-                        intent.putExtra("detailMemberCount",boardDataList[position].memberCount)
-                        intent.putExtra("detailClassTitle",boardDataList[position].classTitle)
-                        intent.putExtra("detailClassDate",boardDataList[position].classDate)
-//                            intent.putExtra("detail",boardDataList[position].deadLine)
-//                            intent.putExtra("detail",boardDataList[position].createdAt)
-//                            intent.putExtra("detail",boardDataList[position].boardStatus)
-//                            intent.putExtra("detail",boardDataList[position].comments)
+                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
+                        intent.putExtra("detailTitle", boardDataList[position].title)
+                        intent.putExtra("detailContent", boardDataList[position].content)
+                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
+                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
+                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
                         startActivity(intent)
                     }
                 })
             }
+
             override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
                 // 실패
-                Log.d("GET Board ALL",t.message.toString())
-                Log.d("GET Board ALL","fail")
+                Log.d("GET Board ALL", t.message.toString())
+                Log.d("GET Board ALL", "fail")
             }
         })
-    return binding.root
     }
 }

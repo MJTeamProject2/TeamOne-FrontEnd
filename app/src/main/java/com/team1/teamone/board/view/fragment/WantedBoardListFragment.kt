@@ -45,11 +45,7 @@ class WantedBoardListFragment : Fragment() {
 
     private fun drawWantedBoardList() {
         api.getAllBoards().enqueue(object : Callback<BoardListResponse> {
-            override fun onResponse(
-                call: Call<BoardListResponse>,
-                response: Response<BoardListResponse>
-            ) {
-                Toast.makeText(context, "연결 성공.", Toast.LENGTH_SHORT).show()
+            override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
                 Log.d("GET Board ALL33 ", response.body()?.boards.toString())
