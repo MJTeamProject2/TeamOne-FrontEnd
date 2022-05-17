@@ -9,7 +9,7 @@ data class BoardResponse(
     var content: String? = null,
     var viewCount: Int? = 0,
     var createdDate: String? = null,
-    var updateDate: String? = null,
+    var updatedDate: String? = null,
     var comments: List<CommentResponse>,
     var writer: MemberResponse? = null,
     var boardType: String? = null,
@@ -29,7 +29,7 @@ data class CommentResponse(
     var writer: MemberResponse? = null,
     var content: String? = null,
     var createdDate: String? = null,
-    var updateDate: String? = null
+    var updatedDate: String? = null
 )
 
 
@@ -44,15 +44,15 @@ data class FreeBoardRequest(
 
 data class AppealBoardRequest(
     var title: String = "",
-    var className: String = "",
-    var classTime: String = "",
+    var classTitle: String = "",
+    var classDate: String = "",
     val content: String = ""
 )
 
-data class RecruitmentBoardRequest(
+data class WantedBoardRequest(
     var title: String = "",
-    var personCount: String = "",
-    var className: String = "",
-    var classTime: String = "",
+    var memberCount: String = "",
+    var classTitle: String = "",
+    var classDate: String = "",
     var content: String = ""
 )
