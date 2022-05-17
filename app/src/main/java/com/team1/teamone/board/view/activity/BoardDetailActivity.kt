@@ -15,18 +15,34 @@ class BoardDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board_detail)
 
+        val boardType = intent.getStringExtra("detailBoardType")
         val title = intent.getStringExtra("detailTitle")
-        val classTitle = intent.getStringExtra("detailClassTitle")
-        val classTime = intent.getStringExtra("detailClassTime")
         val content = intent.getStringExtra("detailContent")
-        val memberCount = intent.getStringExtra("detailMemberCount")
+        val viewCount = intent.getStringExtra("detailViewCount")
+        val writer = intent.getStringExtra("detailWriter")
+        val updateDate = intent.getStringExtra("detailUpdateDate")
 
         detail = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
+
+        if(boardType != "free" ) {
+            val classTitle = intent.getStringExtra("detailClassTitle")
+            val classDate = intent.getStringExtra("detailClassDate")
+            detail.tvDetailClassTitle.text = classTitle
+            detail.tvDetailClassTime.text = classDate
+        }
+
+        if(boardType == "wanted") {
+            val memberCount = intent.getStringExtra("detailMemberCount")
+            detail.tvDetailMemberCount.text = memberCount
+            val deadLine = intent.getStringExtra("detailDeadline")
+            detail.tvDetailDeadline.text = deadLine
+        }
+
         detail.detailTitle.text = title
-        detail.tvDetailClassTitle.text = classTitle
-        detail.tvDetailClassTime.text = classTime
         detail.tvDetailContent.text = content
-        detail.tvDetailMemberCount.text = memberCount
+        detail.tvDetailViewCount.text = viewCount
+        detail.tvUpdateDate.text = updateDate
+        detail.tvDetailWriter.text = writer
 
         detail.imageButton5.setOnClickListener{
             val intent = Intent(applicationContext, HomeActivity::class.java)

@@ -68,17 +68,14 @@ class AppealBoardListFragment : Fragment() {
                         override fun onClick(v: View, position: Int) {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
-                            intent.putExtra("detailTitle",boardDataList[position].updateDate)
+                            intent.putExtra("detailBoardType",boardDataList[position].boardType)
+                            intent.putExtra("detailTitle",boardDataList[position].title)
                             intent.putExtra("detailContent",boardDataList[position].content)
-                            //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
-                            //intent.putExtra("detailBoardType",boardDataList[position].boardType)
-                            intent.putExtra("detailMemberCount",boardDataList[position].memberCount)
+                            intent.putExtra("detailViewCount",boardDataList[position].viewCount)
+                            intent.putExtra("detailWriter",boardDataList[position].writer?.nickname)
+                            intent.putExtra("detailUpdateDate",boardDataList[position].updateDate)
                             intent.putExtra("detailClassTitle",boardDataList[position].classTitle)
                             intent.putExtra("detailClassDate",boardDataList[position].classDate)
-//                            intent.putExtra("detail",boardDataList[position].deadLine)
-//                            intent.putExtra("detail",boardDataList[position].createdAt)
-//                            intent.putExtra("detail",boardDataList[position].boardStatus)
-//                            intent.putExtra("detail",boardDataList[position].comments)
                             startActivity(intent)
                         }
                     })
