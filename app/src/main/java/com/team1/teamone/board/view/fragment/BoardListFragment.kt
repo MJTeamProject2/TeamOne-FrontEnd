@@ -62,10 +62,10 @@ class BoardListFragment : Fragment() {
 
                     // 리사이클러뷰 - 어뎁터 연결
                     boardAdapter = BoardAdapter(boardDataList)
-                    binding.rvProfile.adapter = boardAdapter
+                    binding.rvWantedBoardList.adapter = boardAdapter
 
                     // 리사이클러뷰 보기 형식
-                    binding.rvProfile.layoutManager = LinearLayoutManager(this@BoardListFragment.context, LinearLayoutManager.VERTICAL, false)
+                    binding.rvWantedBoardList.layoutManager = LinearLayoutManager(this@BoardListFragment.context, LinearLayoutManager.VERTICAL, false)
 
                     boardAdapter.setItemClickListener(object: BoardAdapter.OnItemClickListener{
                         override fun onClick(v: View, position: Int) {
