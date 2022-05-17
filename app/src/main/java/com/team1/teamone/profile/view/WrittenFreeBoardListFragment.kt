@@ -55,7 +55,7 @@ class WrittenFreeBoardListFragment : Fragment() {
                     override fun onClick(v: View, position: Int) {
                         // 클릭 시 이벤트 작성
                         val intent = Intent(activity, BoardDetailActivity::class.java)
-                        intent.putExtra("detailTitle",boardDataList[position].updateDate)
+                        intent.putExtra("detailTitle",boardDataList[position].updatedDate)
                         intent.putExtra("detailContent",boardDataList[position].content)
                         //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
                         //intent.putExtra("detailBoardType",boardDataList[position].boardType)

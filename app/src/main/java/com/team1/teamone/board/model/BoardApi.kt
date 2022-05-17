@@ -30,7 +30,7 @@ interface BoardApi {
 
     @POST("/boards/new/wanted")
     fun postRecruitmentBoard(
-        @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
+        @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 
     @POST("/boards/new/appeal")
@@ -50,6 +50,6 @@ interface BoardApi {
 
     @PUT("/boards/wanted/{boardId}")
     fun putRecruitmentBoard(
-        @Body recruitmentBoardRequestForm : RecruitmentBoardRequest
+        @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 }

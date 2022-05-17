@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
-import com.team1.teamone.board.model.RecruitmentBoardRequest
+import com.team1.teamone.board.model.WantedBoardRequest
 import com.team1.teamone.databinding.ActivityCreateWantedBoardBinding
 import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.RetrofitClient
@@ -32,12 +32,12 @@ class CreateWantedBoardActivity : AppCompatActivity() {
             val className = et_class_name.text.toString()
             val classTime = et_class_time.text.toString()
             val content = et_content.text.toString()
-            val request = RecruitmentBoardRequest(title, personCount, className, classTime ,content)
+            val request = WantedBoardRequest(title, personCount, className, classTime ,content)
             createWantedBoard(request)
         }
     }
 
-    private fun createWantedBoard(request: RecruitmentBoardRequest) {
+    private fun createWantedBoard(request: WantedBoardRequest) {
         api.postRecruitmentBoard(request).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
