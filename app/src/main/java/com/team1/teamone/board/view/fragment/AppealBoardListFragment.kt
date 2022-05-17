@@ -14,9 +14,12 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.presenter.AppealBoardAdapter
 import com.team1.teamone.board.presenter.FreeBoardAdapter
 import com.team1.teamone.board.view.activity.BoardDetailActivity
+import com.team1.teamone.board.view.activity.CreateAppealBoardActivity
 import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
+import com.team1.teamone.databinding.FragmentAppealBoardListBinding
 import com.team1.teamone.databinding.FragmentFreeBoardListBinding
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
@@ -24,19 +27,19 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class FreeBoardListFragment : Fragment() {
-    private lateinit var binding : FragmentFreeBoardListBinding
+class AppealBoardListFragment : Fragment() {
+    private lateinit var binding : FragmentAppealBoardListBinding
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private val boardDataList = mutableListOf<BoardResponse>()
-    private lateinit var freeBoardAdapter : FreeBoardAdapter
+    private lateinit var appealBoardAdapter : AppealBoardAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_free_board_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_appeal_board_list, container, false)
         binding.btnTest.setOnClickListener{
-            val intent = Intent(activity, CreateFreeBoardActivity::class.java)
+            val intent = Intent(activity, CreateAppealBoardActivity::class.java)
             startActivity(intent)
         }
 
@@ -55,13 +58,13 @@ class FreeBoardListFragment : Fragment() {
                     response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
 
                     // 리사이클러뷰 - 어뎁터 연결
-                    freeBoardAdapter = FreeBoardAdapter(boardDataList)
-                    binding.rvFreeBoardList.adapter = freeBoardAdapter
+                    appealBoardAdapter = AppealBoardAdapter(boardDataList)
+                    binding.rvAppealBoardList.adapter = appealBoardAdapter
 
                     // 리사이클러뷰 보기 형식
-                    binding.rvFreeBoardList.layoutManager = LinearLayoutManager(this@FreeBoardListFragment.context, LinearLayoutManager.VERTICAL, false)
+                    binding.rvAppealBoardList.layoutManager = LinearLayoutManager(this@AppealBoardListFragment.context, LinearLayoutManager.VERTICAL, false)
 
-                    freeBoardAdapter.setItemClickListener(object: FreeBoardAdapter.OnItemClickListener{
+                    appealBoardAdapter.setItemClickListener(object: AppealBoardAdapter.OnItemClickListener{
                         override fun onClick(v: View, position: Int) {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
