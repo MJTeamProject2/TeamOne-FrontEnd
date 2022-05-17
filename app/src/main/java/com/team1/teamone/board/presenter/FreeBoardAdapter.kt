@@ -42,14 +42,12 @@ class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : Recy
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.tv_freeBoardTitle)
         private val writerNickname: TextView = itemView.findViewById(R.id.tv_freeBoardWriter)
-        private val type: TextView = itemView.findViewById(R.id.tv_freeBoardType)
         private val createdDate: TextView = itemView.findViewById(R.id.tv_freeBoardCreatedDate)
         private val viewCount: TextView = itemView.findViewById(R.id.tv_freeBoardViewCount)
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
             writerNickname.text = item.writer?.nickname.toString()
-            type.text = item.boardType.toString()
             createdDate.text = item.createdDate
             viewCount.text = item.viewCount.toString()
         }

@@ -14,10 +14,12 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardListResponse
 import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.model.CommentResponse
 import com.team1.teamone.board.presenter.FreeBoardAdapter
 import com.team1.teamone.board.view.activity.BoardDetailActivity
 import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
 import com.team1.teamone.databinding.FragmentFreeBoardListBinding
+import com.team1.teamone.util.network.MemberResponse
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,21 +67,18 @@ class FreeBoardListFragment : Fragment() {
                         override fun onClick(v: View, position: Int) {
                             // 클릭 시 이벤트 작성
                             val intent = Intent(getActivity(), BoardDetailActivity::class.java)
-                            intent.putExtra("detailTitle",boardDataList[position].updateDate)
+                            intent.putExtra("detailBoardType",boardDataList[position].boardType)
+                            intent.putExtra("detailTitle",boardDataList[position].title)
                             intent.putExtra("detailContent",boardDataList[position].content)
-                            //intent.putExtra("detailViewCount",boardDataList[position].viewCount)
-                            //intent.putExtra("detailBoardType",boardDataList[position].boardType)
-                            intent.putExtra("detailMemberCount",boardDataList[position].memberCount)
-                            intent.putExtra("detailClassTitle",boardDataList[position].classTitle)
-                            intent.putExtra("detailClassDate",boardDataList[position].classDate)
-//                            intent.putExtra("detail",boardDataList[position].deadLine)
-//                            intent.putExtra("detail",boardDataList[position].createdAt)
-//                            intent.putExtra("detail",boardDataList[position].boardStatus)
-//                            intent.putExtra("detail",boardDataList[position].comments)
+                            intent.putExtra("detailViewCount",boardDataList[position].viewCount)
+                            intent.putExtra("detailWriter",boardDataList[position].writer?.nickname)
+                            intent.putExtra("detailUpdateDate",boardDataList[position].updateDate)
+                            //intent.putExtra("detailComments",boardDataList[position].comments)
                             startActivity(intent)
                         }
                     })
                 }
+
 
                 override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
                     // 실패
