@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.bookmark.view.BookMarkActivity
 import com.team1.teamone.databinding.FragmentProfileBinding
-import com.team1.teamone.member.model.MemberApi
 import com.team1.teamone.profile.model.ProfileApi
 import com.team1.teamone.util.network.MemberResponse
 import com.team1.teamone.util.network.RetrofitClient
