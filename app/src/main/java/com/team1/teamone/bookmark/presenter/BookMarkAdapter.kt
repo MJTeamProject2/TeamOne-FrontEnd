@@ -1,22 +1,13 @@
 package com.team1.teamone.bookmark.presenter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
-import com.team1.teamone.bookmark.model.BookMarkApi
-import com.team1.teamone.bookmark.model.BookMarkListResponse
 import com.team1.teamone.bookmark.model.BookMarkResponse
-import com.team1.teamone.util.network.BoolResponse
-import com.team1.teamone.util.network.RetrofitClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) : RecyclerView.Adapter<BookMarkAdapter.BookMarkViewHolder>(){
     /*
@@ -61,7 +52,7 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
             "WANTED" -> "팀원구해요"
             else -> "오류"
         }
-        holder.tvTime.text = bookMarkList[position].createdAt
+        holder.tvTime.text = bookMarkList[position].createdDate
 
     }
 

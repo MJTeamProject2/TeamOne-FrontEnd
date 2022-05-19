@@ -43,9 +43,6 @@
             android:name=".message.view.MessageActivity"
             android:exported="false" />
         <activity
-            android:name=".comment.view.CommentActivity"
-            android:exported="false" />
-        <activity
             android:name=".caution.view.CautionActivity"
             android:exported="false" />
         <activity

@@ -80,7 +80,7 @@ class BookMarkActivity : AppCompatActivity() {
             override fun onResponse(call: Call<BookMarkListResponse>, response: Response<BookMarkListResponse>) {
                 // 성공
                 bookMarkDataList.clear()
-                response.body()?.bookMarks?.let { it1 -> bookMarkDataList.addAll(it1) }
+                response.body()?.bookMarks?.let { it -> bookMarkDataList.addAll(it) }
                 Log.d("북마크 통신 성공", bookMarkDataList.toString())
                 bookMarkAdapter = BookMarkAdapter(bookMarkDataList)
                 binding.rvBookMark.adapter = bookMarkAdapter
