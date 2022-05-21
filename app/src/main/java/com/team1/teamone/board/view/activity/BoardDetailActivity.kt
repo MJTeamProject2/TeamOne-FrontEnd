@@ -112,6 +112,7 @@ class BoardDetailActivity : AppCompatActivity() {
     }
 
     // 북마크 등록
+    // 테스트
     private fun postBookMark(boardId: Long) {
         bookMarkApi.createBookMark(boardId).enqueue(object : Callback<BookMarkResponse> {
             override fun onResponse(
