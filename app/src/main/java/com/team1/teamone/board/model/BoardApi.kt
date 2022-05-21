@@ -55,7 +55,7 @@ interface BoardApi {
     ): Call<BoardResponse>
 
     @PUT("/boards/wanted/{boardId}")
-    fun putRecruitmentBoard(
+    fun putWantedBoard(
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 
