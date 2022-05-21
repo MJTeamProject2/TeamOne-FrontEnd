@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TeamOne"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".board.view.activity.UpdateWantedBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".board.view.fragment.FreeBoardListFragment"
             android:exported="false" />
         <activity
