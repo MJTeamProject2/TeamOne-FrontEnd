@@ -24,7 +24,7 @@ import retrofit2.Response
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
-    val api = RetrofitClient.create(ProfileApi::class.java)
+    val api = RetrofitClient.create(ProfileApi::class.java, RetrofitClient.getAuth())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
