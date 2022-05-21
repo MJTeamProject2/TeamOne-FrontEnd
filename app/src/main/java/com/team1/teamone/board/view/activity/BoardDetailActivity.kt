@@ -83,11 +83,10 @@ class BoardDetailActivity : AppCompatActivity() {
             }
         }
 
-        if (boardId != null) {
-            drawCommentList(boardId)
-        }
+        drawCommentList(boardId)
+        updateBookMarkStar(boardId)
 
-        // 게시글 삭제
+        // 게시글 삭제 버튼
         binding.btnBoardDetailDeleteBoard.setOnClickListener{
             val intent = Intent(applicationContext, HomeActivity::class.java)
 
@@ -95,12 +94,44 @@ class BoardDetailActivity : AppCompatActivity() {
         }
 
 
-        // 북마크 (즐겨찾기 등록)
+        // 북마크 (즐겨찾기 등록) 버튼
         binding.btnBoardDetailBookMark.setOnClickListener {
             toggleBookMark(boardId)
-
         }
 
+    }
+
+    /**
+     *  북마크 관련 로직
+     */
+    // 처음 게시글 상세 페이지를 켤때, 북마크로 된 게시글인지 아닌지를 검사해서 보여주기
+    private fun updateBookMarkStar(boardId: Long) {
+        val bookMarkList = mutableListOf<BookMarkResponse>()
+        bookMarkApi.getAllBookMarks().enqueue(object : Callback<BookMarkListResponse> {
+            override fun onResponse(
+                call: Call<BookMarkListResponse>,
+                response: Response<BookMarkListResponse>
+            ) {
+                Log.e("업데이트 북마크 호출", "성공")
+                response.body()?.bookMarks?.let { it -> bookMarkList.addAll(it) }
+                // 가져온 북마크 리스트에 해당 게시물이 있는 지 확인
+                for (bookMark in bookMarkList) {
+                    // 있으면 꽉찬 스타
+                    if (bookMark.board.boardId == boardId) {
+                        binding.btnBoardDetailBookMark.setImageResource(R.drawable.ic_baseline_star_24)
+                        return
+                    }
+                }
+                // 없으면 비어있는 스타
+                binding.btnBoardDetailBookMark.setImageResource(R.drawable.ic_baseline_star_border_24)
+                return
+            }
+            override fun onFailure(call: Call<BookMarkListResponse>, t: Throwable) {
+                // 실패
+                Log.e("게시판 상세 북마크 리스트 조회 실패", "실패")
+            }
+
+        })
     }
 
     // 북마크 등록
@@ -110,6 +141,7 @@ class BoardDetailActivity : AppCompatActivity() {
                 call: Call<BookMarkResponse>,
                 response: Response<BookMarkResponse>
             ) {
+                binding.btnBoardDetailBookMark.setImageResource(R.drawable.ic_baseline_star_24)
                 Toast.makeText(this@BoardDetailActivity, "즐겨찾기에 등록했습니다", Toast.LENGTH_SHORT).show()
             }
 
@@ -124,9 +156,9 @@ class BoardDetailActivity : AppCompatActivity() {
     private fun deleteBookMark(bookMarkId: Long) {
         bookMarkApi.deleteBookMark(bookMarkId).enqueue(object : Callback<BoolResponse>{
             override fun onResponse(call: Call<BoolResponse>, response: Response<BoolResponse>) {
+                binding.btnBoardDetailBookMark.setImageResource(R.drawable.ic_baseline_star_border_24)
                 Toast.makeText(this@BoardDetailActivity, "즐겨찾기 목록에서 삭제했습니다", Toast.LENGTH_SHORT).show()
             }
-
             override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
                 // 실패
                 Log.e("게시판 상세 북마크 삭제 실패", "실패")
@@ -134,7 +166,7 @@ class BoardDetailActivity : AppCompatActivity() {
         })
     }
 
-    // 일단 로그인된 사용자의 북마크 리스트를 전체 받아온다
+    // 북마크 토글
     private fun toggleBookMark(boardId: Long) {
         val bookMarkList = mutableListOf<BookMarkResponse>()
         bookMarkApi.getAllBookMarks().enqueue(object : Callback<BookMarkListResponse> {
@@ -148,10 +180,12 @@ class BoardDetailActivity : AppCompatActivity() {
                     // 있으면 북마크 해제
                     if (bookMark.board.boardId == boardId) {
                         deleteBookMark(bookMark.bookMarkId)
+                        return
                     }
                 }
                 // 없으면 북마크 등록
                 postBookMark(boardId)
+                return
             }
             override fun onFailure(call: Call<BookMarkListResponse>, t: Throwable) {
                 // 실패
