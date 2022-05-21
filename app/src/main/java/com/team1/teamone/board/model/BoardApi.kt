@@ -1,5 +1,7 @@
 package com.team1.teamone.board.model
 
+import androidx.annotation.BoolRes
+import com.team1.teamone.util.network.BoolResponse
 import org.w3c.dom.Comment
 import retrofit2.Call
 import retrofit2.http.*
@@ -62,5 +64,5 @@ interface BoardApi {
     @DELETE("/boards/{boardId}")
     fun deleteBoardById(
         @Path("boardId") boardId: Long
-    ): Call<BoardListResponse>
+    ): Call<BoolResponse>
 }
