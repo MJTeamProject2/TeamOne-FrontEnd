@@ -43,47 +43,57 @@ class BoardDetailActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
 
-        if(boardType != "free" ) {
-            val classTitle = intent.getStringExtra("detailClassTitle")
-            val classDate = intent.getStringExtra("detailClassDate")
-            binding.tvDetailClassTitle.text = classTitle
-            binding.tvDetailClassTime.text = classDate
-
-        }
-
-        if(boardType == "wanted") {
-            val memberCount = intent.getStringExtra("detailMemberCount")
-            binding.tvDetailMemberCount.text = memberCount
-            val deadLine = intent.getStringExtra("detailDeadline")
-            binding.tvDetailDeadline.text = deadLine
-        }
-
         binding.detailTitle.text = title
         binding.tvDetailContent.text = content
         //.tvDetailViewCount.text = viewCount.toString()
         binding.tvUpdateDate.text = updateDate
         binding.tvDetailWriter.text = writer
-        Log.e("배성",boardId.toString())
+        Log.e("boardType",boardType.toString())
+        // 게시글 수정
+        if(boardType.toString() == "FREE") {
+            binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        if(boardType.toString() == "APPEAL" || boardType.toString() == "WANTED" ) {
+            val classTitle = intent.getStringExtra("detailClassTitle")
+            val classDate = intent.getStringExtra("detailClassDate")
+            binding.tvDetailClassTitle.text = classTitle
+            binding.tvDetailClassTime.text = classDate
+
+            // 게시글 수정
+            binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        if(boardType == "wanted") {
+            val memberCount = intent.getStringExtra("detailMemberCount")
+            val deadLine = intent.getStringExtra("detailDeadline")
+            binding.tvDetailMemberCount.text = memberCount
+            binding.tvDetailDeadline.text = deadLine
+
+            // 게시글 수정
+            binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         if (boardId != null) {
-            Log.e("gimozzi","1")
             drawCommentList(boardId)
-            Log.e("ang","2")
         }
 
         // 게시글 삭제
         binding.btnBoardDetailDeleteBoard.setOnClickListener{
             val intent = Intent(applicationContext, HomeActivity::class.java)
+
             startActivity(intent)
-            finish()
         }
 
-        // 게시글 수정
-        binding.btnBoardDetailUpdateBoard.setOnClickListener {
-            val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
         // 북마크 (즐겨찾기 등록)
         binding.btnBoardDetailBookMark.setOnClickListener {

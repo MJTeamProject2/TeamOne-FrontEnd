@@ -44,7 +44,7 @@ class WantedBoardListFragment : Fragment() {
     }
 
     private fun drawWantedBoardList() {
-        api.getAllBoards().enqueue(object : Callback<BoardListResponse> {
+        api.getAllBoardsByType(boardType = "wanted").enqueue(object : Callback<BoardListResponse> {
             override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
