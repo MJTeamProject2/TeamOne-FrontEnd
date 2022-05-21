@@ -97,29 +97,20 @@ class BoardDetailActivity : AppCompatActivity() {
 
         // 북마크 (즐겨찾기 등록)
         binding.btnBoardDetailBookMark.setOnClickListener {
-            // 서버로부터 로그인된 회원의 북마크 리스트를 받아온다
-            val userBookMarkList = getUserBookMarkList()
+            toggleBookMark(boardId)
 
-            // 순회를 돌면서 서버로부터 가져온 북마크 리스트에 해당 게시글이 포함되어있는지 확인
-            userBookMarkList.forEach{bookMarkResponse ->
-                // 이미 즐겨찾기에 등록된 게시글이면 북마크 삭제
-                if (bookMarkResponse.board.boardId == boardId) deleteBookMark(bookMarkResponse.bookMarkId)
-                // 아니면 북마크 생성(등록)
-                else postBookMark(boardId)
-            }
         }
 
     }
 
     // 북마크 등록
-    // 테스트
     private fun postBookMark(boardId: Long) {
         bookMarkApi.createBookMark(boardId).enqueue(object : Callback<BookMarkResponse> {
             override fun onResponse(
                 call: Call<BookMarkResponse>,
                 response: Response<BookMarkResponse>
             ) {
-                Toast.makeText(this@BoardDetailActivity, "즐겨찾기에 등록했습니다", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@BoardDetailActivity, "즐겨찾기에 등록했습니다", Toast.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<BookMarkResponse>, t: Throwable) {
@@ -133,7 +124,7 @@ class BoardDetailActivity : AppCompatActivity() {
     private fun deleteBookMark(bookMarkId: Long) {
         bookMarkApi.deleteBookMark(bookMarkId).enqueue(object : Callback<BoolResponse>{
             override fun onResponse(call: Call<BoolResponse>, response: Response<BoolResponse>) {
-                Toast.makeText(this@BoardDetailActivity, "즐겨찾기 목록에서 삭제했습니다", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@BoardDetailActivity, "즐겨찾기 목록에서 삭제했습니다", Toast.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
@@ -144,7 +135,7 @@ class BoardDetailActivity : AppCompatActivity() {
     }
 
     // 일단 로그인된 사용자의 북마크 리스트를 전체 받아온다
-    private fun getUserBookMarkList(): MutableList<BookMarkResponse> {
+    private fun toggleBookMark(boardId: Long) {
         val bookMarkList = mutableListOf<BookMarkResponse>()
         bookMarkApi.getAllBookMarks().enqueue(object : Callback<BookMarkListResponse> {
             override fun onResponse(
@@ -152,15 +143,22 @@ class BoardDetailActivity : AppCompatActivity() {
                 response: Response<BookMarkListResponse>
             ) {
                 response.body()?.bookMarks?.let { it -> bookMarkList.addAll(it) }
+                // 가져온 북마크 리스트에 해당 게시물이 있는 지 확인
+                for (bookMark in bookMarkList) {
+                    // 있으면 북마크 해제
+                    if (bookMark.board.boardId == boardId) {
+                        deleteBookMark(bookMark.bookMarkId)
+                    }
+                }
+                // 없으면 북마크 등록
+                postBookMark(boardId)
             }
-
             override fun onFailure(call: Call<BookMarkListResponse>, t: Throwable) {
                 // 실패
                 Log.e("게시판 상세 북마크 리스트 조회 실패", "실패")
             }
 
         })
-        return bookMarkList
     }
 
     // 게시판 그리기
@@ -168,7 +166,7 @@ class BoardDetailActivity : AppCompatActivity() {
         boardApi.getAllComments(boardId).enqueue(object : Callback<CommentListResponse> {
             override fun onResponse(call: Call<CommentListResponse>, response: Response<CommentListResponse>) {
                 // 받아온 리스트 boardDataList 안에 넣기
-                response.body()?.comments?.let { it1 -> commentDataList.addAll(it1) }
+                response.body()?.comments?.let { it -> commentDataList.addAll(it) }
 
                 // 리사이클러뷰 - 어뎁터 연결
                 commentAdapter = CommentAdapter(commentDataList)
