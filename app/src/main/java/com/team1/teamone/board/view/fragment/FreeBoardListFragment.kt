@@ -44,7 +44,7 @@ class FreeBoardListFragment : Fragment() {
     }
 
     private fun drawFreeBoardList() {
-        api.getAllBoards().enqueue(object : Callback<BoardListResponse> {
+        api.getAllBoardsByType(boardType = "free").enqueue(object : Callback<BoardListResponse> {
             override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())

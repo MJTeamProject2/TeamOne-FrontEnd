@@ -35,7 +35,7 @@ interface BoardApi {
     ): Call<BoardResponse>
 
     @POST("/boards/new/wanted")
-    fun postRecruitmentBoard(
+    fun postWantedBoard(
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 
@@ -59,5 +59,8 @@ interface BoardApi {
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 
-
+    @DELETE("/boards/{boardId}")
+    fun deleteBoardById(
+        @Path("boardId") boardId: Long
+    ): Call<BoardListResponse>
 }

@@ -38,7 +38,7 @@ class CreateWantedBoardActivity : AppCompatActivity() {
     }
 
     private fun createWantedBoard(request: WantedBoardRequest) {
-        api.postRecruitmentBoard(request).enqueue(object : Callback<BoardResponse> {
+        api.postWantedBoard(request).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body() == null) {
