@@ -27,30 +27,41 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/btn_boardDetail_deleteBoard"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/image_button"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:src="@drawable/ic_baseline_delete_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.789"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/btn_boardDetail_bookMark"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/image_button"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_favorite_24"
+                android:src="@drawable/ic_baseline_star_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.893"
-                app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                app:layout_constraintStart_toEndOf="@+id/btn_boardDetail_deleteBoard"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_boardDetail_updateBoard"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="208dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -141,13 +152,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"/>
-
-            <ImageButton
-                android:id="@+id/imageButton7"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/ic_baseline_check_24" />
 
             <TextView
                 android:id="@+id/tv_detailViewCount"
