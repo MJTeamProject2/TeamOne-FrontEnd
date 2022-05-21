@@ -1,5 +1,6 @@
 package com.team1.teamone.board.model
 
+import org.w3c.dom.Comment
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,6 +23,11 @@ interface BoardApi {
     fun getAllBoardsByType(
         @Path("boardType") boardType : String
     ): Call<BoardListResponse>
+
+    @GET("/boards/{boardId}/comments")
+    fun getAllComments(
+        @Path("boardId") boardId: Long
+    ): Call<CommentListResponse>
 
     @POST("/boards/new/free")
     fun postFreeBoard(
@@ -52,4 +58,6 @@ interface BoardApi {
     fun putRecruitmentBoard(
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
+
+
 }
