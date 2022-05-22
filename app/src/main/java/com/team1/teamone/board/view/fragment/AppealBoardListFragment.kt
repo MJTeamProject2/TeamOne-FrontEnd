@@ -44,7 +44,7 @@ class AppealBoardListFragment : Fragment() {
     }
 
     private fun drawAppealBoardList() {
-        api.getAllBoards().enqueue(object : Callback<BoardListResponse> {
+        api.getAllBoardsByType(boardType = "appeal").enqueue(object : Callback<BoardListResponse> {
             override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
@@ -69,6 +69,7 @@ class AppealBoardListFragment : Fragment() {
                     override fun onClick(v: View, position: Int) {
                         // 클릭 시 이벤트 작성
                         val intent = Intent(activity, BoardDetailActivity::class.java)
+                        intent.putExtra("detailBoardId", boardDataList[position].boardId)
                         intent.putExtra("detailBoardType", boardDataList[position].boardType)
                         intent.putExtra("detailTitle", boardDataList[position].title)
                         intent.putExtra("detailContent", boardDataList[position].content)

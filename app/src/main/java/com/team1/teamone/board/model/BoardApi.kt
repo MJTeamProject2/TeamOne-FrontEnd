@@ -1,5 +1,8 @@
 package com.team1.teamone.board.model
 
+import androidx.annotation.BoolRes
+import com.team1.teamone.util.network.BoolResponse
+import org.w3c.dom.Comment
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,13 +26,18 @@ interface BoardApi {
         @Path("boardType") boardType : String
     ): Call<BoardListResponse>
 
+    @GET("/boards/{boardId}/comments")
+    fun getAllComments(
+        @Path("boardId") boardId: Long
+    ): Call<CommentListResponse>
+
     @POST("/boards/new/free")
     fun postFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest
     ): Call<BoardResponse>
 
     @POST("/boards/new/wanted")
-    fun postRecruitmentBoard(
+    fun postWantedBoard(
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
 
@@ -49,7 +57,12 @@ interface BoardApi {
     ): Call<BoardResponse>
 
     @PUT("/boards/wanted/{boardId}")
-    fun putRecruitmentBoard(
+    fun putWantedBoard(
         @Body wantedBoardRequestForm : WantedBoardRequest
     ): Call<BoardResponse>
+
+    @DELETE("/boards/{boardId}")
+    fun deleteBoardById(
+        @Path("boardId") boardId: Long
+    ): Call<BoolResponse>
 }

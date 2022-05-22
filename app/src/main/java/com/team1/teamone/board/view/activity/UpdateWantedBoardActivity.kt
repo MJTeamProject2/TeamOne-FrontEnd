@@ -9,36 +9,37 @@ import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.WantedBoardRequest
-import com.team1.teamone.databinding.ActivityCreateWantedBoardBinding
+import com.team1.teamone.databinding.ActivityUpdateWantedBoardBinding
 import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.RetrofitClient
-import kotlinx.android.synthetic.main.activity_create_wanted_board.*
+import kotlinx.android.synthetic.main.activity_update_wanted_board.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CreateWantedBoardActivity : AppCompatActivity() {
+
+class UpdateWantedBoardActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
-    private lateinit var wantedBoardBinding: ActivityCreateWantedBoardBinding
+    private lateinit var updateWantedBoardBinding: ActivityUpdateWantedBoardBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_wanted_board)
+        setContentView(R.layout.activity_update_wanted_board)
 
-        wantedBoardBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_wanted_board)
-        wantedBoardBinding.btnWriteRecruitmentBoard.setOnClickListener{
-            val title = et_title.text.toString()
-            val personCount = et_person_count.text.toString()
-            val className = et_class_name.text.toString()
-            val classTime = et_class_time.text.toString()
-            val content = et_content.text.toString()
-            val request = WantedBoardRequest(title, personCount, className, classTime ,content)
-            createWantedBoard(request)
+        updateWantedBoardBinding = DataBindingUtil.setContentView(this, R.layout.activity_update_wanted_board)
+        updateWantedBoardBinding.btnUpdateWantedBoard.setOnClickListener{
+            val title = et_updateWantedBoardTitle.text.toString()
+            val memberCount = et_updateWantedBoardMemberCount.text.toString()
+            val classTitle = et_updateWantedBoardClassTitle.text.toString()
+            val classDate = et_updateWantedBoardClassDate.text.toString()
+            val content = et_updateWantedBoardContent.text.toString()
+            val request = WantedBoardRequest(title, memberCount, classTitle,classDate, content)
+            updateWantedBoard(request)
         }
     }
 
-    private fun createWantedBoard(request: WantedBoardRequest) {
-        api.postWantedBoard(request).enqueue(object : Callback<BoardResponse> {
+    private fun updateWantedBoard(request: WantedBoardRequest) {
+        api.putWantedBoard(request).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body() == null) {
@@ -51,6 +52,7 @@ class CreateWantedBoardActivity : AppCompatActivity() {
                     Log.d("log", "success")
                 }
             }
+
             override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
                 // 실패
                 Log.d("log", "fail")

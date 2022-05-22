@@ -1,5 +1,6 @@
 package com.team1.teamone.board.model
 
+import com.team1.teamone.caution.model.CautionResponse
 import com.team1.teamone.util.network.MemberResponse
 
 
@@ -32,6 +33,9 @@ data class CommentResponse(
     var updatedDate: String? = null
 )
 
+data class CommentListResponse(
+    val comments: List<CommentResponse>
+)
 
 data class BoardListResponse(
     val boards: List<BoardResponse>

@@ -34,7 +34,7 @@ class RetrofitClient {
 
         // 이건 그냥 디폴트 생성자
         fun <T> create(apiService : Class<T>) : T {
-            val gson = GsonBuilder().setLenient().create();
+            val gson = GsonBuilder().setLenient().create()
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -44,7 +44,7 @@ class RetrofitClient {
 
         // create 오버로딩 : 세션값을 넣으면 해당 세션값을 인터셉트(리퀘스트 헤더에 자동으로 넣어주는) 해주는 인터셉터를 달아줌
         fun <T> create(api : Class<T>, token : String) : T {
-            val gson = GsonBuilder().setLenient().create();
+            val gson = GsonBuilder().setLenient().create()
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(provideOkHttpClient(LoginInterceptor(token)))
@@ -56,6 +56,10 @@ class RetrofitClient {
         // 쿠키매니저에서 쿠키정보 가져오는 편의 메소드
         fun getAuth() : String {
             return CookieManager.getInstance().getCookie(BASE_URL)
+        }
+
+        fun clearCookieManager() {
+            CookieManager.getInstance().removeAllCookie()
         }
     }
 }
