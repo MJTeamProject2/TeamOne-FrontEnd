@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.team1.teamone.message.MessageFragment"
+        android:name="com.team1.teamone.message.view.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" >
         <action
