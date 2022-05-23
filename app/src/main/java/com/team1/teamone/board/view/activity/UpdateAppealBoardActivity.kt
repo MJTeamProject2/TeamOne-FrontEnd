@@ -48,7 +48,6 @@ class UpdateAppealBoardActivity : AppCompatActivity() {
                 } else {
                     val intent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
-                    finish()
                     Log.d("log", "success")
                 }
             }

@@ -49,7 +49,7 @@ class UpdateWantedBoardActivity : AppCompatActivity() {
                 } else {
                     val intent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
-                    finish()
+                    Log.e("title", request.classTitle)
                     Log.d("log", "success")
                 }
             }
