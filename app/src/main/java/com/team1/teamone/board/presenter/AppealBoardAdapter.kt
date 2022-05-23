@@ -31,7 +31,6 @@ class AppealBoardAdapter(private val boardList: MutableList<BoardResponse>) : Re
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }
-
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }

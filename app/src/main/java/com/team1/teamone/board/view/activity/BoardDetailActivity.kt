@@ -53,32 +53,38 @@ class BoardDetailActivity : AppCompatActivity() {
         if(boardType.toString() == "FREE") {
             binding.btnBoardDetailUpdateBoard.setOnClickListener {
                 val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
+                intent.putExtra("updateBoardId", boardId)
                 startActivity(intent)
             }
         }
 
-        if(boardType.toString() == "APPEAL" || boardType.toString() == "WANTED" ) {
+        if(boardType.toString() == "APPEAL") {
             val classTitle = intent.getStringExtra("detailClassTitle")
             val classDate = intent.getStringExtra("detailClassDate")
             binding.tvDetailClassTitle.text = classTitle
-            binding.tvDetailClassTime.text = classDate
+            binding.tvDetailClassDate.text = classDate
 
             // 게시글 수정
             binding.btnBoardDetailUpdateBoard.setOnClickListener {
-                val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
+                val intent = Intent(applicationContext, UpdateAppealBoardActivity::class.java)
+                intent.putExtra("updateBoardId",boardId)
                 startActivity(intent)
             }
         }
 
-        if(boardType == "wanted") {
+        if(boardType.toString() == "WANTED") {
+            val classTitle = intent.getStringExtra("detailClassTitle")
+            val classDate = intent.getStringExtra("detailClassDate")
             val memberCount = intent.getStringExtra("detailMemberCount")
             val deadLine = intent.getStringExtra("detailDeadline")
             binding.tvDetailMemberCount.text = memberCount
             binding.tvDetailDeadline.text = deadLine
-
+            binding.tvDetailClassDate.text = classDate
+            binding.tvDetailClassTitle.text = classTitle
             // 게시글 수정
             binding.btnBoardDetailUpdateBoard.setOnClickListener {
                 val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
+                intent.putExtra("updateBoardId",boardId)
                 startActivity(intent)
             }
         }

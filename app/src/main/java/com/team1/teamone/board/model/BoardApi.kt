@@ -48,17 +48,20 @@ interface BoardApi {
 
     @PUT("/boards/free/{boardId}")
     fun putFreeBoard(
-        @Body freeBoardRequestForm : FreeBoardRequest
+        @Body freeBoardRequestForm : FreeBoardRequest,
+        @Path("boardId") boardId: Long
     ): Call<BoardResponse>
 
     @PUT("/boards/appeal/{boardId}")
     fun putAppealBoard(
-        @Body appealBoardRequestForm : AppealBoardRequest
+        @Body appealBoardRequestForm : AppealBoardRequest,
+        @Path("boardId") boardId: Long
     ): Call<BoardResponse>
 
     @PUT("/boards/wanted/{boardId}")
     fun putWantedBoard(
-        @Body wantedBoardRequestForm : WantedBoardRequest
+        @Body wantedBoardRequestForm : WantedBoardRequest,
+        @Path("boardId") boardId: Long
     ): Call<BoardResponse>
 
     @DELETE("/boards/{boardId}")

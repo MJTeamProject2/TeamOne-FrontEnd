@@ -33,22 +33,23 @@ class UpdateWantedBoardActivity : AppCompatActivity() {
             val classTitle = et_updateWantedBoardClassTitle.text.toString()
             val classDate = et_updateWantedBoardClassDate.text.toString()
             val content = et_updateWantedBoardContent.text.toString()
+            val boardId = intent.getLongExtra("updateBoardId", 0)
             val request = WantedBoardRequest(title, memberCount, classTitle,classDate, content)
-            updateWantedBoard(request)
+            updateWantedBoard(request,boardId)
         }
     }
 
-    private fun updateWantedBoard(request: WantedBoardRequest) {
-        api.putWantedBoard(request).enqueue(object : Callback<BoardResponse> {
+    private fun updateWantedBoard(request: WantedBoardRequest, boardId: Long) {
+        api.putWantedBoard(request, boardId = boardId).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
-                if (response.body() == null) {
+                if (response.body()?.title.toString() == null) {
                     Log.d("log", "blank")
                     return
                 } else {
                     val intent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
-                    finish()
+                    Log.e("title", request.classTitle)
                     Log.d("log", "success")
                 }
             }
