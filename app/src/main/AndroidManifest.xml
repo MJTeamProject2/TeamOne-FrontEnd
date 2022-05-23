@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TeamOne"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".board.view.activity.UpdateAppealBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".profile.view.MemberInfoActivity"
             android:exported="false" />
         <activity

@@ -29,22 +29,22 @@ class UpdateFreeBoardActivity : AppCompatActivity() {
         updateFreeBoardBinding.btnModifyFreeBoard.setOnClickListener{
             val title = et_title.text.toString()
             val content = et_content.text.toString()
+            val boardId = intent.getLongExtra("updateBoardId", 0)
             val request = FreeBoardRequest(title, content)
-            updateFreeBoard(request)
+            updateFreeBoard(request, boardId)
         }
     }
 
-    private fun updateFreeBoard(request: FreeBoardRequest) {
-        api.putFreeBoard(request).enqueue(object : Callback<BoardResponse> {
+    private fun updateFreeBoard(request: FreeBoardRequest, boardId: Long) {
+        api.putFreeBoard(request,boardId = boardId).enqueue(object : Callback<BoardResponse> {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
-                if (response.body() == null) {
+                if (response.body()?.title.toString() == null) {
                     Log.d("log", "blank")
                     return
                 } else {
                     val intent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
-                    finish()
                     Log.d("log", "success")
                 }
             }
