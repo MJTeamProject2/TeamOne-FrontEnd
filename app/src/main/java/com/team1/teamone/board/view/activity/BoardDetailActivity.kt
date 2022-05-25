@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
@@ -94,9 +95,7 @@ class BoardDetailActivity : AppCompatActivity() {
 
         // 게시글 삭제 버튼
         binding.btnBoardDetailDeleteBoard.setOnClickListener{
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-
-            startActivity(intent)
+            deleteBoard(boardId)
         }
 
 
@@ -223,6 +222,39 @@ class BoardDetailActivity : AppCompatActivity() {
             override fun onFailure(call: Call<CommentListResponse>, t: Throwable) {
                 // 실패
                 Log.d("유의 통신 실패", "유의 전체 조회 실패")
+            }
+        })
+    }
+
+    /**
+     * 게시글 삭제 로직
+     */
+    // 게시글 삭제 확인 다이얼로그
+    private fun deleteBoard(boardId: Long) {
+        AlertDialog.Builder(this)
+            .setTitle("게시글 삭제")
+            .setMessage("현재 게시물을 삭제 하시겠습니까?")
+            .setPositiveButton("예") { dialog, id ->
+                deleteRequestToServer(boardId) // 서버로 북마크 삭제 요청
+            }
+            .setNegativeButton("아니오") { dialog, id ->
+
+            }
+            .show()
+    }
+
+    // 서버로 게시글 삭제 요청
+    private fun deleteRequestToServer(boardId: Long) {
+        boardApi.deleteBoardById(boardId).enqueue(object : Callback<BoolResponse> {
+            override fun onResponse(call: Call<BoolResponse>, response: Response<BoolResponse>) {
+                Toast.makeText(this@BoardDetailActivity, "게시글을 삭제 했습니다", Toast.LENGTH_SHORT).show()
+                val intent = Intent(applicationContext, HomeActivity::class.java)
+                startActivity(intent)
+            }
+
+            override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
+                // 실패
+                Log.d("게시글 삭제 통신 실패", "게시글 삭제 실패")
             }
         })
     }
