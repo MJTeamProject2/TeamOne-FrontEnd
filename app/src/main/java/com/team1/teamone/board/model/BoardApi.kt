@@ -81,8 +81,17 @@ interface BoardApi {
         @Path("boardId") boardId: Long
     ): Call<BoolResponse>
 
+
+    // 게시물 검색
+    @GET("/boards/search/{searchWay}/{keyword}")
+    fun getSearching(
+        @Path("searchWay") searchWay : String,
+        @Path("keyword") keyword : String
+    ): Call<BoardListResponse>
+
     @DELETE("/comments/{commentId}")
     fun deleteCommentById(
         @Path("commentId") commentId: Long
     ): Call<BoolResponse>
+
 }

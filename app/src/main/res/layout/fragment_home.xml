@@ -118,13 +118,26 @@
                         app:tabIndicatorHeight="4dp"
                         app:tabMode="fixed"
                         app:tabSelectedTextColor="@color/black"
-                        app:tabTextColor="#999999" >
+                        app:tabTextColor="#111111" >
+
+                        <Spinner
+                            android:id="@+id/dropdown_searchType"
+                            android:backgroundTint="@color/material_on_primary_emphasis_medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:entries="@array/search"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/search_box"/>
 
                         <androidx.appcompat.widget.SearchView
+                            app:queryHint="게시물을 검색해보세요 :)"
+                            android:id="@+id/btn_boardSearch"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_marginStart="30dp"
                             android:layout_marginEnd="30dp"
+                            android:backgroundTint="@color/material_on_primary_emphasis_medium"
                             android:background="@drawable/search_box"
                             app:searchIcon="@drawable/ic_baseline_search_24"
                             app:closeIcon="@drawable/ic_baseline_close_24_black"
