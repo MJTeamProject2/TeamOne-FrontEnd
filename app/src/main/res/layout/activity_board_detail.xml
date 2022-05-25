@@ -227,14 +227,14 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
-                android:id="@+id/edt_messageEdit"
+                android:id="@+id/edt_commentEdit"
                 android:layout_weight="1"
                 android:layout_margin="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/btn_messageInputBtn"
+                android:id="@+id/btn_commentInputBtn"
                 android:text="입력"
                 android:layout_marginRight="8dp"
                 android:layout_width="wrap_content"

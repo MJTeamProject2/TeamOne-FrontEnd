@@ -60,3 +60,7 @@ data class WantedBoardRequest(
     var classDate: String = "",
     var content: String = ""
 )
+
+data class CommentRequest(
+    var content: String = ""
+)

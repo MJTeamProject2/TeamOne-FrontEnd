@@ -25,9 +25,6 @@ class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : Recy
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindItems(boardList[position])
-        holder.btnCommentOption.setOnClickListener {
-            itemClickListener.onClick(it, position)
-        }
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
@@ -48,7 +45,7 @@ class FreeBoardAdapter(private val boardList: MutableList<BoardResponse>) : Recy
         val writerNickname: TextView = itemView.findViewById(R.id.tv_freeBoardWriter)
         val createdDate: TextView = itemView.findViewById(R.id.tv_freeBoardCreatedDate)
         val viewCount: TextView = itemView.findViewById(R.id.tv_freeBoardViewCount)
-        val btnCommentOption: ImageView = itemView.findViewById(R.id.btn_commentOption)
+
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
