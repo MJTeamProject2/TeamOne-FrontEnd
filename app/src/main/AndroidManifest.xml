@@ -61,6 +61,9 @@
             android:name=".profile.view.WrittenBoardActivity"
             android:exported="false" />
         <activity
+            android:name=".board.view.activity.SearchBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".util.view.SplashActivity"
             android:exported="true">
             <intent-filter>

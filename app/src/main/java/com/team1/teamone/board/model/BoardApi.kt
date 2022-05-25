@@ -68,4 +68,11 @@ interface BoardApi {
     fun deleteBoardById(
         @Path("boardId") boardId: Long
     ): Call<BoolResponse>
+
+    // 게시물 검색
+    @GET("/boards/search/{searchWay}/{keyword}")
+    fun getSearching(
+        @Path("searchWay") searchWay : String,
+        @Path("keyword") keyword : String
+    ): Call<BoardListResponse>
 }

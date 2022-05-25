@@ -7,6 +7,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.team1.teamone.R
+import com.team1.teamone.databinding.ActivityHomeBinding
+import com.team1.teamone.databinding.FragmentHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -18,5 +20,6 @@ class HomeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         setupWithNavController(bottomNavigationView, navController)
+
     }
 }
