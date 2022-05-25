@@ -4,8 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
@@ -14,10 +18,15 @@ import com.team1.teamone.board.presenter.CommentAdapter
 import com.team1.teamone.bookmark.model.BookMarkApi
 import com.team1.teamone.bookmark.model.BookMarkListResponse
 import com.team1.teamone.bookmark.model.BookMarkResponse
+import com.team1.teamone.caution.presenter.CautionAdapter
 import com.team1.teamone.databinding.ActivityBoardDetailBinding
 import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.util.network.BoolResponse
 import com.team1.teamone.util.network.RetrofitClient
+import kotlinx.android.synthetic.main.activity_board_detail.*
+import kotlinx.android.synthetic.main.free_comment_list_item.*
+import kotlinx.android.synthetic.main.free_comment_list_item.view.*
+import org.w3c.dom.Comment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -98,6 +107,14 @@ class BoardDetailActivity : AppCompatActivity() {
             deleteBoard(boardId)
         }
 
+        //코멘트 입력 버튼
+        binding.btnCommentInputBtn.setOnClickListener {
+            val commentContent = edt_commentEdit.text.toString()
+            val request = CommentRequest(commentContent)
+            createComment(request,boardId)
+        }
+
+        //코멘트 수정 버튼
 
         // 북마크 (즐겨찾기 등록) 버튼
         binding.btnBoardDetailBookMark.setOnClickListener {
@@ -106,8 +123,9 @@ class BoardDetailActivity : AppCompatActivity() {
 
     }
 
+
     /**
-     *  북마크 관련 로직
+     *  북마크 관련 로직------------------------------------------------------------------------------------
      */
     // 처음 게시글 상세 페이지를 켤때, 북마크로 된 게시글인지 아닌지를 검사해서 보여주기
     private fun updateBookMarkStar(boardId: Long) {
@@ -199,12 +217,36 @@ class BoardDetailActivity : AppCompatActivity() {
 
         })
     }
+    /**
+     *  코멘트 관련 로직 ------------------------------------------------------------------------------------
+     */
+    // 코멘트 그리기
 
-    // 게시판 그리기
+    private fun createComment(request: CommentRequest,boardId: Long) {
+        boardApi.postComment(request,boardId).enqueue(object : Callback<BoardResponse> {
+            override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
+                Log.d("auth", RetrofitClient.getAuth())
+                if (response.body() == null) {
+                    Log.d("comment1번", "blank")
+                    return
+                } else {
+                    drawCommentList(boardId)
+                    Log.d("comment1번", "blank")
+                    Log.d("log", "success")
+                }
+            }
+            override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
+                // 실패
+                Log.d("log", "fail")
+            }
+        })
+    }
+
     private fun drawCommentList(boardId: Long) {
         boardApi.getAllComments(boardId).enqueue(object : Callback<CommentListResponse> {
             override fun onResponse(call: Call<CommentListResponse>, response: Response<CommentListResponse>) {
                 // 받아온 리스트 boardDataList 안에 넣기
+                commentDataList.clear()
                 response.body()?.comments?.let { it -> commentDataList.addAll(it) }
 
                 // 리사이클러뷰 - 어뎁터 연결
@@ -217,17 +259,55 @@ class BoardDetailActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+                commentAdapter.setItemClickListener(object : CommentAdapter.OnItemClickListener {
+                    override fun onClick(v: View, position: Int) {
+                        deleteComment(position, boardId)
+                    }
+                })
             }
+
 
             override fun onFailure(call: Call<CommentListResponse>, t: Throwable) {
                 // 실패
-                Log.d("유의 통신 실패", "유의 전체 조회 실패")
+                Log.d("코멘트 통신 실패", "코멘트 실패")
             }
         })
     }
 
+
+
+    private fun deleteComment(position: Int, boardId: Long) {
+        AlertDialog.Builder(this)
+            .setTitle("댓글 삭제")
+            .setMessage("해당 댓글을 삭제하시겠습니까?")
+            .setPositiveButton("예") { dialog, id ->
+                deleteRequestToServer(position, boardId)
+            }.setNegativeButton("아니오") { dialog, id ->
+
+            }
+            .show()
+        }
+
+    private fun deleteRequestToServer(position: Int, boardId: Long) {
+        commentDataList[position].commentId?.let {
+            boardApi.deleteCommentById(it).enqueue(object : Callback<BoolResponse> {
+                override fun onResponse(
+                    call: Call<BoolResponse>,
+                    response: Response<BoolResponse>
+                ) {
+                    drawCommentList(boardId)
+                }
+                override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
+                    // 실패
+                    Log.d("댓글 통신 실패", "댓글 하나 삭제 실패")
+                }
+            })
+        }
+    }
+
+
     /**
-     * 게시글 삭제 로직
+     * 게시글 삭제 로직------------------------------------------------------------------------------------
      */
     // 게시글 삭제 확인 다이얼로그
     private fun deleteBoard(boardId: Long) {

@@ -46,6 +46,12 @@ interface BoardApi {
         @Body appealBoardRequestForm : AppealBoardRequest
     ): Call<BoardResponse>
 
+    @POST("/boards/{boardId}/comments")
+    fun postComment(
+        @Body commentRequestForm: CommentRequest,
+        @Path("boardId") boardId: Long
+    ): Call<BoardResponse>
+
     @PUT("/boards/free/{boardId}")
     fun putFreeBoard(
         @Body freeBoardRequestForm : FreeBoardRequest,
@@ -64,8 +70,19 @@ interface BoardApi {
         @Path("boardId") boardId: Long
     ): Call<BoardResponse>
 
+    @PUT("/comments/{commentId}")
+    fun putComment(
+        @Body commentRequestForm: CommentRequest,
+        @Path("commentId") commentId: Long
+    ): Call<BoardResponse>
+
     @DELETE("/boards/{boardId}")
     fun deleteBoardById(
         @Path("boardId") boardId: Long
+    ): Call<BoolResponse>
+
+    @DELETE("/comments/{commentId}")
+    fun deleteCommentById(
+        @Path("commentId") commentId: Long
     ): Call<BoolResponse>
 }

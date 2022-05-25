@@ -44,10 +44,7 @@ class CautionActivity : AppCompatActivity() {
 
     private fun drawCautionList() {
         api.getAllCautions().enqueue(object : Callback<CautionListResponse> {
-            override fun onResponse(
-                call: Call<CautionListResponse>,
-                response: Response<CautionListResponse>
-            ) {
+            override fun onResponse(call: Call<CautionListResponse>, response: Response<CautionListResponse>) {
                 // 성공
                 cautionDataList.clear()
                 response.body()?.cautions?.let { it -> cautionDataList.addAll(it) }
