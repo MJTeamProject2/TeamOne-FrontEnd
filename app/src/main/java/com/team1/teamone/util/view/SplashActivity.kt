@@ -7,6 +7,7 @@ import android.os.Handler
 import com.team1.teamone.R
 import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.member.view.activity.LoginActivity
+import com.team1.teamone.member.view.activity.RegisterActivity
 import com.team1.teamone.util.network.RetrofitClient
 import java.net.CookieManager
 

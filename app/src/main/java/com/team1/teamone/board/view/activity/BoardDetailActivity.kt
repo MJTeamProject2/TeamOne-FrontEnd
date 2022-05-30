@@ -14,15 +14,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
 import com.team1.teamone.board.model.*
+import com.team1.teamone.board.presenter.ApprovalMemberRVAdapter
 import com.team1.teamone.board.presenter.CommentAdapter
+import com.team1.teamone.board.presenter.ParticipatingMemberRVAdapter
 import com.team1.teamone.bookmark.model.BookMarkApi
 import com.team1.teamone.bookmark.model.BookMarkListResponse
 import com.team1.teamone.bookmark.model.BookMarkResponse
 import com.team1.teamone.caution.presenter.CautionAdapter
 import com.team1.teamone.databinding.ActivityBoardDetailBinding
 import com.team1.teamone.home.view.HomeActivity
+import com.team1.teamone.message.presenter.MessageRoomListRVAdaper
 import com.team1.teamone.util.network.BoolResponse
+import com.team1.teamone.util.network.MemberResponse
 import com.team1.teamone.util.network.RetrofitClient
+import com.team1.teamone.util.view.PreferenceUtil
 import kotlinx.android.synthetic.main.activity_board_detail.*
 import kotlinx.android.synthetic.main.free_comment_list_item.*
 import kotlinx.android.synthetic.main.free_comment_list_item.view.*
@@ -36,12 +41,19 @@ class BoardDetailActivity : AppCompatActivity() {
     private val boardApi = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private val bookMarkApi = RetrofitClient.create(BookMarkApi::class.java, RetrofitClient.getAuth())
     private val commentDataList = mutableListOf<CommentResponse>()
+    private val participatingMemberList = mutableListOf<MemberBoardResponse>()
+    private val approvalMemberList = mutableListOf<MemberBoardResponse>()
+    private lateinit var approvalMemberRVAdapter: ApprovalMemberRVAdapter
     private lateinit var commentAdapter: CommentAdapter
     private lateinit var binding: ActivityBoardDetailBinding
+    private lateinit var participateAdapter : ParticipatingMemberRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_board_detail)
+
+        val userid = PreferenceUtil.prefs.getString("userid",  "")
+        Log.d("userid", userid)
 
         val boardType = intent.getStringExtra("detailBoardType")
         val title = intent.getStringExtra("detailTitle")
@@ -121,6 +133,16 @@ class BoardDetailActivity : AppCompatActivity() {
             toggleBookMark(boardId)
         }
 
+
+        Log.d("waitMemberList", boardId.toString())
+
+        participateMemberList(boardId)
+        waitMemberList(boardId)
+
+        // 참가하기
+        binding.btnJoinBoard.setOnClickListener {
+            joinMemberBoard(MemberBoardApprovalRequest(userid.toLong() , boardId))
+        }
     }
 
 
@@ -338,4 +360,94 @@ class BoardDetailActivity : AppCompatActivity() {
             }
         })
     }
+
+
+    /**
+     * 참여자 목록 조회 로직------------------------------------------------------------------------------------
+     */
+    private fun participateMemberList(boardId : Long) {
+        boardApi.getMemberBoardApproval(boardId).enqueue(object :
+            Callback<MemberBoardListResponse> {
+            override fun onResponse(
+                call: Call<MemberBoardListResponse>,
+                response: Response<MemberBoardListResponse>
+            ) {
+
+                Log.d("GET participateMemberList ALL", response.body().toString())
+
+                // 받아온 리스트 participatingMemberList 안에 넣기
+                Log.d("participateMemberList", participatingMemberList.toString())
+                participatingMemberList.clear()
+                response.body()?.memberBoardResponseList?.let { it -> participatingMemberList.addAll(it) }
+
+                // 참여자 목록
+                participateAdapter = ParticipatingMemberRVAdapter(participatingMemberList)
+                binding.rvParticipatingMember.adapter = participateAdapter
+                binding.rvParticipatingMember.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+
+
+            }
+
+            override fun onFailure(call: Call<MemberBoardListResponse>, t: Throwable) {
+                // 실패
+                Log.e("participateMemberList", "실패")
+            }
+
+        })
+    }
+
+    /**
+     * 신청한 사람 확인 로직------------------------------------------------------------------------------------
+     */
+    private fun waitMemberList(boardId: Long) {
+        boardApi.getMemberBoardWait(boardId).enqueue(object : Callback<MemberBoardListResponse> {
+            override fun onResponse(
+                call: Call<MemberBoardListResponse>,
+                response: Response<MemberBoardListResponse>
+            ) {
+
+                Log.d("GET waitMemberList ALL", response.body().toString())
+                // 받아온 리스트 approvalMemberList 안에 넣기
+                approvalMemberList.clear()
+                response.body()?.memberBoardResponseList?.let { it -> approvalMemberList.addAll(it) }
+
+
+                // 신청자 목록
+                approvalMemberRVAdapter = ApprovalMemberRVAdapter(approvalMemberList)
+                binding.rvApprovalMember.adapter = approvalMemberRVAdapter
+                binding.rvApprovalMember.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+            }
+
+            override fun onFailure(call: Call<MemberBoardListResponse>, t: Throwable) {
+                // 실패
+                Log.e("waitMemberList", "실패")
+            }
+
+        })
+    }
+
+    /**
+     * 신청하기 ------------------------------------------------------------------------------------
+     */
+    private fun joinMemberBoard(memberBoardApprovalRequest : MemberBoardApprovalRequest) {
+        boardApi.postMemberBoardCreate(memberBoardApprovalRequest).enqueue(object :
+            Callback<MemberBoardResponse> {
+            override fun onResponse(
+                call: Call<MemberBoardResponse>,
+                response: Response<MemberBoardResponse>
+            ) {
+                Log.d("GET joinMemberBoard ALL", response.body().toString())
+
+                memberBoardApprovalRequest.boardId?.let { waitMemberList(it) }
+            }
+
+            override fun onFailure(call: Call<MemberBoardResponse>, t: Throwable) {
+                // 실패
+                Log.e("joinMemberBoard", "실패")
+            }
+
+        })
+    }
+
 }
