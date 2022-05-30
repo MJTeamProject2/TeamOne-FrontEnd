@@ -26,40 +26,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_boardDetail_deleteBoard"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_baseline_delete_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.789"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_boardDetail_bookMark"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_boardDetail_bookMark"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_star_border_24"
                 android:textOff=""
                 android:textOn=""
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_baseline_star_border_24"
-                android:contentDescription="@string/app_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.384"
-                app:layout_constraintStart_toEndOf="@+id/btn_boardDetail_deleteBoard"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_boardDetail_updateBoard"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="208dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/app_name"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_boardDetail_deleteBoard"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_edit_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,80 +103,43 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tv_detailClassTitle"
                         app:layout_constraintTop_toTopOf="parent" />
-
                     <TextView
                         android:id="@+id/tv_updateDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="작성일 : 03/13"
+                        android:text="게시일"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-                <TextView
-                    android:id="@+id/detailTitle"
-                    android:text="게시글 제목 팀원 구해요"
-                    android:textSize="18dp"
-                    android:layout_marginStart="5dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/detailTitle"
+                        android:text="게시글 제목 팀원 구해요"
+                        android:textSize="18dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_detailViewCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="조회수"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_detailMemberCount"
-                    android:textSize="40dp"
-                    android:text="1"
-                    android:layout_marginStart="24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:textSize="40dp"
-                    android:text=" / "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/tv_detailCurrentMemberCount"
-                    android:textSize="40dp"
-                    android:text="4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-
-            <TextView
-                android:text="현재 인원"
-                android:layout_marginTop="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-
-            <TextView
-                android:id="@+id/tv_detailViewCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-        </LinearLayout>
-
         <TextView
             android:id="@+id/tv_detailContent"
             android:textSize="18dp"
@@ -189,6 +148,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
 
+
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -196,17 +158,20 @@
 
             <ImageView
                 android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tv_detailWriter"
+                android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="작성자 : 조기천" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_marginTop="7dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
                 android:text="       " />
@@ -214,17 +179,84 @@
 
             <ImageView
                 android:src="@drawable/ic_baseline_event_note_24"
+                android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/tv_detailDeadline"
+                android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="7dp"
+                    android:text="현재 인원 : "
+                    android:textColor="@color/design_default_color_error" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_detailMemberCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="1"
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text=" / "
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/tv_detailCurrentMemberCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="4"
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="17dp" />
+
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/ic_baseline_group_add_24" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/textviewstroke"
+            android:backgroundTint="#D3EEFF"
+            android:src="@drawable/ic_icon"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_margin="10dp"
@@ -233,14 +265,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="참여 중인 맴버"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:text="참여 중인 맴버"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_participatingMember"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -251,9 +285,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="신청한 맴버"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:text="신청한 맴버"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_approvalMember"
@@ -261,7 +297,18 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_commentList"
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+        </androidx.recyclerview.widget.RecyclerView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -284,18 +331,6 @@
                 android:layout_height="match_parent" />
 
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_commentList"
-            android:layout_width="match_parent"
-            android:layout_height="157dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -304,11 +339,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:id="@+id/btn_joinBoard"
-                android:text="참여하기"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
 
         </LinearLayout>
     </LinearLayout>
