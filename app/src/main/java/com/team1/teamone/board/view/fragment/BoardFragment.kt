@@ -1,5 +1,6 @@
 package com.team1.teamone.board.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team1.teamone.R
 import com.team1.teamone.board.presenter.PostFragmentStateAdapter
+import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
 import com.team1.teamone.databinding.FragmentBoardBinding
 
 
@@ -25,6 +27,9 @@ class BoardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board, container, false)
+
+
+
         return binding.root
     }
 

@@ -37,10 +37,10 @@ class WantedBoardAdapter(private val boardList: MutableList<BoardResponse>) : Re
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val classTitle: TextView = itemView.findViewById(R.id.tv_classTitle)
-        private val title: TextView = itemView.findViewById(R.id.tv_title)
-        private val memberCount: TextView = itemView.findViewById(R.id.tv_memberCount)
-        private val classDate: TextView = itemView.findViewById(R.id.tv_classDate)
+        private val classTitle: TextView = itemView.findViewById(R.id.tv_wanted_list_item_classTitle)
+        private val title: TextView = itemView.findViewById(R.id.tv_wanted_list_item_title)
+        private val memberCount: TextView = itemView.findViewById(R.id.tv_wanted_list_item_memberCount)
+        private val classDate: TextView = itemView.findViewById(R.id.tv_wanted_list_item_classDate)
 
         fun bindItems(item: BoardResponse){
             title.text = item.title
