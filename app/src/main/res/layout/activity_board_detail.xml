@@ -186,7 +186,7 @@
                     android:id="@+id/tv_currentPerson"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="120dp"
                     android:layout_marginTop="7dp"
                     android:text="현재 인원 : "
                     android:textColor="@color/design_default_color_error" />

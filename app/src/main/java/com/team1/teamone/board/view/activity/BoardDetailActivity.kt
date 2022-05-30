@@ -1,6 +1,7 @@
 package com.team1.teamone.board.view.activity
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -129,6 +130,23 @@ class BoardDetailActivity : AppCompatActivity() {
 
             if(memberCount <= currentMemberCount){
                 binding.btnJoinBoard.visibility = INVISIBLE
+                binding.tvCurrentPerson.setTextColor(Color.RED)
+                binding.tvDetailCurrentMemberCount.setTextColor(Color.RED)
+                binding.tvSlash.setTextColor(Color.RED)
+                binding.tvDetailMemberCount.setTextColor(Color.RED)
+            } else {
+                binding.tvCurrentPerson.setTextColor(Color.BLUE)
+                binding.tvDetailCurrentMemberCount.setTextColor(Color.BLUE)
+                binding.tvSlash.setTextColor(Color.BLUE)
+                binding.tvDetailMemberCount.setTextColor(Color.BLUE)
+            }
+
+            if(currentMemberCount == 1){
+                binding.tvParticipantPerson.visibility = INVISIBLE
+            }
+
+            if(approvalMemberList.count() == 1) {
+                binding.tvApplyPerson.visibility = INVISIBLE
             }
 
             binding.tvDetailMemberCount.text = memberCount.toString()

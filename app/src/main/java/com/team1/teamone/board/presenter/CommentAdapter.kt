@@ -1,5 +1,6 @@
 package com.team1.teamone.board.presenter
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
@@ -61,6 +63,8 @@ class CommentAdapter(private val commentList: MutableList<CommentResponse>) : Re
             Log.e("idid","${item.writer?.memberId}")
             if(userid.toLong() != item.writer?.memberId){
                 btnCommentOption.visibility = INVISIBLE
+            } else {
+                writer.setTextColor(Color.BLUE)
             }
         }
     }
