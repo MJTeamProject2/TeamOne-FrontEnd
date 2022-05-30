@@ -58,7 +58,7 @@ class BoardDetailActivity : AppCompatActivity() {
         val boardType = intent.getStringExtra("detailBoardType")
         val title = intent.getStringExtra("detailTitle")
         val content = intent.getStringExtra("detailContent")
-       // val viewCount = intent.getIntExtra("detailViewCount")?.toInt()
+        val viewCount = intent.getIntExtra("detailViewCount", 1)
         val writer = intent.getStringExtra("detailWriter")
         val updateDate = intent.getStringExtra("detailUpdateDate")
         val boardId = intent.getLongExtra("detailBoardId",0)
@@ -67,7 +67,7 @@ class BoardDetailActivity : AppCompatActivity() {
 
         binding.detailTitle.text = title
         binding.tvDetailContent.text = content
-        //.tvDetailViewCount.text = viewCount.toString()
+        binding.tvDetailViewCount.text = "조회수:" + viewCount.toString()
         binding.tvUpdateDate.text = updateDate
         binding.tvDetailWriter.text = writer
         Log.e("boardType",boardType.toString())
@@ -141,6 +141,7 @@ class BoardDetailActivity : AppCompatActivity() {
 
         // 참가하기
         binding.btnJoinBoard.setOnClickListener {
+
             joinMemberBoard(MemberBoardApprovalRequest(userid.toLong() , boardId))
         }
     }
@@ -384,15 +385,11 @@ class BoardDetailActivity : AppCompatActivity() {
                 participateAdapter = ParticipatingMemberRVAdapter(participatingMemberList)
                 binding.rvParticipatingMember.adapter = participateAdapter
                 binding.rvParticipatingMember.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
-
-
             }
-
             override fun onFailure(call: Call<MemberBoardListResponse>, t: Throwable) {
                 // 실패
                 Log.e("participateMemberList", "실패")
             }
-
         })
     }
 
@@ -431,23 +428,33 @@ class BoardDetailActivity : AppCompatActivity() {
      * 신청하기 ------------------------------------------------------------------------------------
      */
     private fun joinMemberBoard(memberBoardApprovalRequest : MemberBoardApprovalRequest) {
-        boardApi.postMemberBoardCreate(memberBoardApprovalRequest).enqueue(object :
-            Callback<MemberBoardResponse> {
-            override fun onResponse(
-                call: Call<MemberBoardResponse>,
-                response: Response<MemberBoardResponse>
-            ) {
-                Log.d("GET joinMemberBoard ALL", response.body().toString())
+        AlertDialog.Builder(this)
+            .setTitle("참여하기")
+            .setMessage("현재 게시물의 팀원으로 참여를 신청하시겠습니까?")
+            .setPositiveButton("예") { dialog, id ->
+                boardApi.postMemberBoardCreate(memberBoardApprovalRequest).enqueue(object :
+                    Callback<MemberBoardResponse> {
+                    override fun onResponse(
+                        call: Call<MemberBoardResponse>,
+                        response: Response<MemberBoardResponse>
+                    ) {
+                        Log.d("GET joinMemberBoard ALL", response.body().toString())
 
-                memberBoardApprovalRequest.boardId?.let { waitMemberList(it) }
+                        memberBoardApprovalRequest.boardId?.let { waitMemberList(it) }
+                    }
+
+                    override fun onFailure(call: Call<MemberBoardResponse>, t: Throwable) {
+                        // 실패
+                        Log.e("joinMemberBoard", "실패")
+                    }
+
+                })
             }
+            .setNegativeButton("아니오") { dialog, id ->
 
-            override fun onFailure(call: Call<MemberBoardResponse>, t: Throwable) {
-                // 실패
-                Log.e("joinMemberBoard", "실패")
             }
+            .show()
 
-        })
     }
 
 }
