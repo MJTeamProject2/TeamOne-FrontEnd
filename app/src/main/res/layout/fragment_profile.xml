@@ -8,6 +8,7 @@
         tools:context=".profile.view.ProfileFragment">
 
         <ScrollView
+            android:background="#F8F7F2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,7 +39,7 @@
                             android:layout_height="100dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_baseline_account_circle_24"
+                            android:src="@drawable/user"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
                             android:layout_width="30dp"
                             android:layout_height="27dp"
                             android:layout_marginEnd="55dp"
-                            android:src="@drawable/ic_baseline_edit_24"
+                            android:src="@drawable/editpen"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -70,6 +71,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd6"
                             android:text="이름"
+                            android:textColor="@color/main_color1"
                             android:textSize="23sp" />
 
                         <TextView
@@ -77,6 +79,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd6"
                             android:text="님 환영합니다!"
+                            android:textColor="@color/black"
                             android:textSize="23sp" />
                     </LinearLayout>
 
@@ -84,78 +87,14 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_weight="1"
-                            android:src="@drawable/ranking"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"/>
-
-                        <LinearLayout
-                            android:layout_weight="4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_marginTop="4dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/sd7"
-                                android:text="티어"
-                                android:textSize="22sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginTop="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/sd5"
-                                    android:text="브론즈"
-                                    android:layout_marginEnd="50dp"
-                                    android:textSize="24sp" />
-
-                                <TextView
-                                    android:id="@+id/tvProfilePoint"
-                                    android:layout_marginTop="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/sd5"
-                                    android:text="300"
-                                    android:textSize="24sp" />
-                                <TextView
-                                    android:layout_marginTop="4dp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/sd5"
-                                    android:text="PT"
-                                    android:textSize="24sp" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
 
 
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -168,7 +107,7 @@
 
                         <ImageView
                             android:id="@+id/btn_bookMark"
-                            android:src="@drawable/ic_baseline_bookmarks_24"
+                            android:src="@drawable/favorite"
                             android:layout_width="55dp"
                             android:layout_height="70dp"/>
 
@@ -177,6 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
+                            android:textColor="@color/black"
                             android:text="즐겨찾기"
                             android:textSize="20sp" />
 
@@ -190,7 +130,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_assignment_24"
+                            android:src="@drawable/board"
                             android:id="@+id/btn_writtenBoard"
                             android:layout_width="55dp"
                             android:layout_height="70dp"/>
@@ -200,6 +140,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
+                            android:textColor="@color/black"
                             android:text="내가 쓴 글"
                             android:textSize="20sp" />
 
@@ -214,7 +155,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_rate_review_24"
+                            android:src="@drawable/reviews"
                             android:layout_width="55dp"
                             android:layout_height="70dp"/>
 
@@ -223,6 +164,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
+                            android:textColor="@color/black"
                             android:text="리뷰"
                             android:textSize="20sp" />
 
@@ -238,7 +180,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_report_24"
+                            android:src="@drawable/block"
                             android:layout_width="55dp"
                             android:layout_height="70dp"
                             android:id="@+id/btn_cautionList"/>
@@ -249,20 +191,28 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
                             android:text="차단 관리"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                     </LinearLayout>
                 </LinearLayout>
 
-
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"/>
 
                 <LinearLayout
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -271,7 +221,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_email_24"
+                            android:src="@drawable/gmail"
                             android:layout_width="35dp"
                             android:layout_height="35dp"/>
 
@@ -283,6 +233,7 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginLeft="10dp"
                             android:text="이메일 정보입니다."
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
 
                     </LinearLayout>
@@ -295,7 +246,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_account_circle_24"
+                            android:src="@drawable/user"
                             android:layout_width="35dp"
                             android:layout_height="35dp"/>
 
@@ -307,6 +258,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
                             android:text="닉네임"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -317,7 +269,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_school_24"
+                            android:src="@drawable/graduation_hat"
                             android:layout_width="35dp"
                             android:layout_height="35dp"/>
 
@@ -329,6 +281,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
                             android:text="학번"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
 
@@ -340,7 +293,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/ic_baseline_thumb_up_24"
+                            android:src="@drawable/department"
                             android:layout_width="35dp"
                             android:layout_height="35dp"/>
 
@@ -352,9 +305,97 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sd5"
                             android:text="학과"
+                            android:textColor="@color/black"
                             android:textSize="20sp" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <ImageView
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"/>
+
+                <LinearLayout
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="20dp"
+                        android:padding="5dp"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_weight="1"
+                            android:src="@drawable/ranking"
+                            android:padding="5dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <LinearLayout
+                            android:layout_weight="4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginTop="4dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/sd7"
+                                android:text="티어"
+                                android:textColor="@color/black"
+                                android:textSize="22sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sd5"
+                                    android:text="브론즈"
+                                    android:textColor="@color/black"
+                                    android:layout_marginEnd="50dp"
+                                    android:textSize="24sp" />
+
+                                <TextView
+                                    android:id="@+id/tvProfilePoint"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sd5"
+                                    android:text="300"
+                                    android:textColor="@color/black"
+                                    android:textSize="24sp" />
+                                <TextView
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/sd5"
+                                    android:text="PT"
+                                    android:textColor="@color/black"
+                                    android:textSize="24sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
 
 
 
