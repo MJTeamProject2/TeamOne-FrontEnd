@@ -27,9 +27,9 @@
                         android:id="@+id/toolbar_homeFragment"
                         android:layout_width="match_parent"
                         android:layout_height="95dp"
+                        android:background="@color/purple_500"
                         android:fitsSystemWindows="true"
                         android:text="test"
-                        android:background="@color/purple_700"
                         app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,11 +38,11 @@
 
                             <TextView
                                 android:id="@+id/tv_toolbar"
-                                android:textColor="@color/white"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="내가 쓴 게시글"
                                 android:fontFamily="@font/sd7"
+                                android:text="내가 쓴 게시글"
+                                android:textColor="@color/white"
                                 android:textSize="30dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,12 +55,12 @@
                     </com.google.android.material.appbar.MaterialToolbar>
 
                     <com.google.android.material.tabs.TabLayout
+                        android:background="@drawable/round_top"
                         android:id="@+id/tabLayout_homeFragment"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:tabIndicatorFullWidth="true"
                         app:tabGravity="center"
-                        android:background="@color/purple_500"
                         app:tabMode="scrollable"
                         app:tabIconTint="@color/white"
                         app:tabIndicatorColor="@color/black"

@@ -39,7 +39,7 @@ class BookMarkActivity : AppCompatActivity() {
         drawBookMarkList()
 
         // 북마크 전체 삭제
-        binding.btnRemoveAll.setOnClickListener{
+        binding.btnBookmarkRemoveAll.setOnClickListener{
             deleteAllBookMarks() // 전체삭제 확인하는 다이얼로그 출력
         }
     }
