@@ -60,6 +60,7 @@ class CreateWantedBoardActivity : AppCompatActivity() {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body()?.title.toString() == null) {
+                    Toast.makeText(this@CreateWantedBoardActivity, "팀원구해요 게시물 작성 완료", Toast.LENGTH_SHORT).show()
                     Log.d("log", "blank")
                     return
                 } else {

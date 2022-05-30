@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.model.AppealBoardRequest
@@ -44,6 +45,7 @@ class CreateAppealBoardActivity : AppCompatActivity() {
             override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body()?.title.toString() == null) {
+                    Toast.makeText(this@CreateAppealBoardActivity, "어필해요 게시물 작성 완료", Toast.LENGTH_SHORT).show()
                     Log.d("log", "blank")
                     return
                 } else {

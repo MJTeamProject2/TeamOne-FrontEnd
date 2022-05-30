@@ -87,7 +87,7 @@
                     android:scrollbars="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
+                    android:lines="14"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_writeAppealBoard"
