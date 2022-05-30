@@ -20,6 +20,7 @@ data class BoardResponse(
     var classDate: String? = null,
     //모집 추가 속성
     var memberCount: Int? = 0,
+    val currentMemberCount: Int? =0,
     var deadLine: String? = null
 )
 
@@ -63,4 +64,21 @@ data class WantedBoardRequest(
 
 data class CommentRequest(
     var content: String = ""
+)
+
+data class MemberBoardResponse(
+    val memberBoardId: Long? = null,
+    val createdDate: String? = null,
+    val memberId: Long? = null,
+    val nickname: String? = null,
+    val admission: String? = null
+)
+
+data class MemberBoardListResponse(
+    val memberBoardResponseList: List<MemberBoardResponse>
+)
+
+data class MemberBoardApprovalRequest(
+    val memberId: Long? = null,
+    val boardId: Long? = null
 )
