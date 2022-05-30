@@ -78,6 +78,7 @@ class AppealBoardListFragment : Fragment() {
                         intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
                         intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
                         intent.putExtra("detailClassDate", boardDataList[position].classDate)
+
                         startActivity(intent)
                     }
                 })

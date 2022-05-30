@@ -83,6 +83,28 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/detailTitle"
+                        android:text="게시글 제목 팀원 구해요"
+                        android:textSize="18dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"/>
+                    <TextView
+                        android:id="@+id/tv_updateDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="게시일"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
                         android:id="@+id/tv_detailClassTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -103,28 +125,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tv_detailClassTitle"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <TextView
-                        android:id="@+id/tv_updateDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="게시일"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/detailTitle"
-                        android:text="게시글 제목 팀원 구해요"
-                        android:textSize="18dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"/>
 
                     <TextView
                         android:id="@+id/tv_detailViewCount"
@@ -177,26 +178,15 @@
                 android:text="       " />
 
 
-            <ImageView
-                android:src="@drawable/ic_baseline_event_note_24"
-                android:layout_marginTop="7dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/tv_detailDeadline"
-                android:layout_marginTop="7dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_currentPerson"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="80dp"
                     android:layout_marginTop="7dp"
                     android:text="현재 인원 : "
                     android:textColor="@color/design_default_color_error" />
@@ -206,7 +196,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tv_detailMemberCount"
+                        android:id="@+id/tv_detailCurrentMemberCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
@@ -216,6 +206,7 @@
                         android:textSize="17dp" />
 
                     <TextView
+                        android:id="@+id/tv_slash"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -224,7 +215,7 @@
                         android:textSize="17dp" />
 
                     <TextView
-                        android:id="@+id/tv_detailCurrentMemberCount"
+                        android:id="@+id/tv_detailMemberCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -237,6 +228,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/btn_join_board"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"
@@ -265,6 +257,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_participantPerson"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="참여 중인 맴버"
@@ -285,6 +278,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_applyPerson"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="신청한 맴버"
@@ -294,13 +288,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_approvalMember"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_commentList"
             android:layout_width="match_parent"
-            android:layout_height="157dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
