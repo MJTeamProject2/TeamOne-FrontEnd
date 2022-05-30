@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
@@ -32,8 +33,30 @@ class SearchBoardActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_board)
 
         val keyword : String = intent.getStringExtra("keyword") ?: "키워드"
-        val searchWay : String = intent.getStringExtra("searchWay") ?: "제목"
-        binding.tvSearchTop.text = searchWay + "에 " + "[" + keyword + "]" + "\n을(를) 포함하는 게시물"
+
+        val searchWay = intent.getStringExtra("searchWay") ?: "제목"
+
+        val tempSearchWay = when(searchWay) {
+            "TITLE" -> "제목으로 검색"
+            "CONTENT" -> "내용으로 검색"
+            "TITLE_CONTENT" -> "제목+내용으로 검색"
+            else -> "수업이름으로 검색"
+        }
+        binding.tvSearchResult.text = tempSearchWay + "한 " + keyword
+
+//        binding.tvSearchResult.text = ""
+        binding.btnBoardSearch2.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.tvSearchResult.text = ""
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // 타이핑 중
+                binding.tvSearchResult.text = ""
+                return true
+            }
+        })
 
         drawSearchBoardList(searchWay , keyword)
 

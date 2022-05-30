@@ -10,20 +10,30 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/main_first_box">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/btn_boardSearch2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/search_box"
+                android:backgroundTint="@color/material_on_primary_emphasis_medium"
+                app:closeIcon="@drawable/ic_baseline_close_24_black"
+                app:layout_constraintBottom_toTopOf="@+id/rv_searchBoardList"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.533"
+                android:layout_marginHorizontal="20dp"
+                app:searchIcon="@drawable/ic_baseline_search_24"
+                tools:layout_editor_absoluteX="0dp"/>
 
             <TextView
-                android:id="@+id/tv_searchTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:text="방식, [키워드]로 검색한 게시물"
-                android:textSize="24dp"
-                app:layout_constraintBottom_toTopOf="@+id/rv_searchBoardList"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/tv_searchResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="50dp"
+                android:text="검색결과" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_searchBoardList"

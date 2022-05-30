@@ -35,7 +35,7 @@ class FreeBoardListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_free_board_list, container, false)
-        binding.btnTest.setOnClickListener{
+        binding.btnFreeBoardWrite.setOnClickListener{
             val intent = Intent(activity, CreateFreeBoardActivity::class.java)
             startActivity(intent)
         }

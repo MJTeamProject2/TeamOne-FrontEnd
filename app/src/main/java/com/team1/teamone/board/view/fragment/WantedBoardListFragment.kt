@@ -35,7 +35,7 @@ class WantedBoardListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wanted_board_list, container, false)
-        binding.btnTest.setOnClickListener{
+        binding.btnWantedBoardWrite.setOnClickListener{
             val intent = Intent(activity, CreateFreeBoardActivity::class.java)
             startActivity(intent)
         }

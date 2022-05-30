@@ -35,7 +35,7 @@ class AppealBoardListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_appeal_board_list, container, false)
-        binding.btnTest.setOnClickListener{
+        binding.btnAppealBoardWrite.setOnClickListener{
             val intent = Intent(activity, CreateAppealBoardActivity::class.java)
             startActivity(intent)
         }
