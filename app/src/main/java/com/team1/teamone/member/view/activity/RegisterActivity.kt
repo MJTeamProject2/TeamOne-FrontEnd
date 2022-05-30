@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.util.view.MainActivity
 import com.team1.teamone.databinding.ActivityRegisterBinding
+import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.member.model.MemberApi
 import com.team1.teamone.util.network.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -22,20 +23,20 @@ class RegisterActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(MemberApi::class.java)
     private lateinit var register: ActivityRegisterBinding
     private var TAG: String = "Register"
+    var isExistBlank = false
+    var isPWSame = false
+    var isNickCount = false
+    var isIdCount = false
+    var isPassCount = false
+    var isCheckUserId = false
+    var isCheckNickName = false
+    var isCheckToken = false
+    var emailCheck = ""
+    var tokenCheck = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        var isExistBlank = false
-        var isPWSame = false
-        var isNickCount = false
-        var isIdCount = false
-        var isPassCount = false
-        var isCheckUserId = false
-        var isCheckNickName = false
-        var isCheckToken = false
-        var emailCheck = ""
-        var tokenCheck = ""
 
         register = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
@@ -44,7 +45,9 @@ class RegisterActivity : AppCompatActivity() {
             val id = rt_id.text.toString()
             Log.d("btnCheckID", id)
             if (id.isNotEmpty()) {
-                idDuplicateCheck(id, isCheckUserId)
+                val idDuplicateCheck = idDuplicateCheck(id, isCheckUserId)
+                isCheckUserId = idDuplicateCheck
+                Log.d("bbbbbbb", isCheckUserId.toString())
             } else {
                 dialog("error blank")
             }
@@ -55,7 +58,8 @@ class RegisterActivity : AppCompatActivity() {
             val name = rt_nickname.text.toString()
             Log.d("btnCheckNickname", name)
             if (name.isNotEmpty()) {
-                nickNameDuplicateCheck(name, isCheckNickName)
+                val nickNameDuplicateCheck = nickNameDuplicateCheck(name, isCheckNickName)
+                isCheckNickName = nickNameDuplicateCheck
             } else {
                 dialog("error blank")
             }
@@ -82,7 +86,10 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("btnCheckKeyNum", keyCheck)
             register.btnCheckKeyNum.isEnabled = false
             if (keyCheck.isNotEmpty()) {
-                authTokenCheck(email, keyCheck, emailCheck, tokenCheck, isCheckToken)
+                val authTokenCheck =
+                    authTokenCheck(email, keyCheck, emailCheck, tokenCheck, isCheckToken)
+
+                isCheckToken = authTokenCheck
             } else {
                 register.btnCheckKeyNum.isEnabled = true
                 dialog("error blank")
@@ -199,10 +206,11 @@ class RegisterActivity : AppCompatActivity() {
             ) {
                 Log.d("log", response.toString())
                 Log.d("log", response.body().toString())
+                Log.d("log response memberId create..", response.body()?.memberId.toString())
 
                 if (response.body() != null) {
                     // 로그인 화면으로 이동
-                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    val intent = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
@@ -230,9 +238,9 @@ class RegisterActivity : AppCompatActivity() {
         keyCheck: String,
         emailCheck: String,
         tokenCheck: String,
-        isCheckToken: Boolean
-    ) {
-        var isCheckToken1 = isCheckToken
+        isCheckToken2: Boolean
+    ): Boolean {
+        var isCheckToken1 = isCheckToken2
         api.getAuthTokenCheck(email, keyCheck).enqueue(object : Callback<AuthMailResponse> {
             override fun onResponse(
                 call: Call<AuthMailResponse>,
@@ -243,12 +251,12 @@ class RegisterActivity : AppCompatActivity() {
                 val userEmail = response.body()?.userEmail
                 Log.d("btnCheckKeyNum authToken", authToken.toString())
 
-                val emailChecking = emailCheck == userEmail
-                val tokenChecking = tokenCheck == authToken
+                val emailChecking : Boolean = email == userEmail
+                val tokenChecking = (keyCheck == authToken)
 
-                Log.d("emailCheck", emailCheck)
+                Log.d("emailCheck", emailChecking.toString())
                 Log.d("userEmail", userEmail.toString())
-                Log.d("tokenCheck", tokenCheck)
+                Log.d("tokenCheck", tokenChecking.toString())
                 Log.d("authToken", authToken.toString())
 
                 isCheckToken1 = emailChecking && tokenChecking
@@ -269,6 +277,7 @@ class RegisterActivity : AppCompatActivity() {
 
                         register.btnSendKeyNum.isEnabled = false
                         register.btnCheckKeyNum.isEnabled = false
+                        isCheckToken = true
                     }
                 } else {
                     register.btnCheckKeyNum.isEnabled = true
@@ -285,6 +294,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         })
+        return isCheckToken1
     }
 
     private fun sendAuthMail(
@@ -320,8 +330,8 @@ class RegisterActivity : AppCompatActivity() {
         })
     }
 
-    private fun nickNameDuplicateCheck(name: String, isCheckNickName: Boolean) {
-        var isCheckNickName1 = isCheckNickName
+    private fun nickNameDuplicateCheck(name: String, isCheckNickName1: Boolean): Boolean {
+        var isCheckNickName2 = isCheckNickName1
         api.getNickNameCheck(name).enqueue(object : Callback<BoolResponse> {
             override fun onResponse(
                 call: Call<BoolResponse>,
@@ -329,16 +339,18 @@ class RegisterActivity : AppCompatActivity() {
             ) {
                 Log.d("btnCheckNickname", "success")
                 val body = response.body()?.result
-                isCheckNickName1 = !body!!
+                isCheckNickName2 = !body!!
                 Log.d("btnCheckNickname", isCheckNickName1.toString())
 
-                if (isCheckNickName1) {
+                if (isCheckNickName2) {
 
                     // editText 비활성화
                     register.rtNickname.setTextIsSelectable(false)
                     register.rtNickname.isFocusable = false
 
                     register.btnCheckNickname.isEnabled = false
+                    isCheckNickName = true
+
                 } else {
                     dialog("error check nickname")
                 }
@@ -350,10 +362,12 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("btnCheckNickname", "fail")
             }
         })
+        return isCheckNickName1
     }
 
-    private fun idDuplicateCheck(id: String, isCheckUserId: Boolean) {
-        var isCheckUserId1 = isCheckUserId
+    private fun idDuplicateCheck(id: String, isCheckUserId123: Boolean): Boolean {
+        var isCheckUserId1 = isCheckUserId123
+        var isCheckUserId22 = false
         api.getUserIdCheck(id).enqueue(object : Callback<BoolResponse> {
             override fun onResponse(
                 call: Call<BoolResponse>,
@@ -370,10 +384,11 @@ class RegisterActivity : AppCompatActivity() {
                     register.rtId.isFocusable = false
 
                     register.btnCheckID.isEnabled = false
+                    isCheckUserId = true
+
                 } else {
                     dialog("error check userid")
                 }
-
             }
 
             override fun onFailure(call: Call<BoolResponse>, t: Throwable) {
@@ -383,6 +398,9 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         })
+
+        Log.d("aaaaaa", isCheckUserId22.toString())
+        return isCheckUserId22
     }
 
     // 회원가입 실패시 다이얼로그를 띄워주는 메소드
