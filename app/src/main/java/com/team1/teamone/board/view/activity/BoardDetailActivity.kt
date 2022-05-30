@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.View.INVISIBLE
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -62,7 +63,7 @@ class BoardDetailActivity : AppCompatActivity() {
         val writer = intent.getStringExtra("detailWriter")
         val updateDate = intent.getStringExtra("detailUpdateDate")
         val boardId = intent.getLongExtra("detailBoardId",0)
-
+        val writerUserId = intent.getLongExtra("detailUserId", 0)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
 
         binding.detailTitle.text = title
@@ -73,50 +74,94 @@ class BoardDetailActivity : AppCompatActivity() {
         Log.e("boardType",boardType.toString())
         // 게시글 수정
         if(boardType.toString() == "FREE") {
-            binding.btnBoardDetailUpdateBoard.setOnClickListener {
-                val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
-                intent.putExtra("updateBoardId", boardId)
-                startActivity(intent)
+            binding.tvDetailClassDate.text = null
+            binding.tvDetailClassTitle.text = null
+            binding.tvCurrentPerson.text = null
+            binding.tvDetailMemberCount.text = null
+            binding.tvDetailCurrentMemberCount.text = null
+            binding.tvSlash.text = null
+            binding.btnJoinBoard.visibility = INVISIBLE
+            binding.tvApplyPerson.text = null
+            binding.tvParticipantPerson.text = null
+
+            if(userid == writerUserId.toString()) {
+                binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                    val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
+                    intent.putExtra("updateBoardId", boardId)
+                    startActivity(intent)
+                }
+            } else {
+                binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
             }
         }
 
         if(boardType.toString() == "APPEAL") {
+            binding.tvCurrentPerson.text = null
+            binding.tvDetailMemberCount.text = null
+            binding.tvDetailCurrentMemberCount.text = null
+            binding.tvSlash.text = null
+            binding.btnJoinBoard.visibility = INVISIBLE
+            binding.tvApplyPerson.text = null
+            binding.tvParticipantPerson.text = null
+
             val classTitle = intent.getStringExtra("detailClassTitle")
             val classDate = intent.getStringExtra("detailClassDate")
             binding.tvDetailClassTitle.text = classTitle
             binding.tvDetailClassDate.text = classDate
 
             // 게시글 수정
-            binding.btnBoardDetailUpdateBoard.setOnClickListener {
-                val intent = Intent(applicationContext, UpdateAppealBoardActivity::class.java)
-                intent.putExtra("updateBoardId",boardId)
-                startActivity(intent)
+            if(userid == writerUserId.toString()) {
+                binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                    val intent = Intent(applicationContext, UpdateAppealBoardActivity::class.java)
+                    intent.putExtra("updateBoardId", boardId)
+                    startActivity(intent)
+                }
+            } else {
+                binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
             }
         }
 
         if(boardType.toString() == "WANTED") {
             val classTitle = intent.getStringExtra("detailClassTitle")
             val classDate = intent.getStringExtra("detailClassDate")
-            val memberCount = intent.getStringExtra("detailMemberCount")
-            val deadLine = intent.getStringExtra("detailDeadline")
-            binding.tvDetailMemberCount.text = memberCount
-            binding.tvDetailDeadline.text = deadLine
+            val memberCount = intent.getIntExtra("detailMemberCount", 0)
+            val currentMemberCount = intent.getIntExtra("detailCurrentMemberCount", 0)
+
+            if(memberCount <= currentMemberCount){
+                binding.btnJoinBoard.visibility = INVISIBLE
+            }
+
+            binding.tvDetailMemberCount.text = memberCount.toString()
             binding.tvDetailClassDate.text = classDate
             binding.tvDetailClassTitle.text = classTitle
+            binding.tvDetailCurrentMemberCount.text = currentMemberCount.toString()
+
             // 게시글 수정
-            binding.btnBoardDetailUpdateBoard.setOnClickListener {
-                val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
-                intent.putExtra("updateBoardId",boardId)
-                startActivity(intent)
+            if(userid == writerUserId.toString()) {
+                binding.btnBoardDetailUpdateBoard.setOnClickListener {
+                    val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
+                    intent.putExtra("updateBoardId", boardId)
+                    startActivity(intent)
+                }
+            } else {
+                binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
             }
+
         }
 
         drawCommentList(boardId)
         updateBookMarkStar(boardId)
 
-        // 게시글 삭제 버튼
-        binding.btnBoardDetailDeleteBoard.setOnClickListener{
-            deleteBoard(boardId)
+        Log.e("hihi","${userid}")
+        Log.e("hihi","${writerUserId}")
+
+        if(userid == writerUserId.toString()) {
+            // 게시글 삭제 버튼
+            binding.btnBoardDetailDeleteBoard.setOnClickListener {
+                deleteBoard(boardId)
+            }
+        } else {
+            binding.btnBoardDetailDeleteBoard.visibility = INVISIBLE
         }
 
         //코멘트 입력 버튼

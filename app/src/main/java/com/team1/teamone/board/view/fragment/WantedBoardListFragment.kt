@@ -79,6 +79,9 @@ class WantedBoardListFragment : Fragment() {
                         intent.putExtra("detailClassDate", boardDataList[position].classDate)
                         intent.putExtra("detailMemberCount", boardDataList[position].memberCount)
                         intent.putExtra("detailDeadline", boardDataList[position].deadLine)
+                        intent.putExtra("detailCurrentMemberCount", boardDataList[position].currentMemberCount)
+                        intent.putExtra("detailUserId", boardDataList[position].writer?.memberId)
+
                         startActivity(intent)
                     }
                 })
