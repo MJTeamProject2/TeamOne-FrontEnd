@@ -30,19 +30,36 @@ class MessageActivity : AppCompatActivity() {
     private var roomId : String? = null
     private var senderId : String? = null
     private var receiverId : String? = null
+    private var test : Int? = null
+
+    override fun onStart() {
+        super.onStart()
+        test = 1
+    }
+
+    override fun onPause() {
+        super.onPause()
+        test = 0
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        test = 0
+    }
 
     override fun onResume() {
         super.onResume()
         // 매 10초마다 실행
         // 문제점 : 실행될 때마다 새로 그려짐
         thread(start=true) {
-            while (true){
-                Thread.sleep(10000)
+            while (test == 1){
+                Thread.sleep(1000)
                 runOnUiThread {
-                    getMessageList(roomId!!.toLong())
+                    getMessageCheck(roomId!!.toLong())
                 }
             }
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,15 +73,18 @@ class MessageActivity : AppCompatActivity() {
         senderId = intent.getStringExtra("senderId")
         receiverId = intent.getStringExtra("receiverId")
 
-        Log.d("roomId", roomId.toString())
-        Log.d("senderUserId", senderId.toString())
-        Log.d("receiverUserId", receiverId.toString())
+        Log.e("roomId", roomId.toString())
+        Log.e("senderUserId", senderId.toString())
+        Log.e("receiverUserId", receiverId.toString())
 
         var InReceiverId: String
         var InSenderId: String
 
 
         // 누가 전송자인지 구분
+        Log.d("message Sender ", senderId.toString())
+        Log.d("message userid ", userid)
+
         if (senderId == userid) {
             InSenderId = userid.toString()
             InReceiverId = receiverId.toString()
@@ -72,8 +92,8 @@ class MessageActivity : AppCompatActivity() {
             Log.d("InSenderUserId", InSenderId)
             Log.d("InReceiverUserId", InReceiverId)
         } else {
-            InReceiverId = userid.toString()
-            InSenderId = senderId.toString()
+            InReceiverId = senderId.toString()
+            InSenderId = userid.toString()
             Log.d("InSenderUserId", InSenderId)
             Log.d("InReceiverUserId", InReceiverId)
         }
@@ -97,11 +117,33 @@ class MessageActivity : AppCompatActivity() {
                 }
             },100)
         }
+        getMessageList(roomId!!.toLong())
 
         val backBtn = findViewById<ImageView>(R.id.iv_messageBack)
         backBtn.setOnClickListener {
             finish()
         }
+    }
+
+    private fun getMessageCheck(messageRoomId: Long) {
+        apiMessage.getMessageList(messageRoomId).enqueue(object : Callback<MessageListResponse>{
+            override fun onResponse(
+                call: Call<MessageListResponse>,
+                response: Response<MessageListResponse>
+            ) {
+                val messageList2 = mutableListOf<MessageResponse>()
+                response.body()?.messageList?.let { it -> messageList2.addAll(it) }
+
+                if (messageList.size != messageList2.size) {
+                    getMessageList(messageRoomId)
+                }
+            }
+
+            override fun onFailure(call: Call<MessageListResponse>, t: Throwable) {
+
+            }
+
+        })
     }
 
     private fun getMessageList(messageRoomId : Long) {
@@ -122,6 +164,10 @@ class MessageActivity : AppCompatActivity() {
                 messageRV.adapter = messageListRVAdaper
                 messageRV.layoutManager =
                     LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+                //메시지를 보낼 시 화면을 맨 밑으로 내림
+                val messageRv = findViewById<RecyclerView>(R.id.rv_RecyclerViewMessage)
+                messageRv?.scrollToPosition(messageList.size - 1)
 
             }
 
@@ -147,6 +193,7 @@ class MessageActivity : AppCompatActivity() {
                 // editText 내용 삭제
                 val editMessage = findViewById<EditText>(R.id.edt_messageEdit)
                 editMessage.setText("")
+                messageListRVAdaper.notifyDataSetChanged()
 
                 //메시지를 보낼 시 화면을 맨 밑으로 내림
                 val messageRv = findViewById<RecyclerView>(R.id.rv_RecyclerViewMessage)

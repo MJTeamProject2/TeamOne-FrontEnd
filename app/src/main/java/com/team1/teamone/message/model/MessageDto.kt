@@ -17,7 +17,8 @@ data class MessageRoomResponse(
     val receiverId : Long? = null,
     val senderUserId : String? = null,
     val receiverUserId : String? = null,
-    val createdDate : String? = null
+    val createdDate : String? = null,
+    val receiverNickname : String? = null
 )
 
 data class MessageRoomListResponse(
