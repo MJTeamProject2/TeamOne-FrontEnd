@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.team1.teamone.R
 import com.team1.teamone.board.model.AppealBoardRequest
@@ -44,6 +45,7 @@ class UpdateAppealBoardActivity : AppCompatActivity() {
                 Log.d("auth", RetrofitClient.getAuth())
                 if (response.body()?.title.toString() == null) {
                     Log.d("log", "blank")
+                    Toast.makeText(this@UpdateAppealBoardActivity, "어필해요 게시물 수정완료", Toast.LENGTH_SHORT).show()
                     return
                 } else {
                     val intent = Intent(applicationContext, HomeActivity::class.java)

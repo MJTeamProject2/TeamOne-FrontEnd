@@ -11,13 +11,13 @@
             tools:context=".member.view.activity.RegisterActivity">
 
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_create_wanted_board"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
-                android:text="글 쓰기"
+                android:text="팀원구해요 글 쓰기"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -31,10 +31,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/tv_register">
+                app:layout_constraintTop_toBottomOf="@+id/tv_create_wanted_board">
 
                 <EditText
-                    android:id="@+id/et_title"
+                    android:id="@+id/edt_create_wanted_board_title"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -47,11 +47,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_person_count"
+                    android:id="@+id/edt_create_wanted_board_memberCount"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="인원선택"
+                    android:hint="모집 인원 선택"
                     android:inputType="none"
                     android:minHeight="48dp"
                     app:layout_constraintBottom_toTopOf="@+id/et_content"
@@ -60,7 +60,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_class_name"
+                    android:id="@+id/edt_create_wanted_board_classTitle"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -73,7 +73,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_class_time"
+                    android:id="@+id/edt_create_wanted_board_classDate"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -86,7 +86,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_content"
+                    android:id="@+id/edt_create_wanted_board_content"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -95,6 +95,7 @@
                     android:hint="모집내용 작성"
                     android:inputType="text|textMultiLine"
                     android:maxLines="20"
+                    android:lines="12"
                     android:minHeight="48dp"
                     android:scrollbars="vertical"
                     app:layout_constraintEnd_toEndOf="parent"

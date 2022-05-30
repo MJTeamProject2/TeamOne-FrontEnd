@@ -22,7 +22,7 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
     이름과 같이, ViewHolder 를 생성한다
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookMarkViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.bookmark_summary, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.bookmark_item_list, parent, false)
         return BookMarkViewHolder(view)
     }
 
@@ -45,7 +45,7 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
             itemClickListener.onClick(it, position)
         }
         holder.tvTitle.text = "게시글 제목 : "+bookMarkList[position].board.title
-        holder.tvBookMarkId.text = "ID : " + bookMarkList[position].bookMarkId.toString()
+//        holder.tvBookMarkId.text = "ID : " + bookMarkList[position].bookMarkId.toString()
         holder.tvType.text = "게시물 종류 : "+when(bookMarkList[position].board.boardType) {
             "FREE" -> "자유"
             "APPEAL" -> "어필해요"
@@ -68,10 +68,10 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
 
     // ViewHolder 를 정의
     class BookMarkViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        val tvBookMarkId: TextView = itemView.findViewById(R.id.tv_bookMarkId)
+//        val tvBookMarkId: TextView = itemView.findViewById(R.id.)
         val btnBookMark: ImageView = itemView.findViewById(R.id.btn_bookMarkImg)
-        val tvTitle: TextView = itemView.findViewById(R.id.tv_realTitle)
-        val tvType:TextView = itemView.findViewById(R.id.tv_realType)
-        val tvTime: TextView = itemView.findViewById(R.id.tv_createdAt)
+        val tvTitle: TextView = itemView.findViewById(R.id.tv_bookmark_title)
+        val tvType:TextView = itemView.findViewById(R.id.tv_bookmark_boardType)
+        val tvTime: TextView = itemView.findViewById(R.id.tv_bookmark_createTime)
     }
 }

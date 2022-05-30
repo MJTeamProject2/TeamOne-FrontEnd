@@ -38,7 +38,7 @@ class WrittenAppealBoardListFragment : Fragment() {
     }
 
     private fun drawWrittenFreeBoardList() {
-        api.getAllWrittenBoardsByType("WANTED").enqueue(object : Callback<BoardListResponse> {
+        api.getAllWrittenBoardsByType("APPEAL").enqueue(object : Callback<BoardListResponse> {
             override fun onResponse(
                 call: Call<BoardListResponse>,
                 response: Response<BoardListResponse>

@@ -32,17 +32,17 @@ interface BoardApi {
         @Path("boardId") boardId: Long
     ): Call<CommentListResponse>
 
-    @POST("/boards/new/free")
+    @POST("/boards/free")
     fun postFreeBoard(
         @Body freeBoardRequestForm: FreeBoardRequest
     ): Call<BoardResponse>
 
-    @POST("/boards/new/wanted")
+    @POST("/boards/wanted")
     fun postWantedBoard(
         @Body wantedBoardRequestForm: WantedBoardRequest
     ): Call<BoardResponse>
 
-    @POST("/boards/new/appeal")
+    @POST("/boards/appeal")
     fun postAppealBoard(
         @Body appealBoardRequestForm: AppealBoardRequest
     ): Call<BoardResponse>

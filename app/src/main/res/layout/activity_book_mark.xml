@@ -32,19 +32,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_removeAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/btn_bookmark_removeAll"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="15dp"
                 android:backgroundTint="@color/main_color1"
                 android:fontFamily="@font/sd5"
-                android:text="전체 삭제"
+                android:src="@drawable/ic_baseline_delete_forever_24"
                 app:layout_constraintBottom_toTopOf="@+id/rv_bookMark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

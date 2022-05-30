@@ -18,6 +18,7 @@
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/appbar_homeFragment"
+                    android:backgroundTint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fitsSystemWindows="true"
@@ -29,7 +30,7 @@
                         android:layout_height="95dp"
                         android:fitsSystemWindows="true"
                         android:text="test"
-                        android:background="@color/purple_700"
+                        android:background="@color/purple_500"
                         app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +61,7 @@
                         android:layout_height="?attr/actionBarSize"
                         app:tabIndicatorFullWidth="true"
                         app:tabGravity="center"
-                        android:background="@color/purple_500"
+                        android:background="@drawable/round_top"
                         app:tabMode="scrollable"
                         app:tabIconTint="@color/white"
                         app:tabIndicatorColor="@color/black"
