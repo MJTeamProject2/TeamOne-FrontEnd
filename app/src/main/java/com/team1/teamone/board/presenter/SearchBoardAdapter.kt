@@ -11,7 +11,7 @@ import com.team1.teamone.board.model.BoardResponse
 class SearchBoardAdapter(private val boardList: MutableList<BoardResponse>) : RecyclerView.Adapter<SearchBoardAdapter.CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_board_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.search_board_rv_item, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -41,9 +41,13 @@ class SearchBoardAdapter(private val boardList: MutableList<BoardResponse>) : Re
         private val title: TextView = itemView.findViewById(R.id.tv_searchBoardTitle)
 
         fun bindItems(item: BoardResponse){
-            boardType.text = item.boardType
-            writerNickname.text = item.writer?.nickname
-            title.text = item.title
+            boardType.text = when(item.boardType) {
+                "WANTED" -> "팀원구해요"
+                "APPEAL" -> "어필해요"
+                else -> "자유"
+            }
+            writerNickname.text = "작성자 : " + item.writer?.nickname
+            title.text = "제목 : " + item.title
         }
     }
 

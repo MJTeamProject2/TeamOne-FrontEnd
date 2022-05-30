@@ -32,10 +32,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_wanted_list_item_title"
+                android:id="@+id/tv_searchBoardType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="게시물 제목"
+                android:text="게시물 종류"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="20dp"
@@ -47,28 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/tv_wanted_list_item_classTitle"
+                android:id="@+id/tv_searchBoardTitle"
                 android:layout_width="wrap_content"
-                android:text="수업이름"
-                android:layout_height="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:id="@+id/tv_wanted_list_item_classDate"
-                android:layout_width="wrap_content"
-                android:text="수업날짜"
-                android:layout_height="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="8dp"/>
-            <TextView
-                android:id="@+id/tv_wanted_list_item_memberCount"
-                android:layout_width="wrap_content"
-                android:text="멤버카운트"
+                android:text="게시글 제목"
                 android:layout_height="18dp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
@@ -81,7 +62,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_wanted_list_item_writerNickname"
+                android:id="@+id/tv_searchBoardWriter"
                 android:layout_width="88dp"
                 android:layout_height="21dp"
                 android:text="작성자 닉네임"
