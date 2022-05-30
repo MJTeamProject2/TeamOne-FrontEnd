@@ -15,62 +15,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@drawable/chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_baseline_account_circle_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/rv_nickname_message_room"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="닉네임"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
-                android:textSize="20sp" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/rvContents"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="18dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="8dp"
-            android:text="내용"
-            android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/rv_nickname_message_room1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="닉네임"
+                    android:fontFamily="@font/sd4"
+                    android:textColor="@color/main_color1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="6dp"
+                    android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="의 채팅방"
+                    android:fontFamily="@font/sd4"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/rvDate_message_room"
-                android:layout_width="wrap_content"
-                android:layout_height="18dp"
+                android:id="@+id/rvContents"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
-                android:text="2020/20/20"
-                android:textSize="13sp" />
+                android:text=""
+                android:textSize="15sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/rvDate_message_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="2020/20/20"
+                    android:fontFamily="@font/sd6"
+                    android:textColor="@color/black"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -56,15 +56,18 @@ class MessageActivity : AppCompatActivity() {
         senderId = intent.getStringExtra("senderId")
         receiverId = intent.getStringExtra("receiverId")
 
-        Log.d("roomId", roomId.toString())
-        Log.d("senderUserId", senderId.toString())
-        Log.d("receiverUserId", receiverId.toString())
+        Log.e("roomId", roomId.toString())
+        Log.e("senderUserId", senderId.toString())
+        Log.e("receiverUserId", receiverId.toString())
 
         var InReceiverId: String
         var InSenderId: String
 
 
         // 누가 전송자인지 구분
+        Log.d("message Sender ", senderId.toString())
+        Log.d("message userid ", userid)
+
         if (senderId == userid) {
             InSenderId = userid.toString()
             InReceiverId = receiverId.toString()
@@ -72,8 +75,8 @@ class MessageActivity : AppCompatActivity() {
             Log.d("InSenderUserId", InSenderId)
             Log.d("InReceiverUserId", InReceiverId)
         } else {
-            InReceiverId = userid.toString()
-            InSenderId = senderId.toString()
+            InReceiverId = senderId.toString()
+            InSenderId = userid.toString()
             Log.d("InSenderUserId", InSenderId)
             Log.d("InReceiverUserId", InReceiverId)
         }
