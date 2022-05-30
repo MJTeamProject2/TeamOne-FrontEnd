@@ -17,6 +17,7 @@ import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.presenter.WantedBoardAdapter
 import com.team1.teamone.board.view.activity.BoardDetailActivity
 import com.team1.teamone.board.view.activity.CreateFreeBoardActivity
+import com.team1.teamone.board.view.activity.CreateWantedBoardActivity
 import com.team1.teamone.databinding.FragmentWantedBoardListBinding
 import com.team1.teamone.util.network.RetrofitClient
 import retrofit2.Call
@@ -36,7 +37,7 @@ class WantedBoardListFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_wanted_board_list, container, false)
         binding.btnWantedBoardWrite.setOnClickListener{
-            val intent = Intent(activity, CreateFreeBoardActivity::class.java)
+            val intent = Intent(activity, CreateWantedBoardActivity::class.java)
             startActivity(intent)
         }
         drawWantedBoardList()

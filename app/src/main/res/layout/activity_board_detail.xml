@@ -237,6 +237,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/btn_join_board"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="10dp"

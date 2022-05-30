@@ -17,7 +17,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
-                android:text="글 쓰기"
+                android:text="어필해요 글 쓰기"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_register">
 
                 <EditText
-                    android:id="@+id/et_title"
+                    android:id="@+id/edt_create_appeal_board_title"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -47,11 +47,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_class_name"
+                    android:id="@+id/edt_create_appeal_board_className"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="제목"
+                    android:hint="수업 이름"
                     android:inputType="none"
                     android:minHeight="48dp"
                     app:layout_constraintBottom_toTopOf="@+id/et_content"
@@ -60,11 +60,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/et_class_time"
+                    android:id="@+id/edt_create_appeal_board_classTime"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="제목"
+                    android:hint="수업 시간"
                     android:inputType="none"
                     android:minHeight="48dp"
                     app:layout_constraintBottom_toTopOf="@+id/et_content"
@@ -74,7 +74,7 @@
 
 
                 <EditText
-                    android:id="@+id/et_content"
+                    android:id="@+id/edt_create_appeal_board_content"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
