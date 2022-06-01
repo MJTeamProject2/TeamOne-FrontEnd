@@ -2,6 +2,7 @@ package com.team1.teamone.board.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,8 +29,6 @@ class BoardFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_board, container, false)
 
-
-
         return binding.root
     }
 
@@ -40,6 +39,7 @@ class BoardFragment : Fragment() {
         val appBar = view.findViewById<AppBarLayout>(R.id.appbar_homeFragment)
         val viewPager2 = view.findViewById<ViewPager2>(R.id.viewpage2_homeFragment)
         val tabLayout = view.findViewById<TabLayout>(R.id.tabLayout_homeFragment)
+
 
         viewPager2.adapter =
             PostFragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle)
