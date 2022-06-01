@@ -1,21 +1,25 @@
 package com.team1.teamone.message.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
 import com.team1.teamone.databinding.FragmentMessageBinding
-import com.team1.teamone.message.presenter.MessageRoomListRVAdaper
 import com.team1.teamone.message.model.MessageApi
 import com.team1.teamone.message.model.MessageRoomListResponse
 import com.team1.teamone.message.model.MessageRoomResponse
-import com.team1.teamone.profile.view.MemberInfoActivity
+import com.team1.teamone.message.presenter.MessageRoomListRVAdaper
 import com.team1.teamone.util.network.RetrofitClient
 import com.team1.teamone.util.view.PreferenceUtil
 import retrofit2.Call
@@ -36,20 +40,16 @@ class MessageFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false)
-        binding.testBtn.setOnClickListener {
-
-            Log.d("testBtn testBtn", "testBtn")
-
-            val intent = Intent(context, MemberInfoActivity::class.java)
-            intent.putExtra("targetId", "1")
-            startActivity(intent)
-        }
-
         // 유저 정보 가져오기기
         val userid= PreferenceUtil.prefs.getString("userid",  "")
         Log.d("userid userid", userid)
 
         drawMessageRoomList(userid.toLong())
+
+        // 새로 고침 시 로직
+        binding.swipeMessage.setOnRefreshListener {
+            drawMessageRoomList(userid.toLong())
+        }
 
         return binding.root
     }
@@ -61,6 +61,9 @@ class MessageFragment : Fragment() {
                 response: Response<MessageRoomListResponse>
             ) {
                 Log.d("GET MESSAGE ALL", response.body().toString())
+
+                messageRoomList.clear()
+
                 response.body()?.messageRoomList?.let { it -> messageRoomList.addAll(it) }
 
                 messageRoomListRVAdaper = MessageRoomListRVAdaper(messageRoomList)
@@ -72,6 +75,10 @@ class MessageFragment : Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+
+                // 새로 고침 멈춤
+                binding.swipeMessage.isRefreshing = false
+
                 messageRoomListRVAdaper.itemClick = object : MessageRoomListRVAdaper.ItemClick {
                     override fun onClick(view: View, position: Int) {
                         val intent = Intent(binding.rvMessageRoomList.context, MessageActivity::class.java)
