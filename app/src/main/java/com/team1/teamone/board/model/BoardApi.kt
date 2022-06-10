@@ -124,4 +124,17 @@ interface BoardApi {
     fun postNoApprovalMemberBoard(
         @Path("memberBoardId") memberBoardId : Long
     ) : Call<MemberBoardResponse>
+
+    // 종료 하기
+    @GET("/boards/finish/{boardId}")
+    fun getFinishBoard(
+        @Path("boardId") boardId: Long
+    ): Call<BoardResponse>
+
+    // 종료된 목록 가져 오기(자기가 가입된 그룹만(MemberBoard))
+    @GET("/member-board/approval/member/{memberId}")
+    fun getFinishBoardList(
+        @Path("memberId") memberId : Long
+    ): Call<MemberBoardListResponse>
+
 }

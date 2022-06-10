@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.team1.teamone.profile.view.WrittenAppealBoardListFragment
 import com.team1.teamone.profile.view.WrittenFreeBoardListFragment
 import com.team1.teamone.profile.view.WrittenWantedBoardListFragment
+import com.team1.teamone.rating.view.CreateRatingFragment
 import com.team1.teamone.rating.view.RatedListFragment
 import com.team1.teamone.rating.view.RatingFragment
 import com.team1.teamone.rating.view.RatingListFragment
@@ -16,7 +17,7 @@ class RatingActivityStateAdapter(fragmentActivity: FragmentActivity) :
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> RatingFragment()
+            0 -> CreateRatingFragment()
             1 -> RatingListFragment()
             else -> RatedListFragment()
         }
