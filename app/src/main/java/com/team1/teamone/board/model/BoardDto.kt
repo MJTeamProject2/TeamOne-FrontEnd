@@ -68,10 +68,11 @@ data class CommentRequest(
 
 data class MemberBoardResponse(
     val memberBoardId: Long? = null,
+    val admission: String? = null,
     val createdDate: String? = null,
     val memberId: Long? = null,
     val nickname: String? = null,
-    val admission: String? = null
+
 )
 
 data class MemberBoardListResponse(
