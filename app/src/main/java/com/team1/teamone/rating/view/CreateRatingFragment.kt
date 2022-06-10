@@ -1,5 +1,6 @@
 package com.team1.teamone.rating.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.BoardResponse
 import com.team1.teamone.board.model.MemberBoardListResponse
 import com.team1.teamone.board.model.MemberBoardResponse
+import com.team1.teamone.board.view.activity.SearchBoardActivity
 import com.team1.teamone.databinding.FragmentCreateRatingBinding
 import com.team1.teamone.rating.presenter.CreateRatingRVAdapter
 import com.team1.teamone.rating.presenter.RatingAdapter
@@ -61,6 +63,18 @@ class CreateRatingFragment : Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+
+                // 클릭 시 평가 할 수 있는 맴버들 보여줌
+                createRatingRVAdapter.setItemClickListener(object :
+                    CreateRatingRVAdapter.OnItemClickListener {
+                    override fun onClick(v: View, position: Int) {
+                        val intent = Intent(context, DetailFinishMemberActivity::class.java)
+                        Log.e("boardId receive CreateRating",  boardMemberDataList[position].board?.boardId.toString())
+                        intent.putExtra("boardId", boardMemberDataList[position].board?.boardId.toString())
+                      //  intent.putExtra("memberBoardId", boardMemberDataList[position].memberBoardId)
+                        startActivity(intent)
+                    }
+                })
 
             }
 

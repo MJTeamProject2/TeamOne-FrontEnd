@@ -110,20 +110,20 @@ interface BoardApi {
 
     @POST("/member-board")
     fun postMemberBoardCreate(
-        @Body memberBoardApprovalRequest :MemberBoardApprovalRequest
+        @Body memberBoardApprovalRequest: MemberBoardApprovalRequest
     ): Call<MemberBoardResponse>
 
     // 승인 하기
     @POST("member-board/{memberBoardId}")
     fun postApprovalMemberBoard(
-        @Path("memberBoardId") memberBoardId : Long
-    ) : Call<MemberBoardResponse>
+        @Path("memberBoardId") memberBoardId: Long
+    ): Call<MemberBoardResponse>
 
     // 거부 하기
     @POST("member-board/no/{memberBoardId}")
     fun postNoApprovalMemberBoard(
-        @Path("memberBoardId") memberBoardId : Long
-    ) : Call<MemberBoardResponse>
+        @Path("memberBoardId") memberBoardId: Long
+    ): Call<MemberBoardResponse>
 
     // 종료 하기
     @GET("/boards/finish/{boardId}")
@@ -134,7 +134,15 @@ interface BoardApi {
     // 종료된 목록 가져 오기(자기가 가입된 그룹만(MemberBoard))
     @GET("/member-board/approval/member/{memberId}")
     fun getFinishBoardList(
-        @Path("memberId") memberId : Long
+        @Path("memberId") memberId: Long
     ): Call<MemberBoardListResponse>
+
+
+    // 종료된 맴버 리스트 가져오기
+    @POST("/member-board/finish")
+    fun postFinishMemberList(
+        @Body memberBoardRequest: MemberBoardRequest
+    ): Call<MemberBoardListResponse>
+
 
 }
