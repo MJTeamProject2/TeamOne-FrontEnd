@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
+import com.team1.teamone.board.model.BoardApi
+import com.team1.teamone.board.model.BoardListResponse
+import com.team1.teamone.board.model.BoardResponse
+import com.team1.teamone.board.presenter.AppealBoardAdapter
+import com.team1.teamone.board.view.activity.BoardDetailActivity
 import com.team1.teamone.bookmark.model.BookMarkApi
 import com.team1.teamone.bookmark.model.BookMarkListResponse
 import com.team1.teamone.bookmark.model.BookMarkResponse
@@ -24,7 +29,9 @@ import retrofit2.Response
 class BookMarkActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityBookMarkBinding
-    private val api = RetrofitClient.create(BookMarkApi::class.java, RetrofitClient.getAuth())
+    private val bookMarkApi = RetrofitClient.create(BookMarkApi::class.java, RetrofitClient.getAuth())
+    private val boardApi = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
+    private val boardDataList = mutableListOf<BoardResponse>()
     private val bookMarkDataList = mutableListOf<BookMarkResponse>()
     private lateinit var bookMarkAdapter : BookMarkAdapter
 
@@ -60,7 +67,7 @@ class BookMarkActivity : AppCompatActivity() {
 
     // 북마크 전체 삭제
     private fun deleteRequestToServer() {
-        api.deleteAllBookMarks().enqueue(object : Callback<BoolResponse> {
+        bookMarkApi.deleteAllBookMarks().enqueue(object : Callback<BoolResponse> {
             override fun onResponse(call: Call<BoolResponse>, response: Response<BoolResponse>) {
                 // 성공
                 Toast.makeText(this@BookMarkActivity, "즐겨찾기한 게시물 전체 삭제 완료", Toast.LENGTH_SHORT).show()
@@ -76,7 +83,7 @@ class BookMarkActivity : AppCompatActivity() {
 
     // 북마크 리스트 전체 띄우기
     private fun drawBookMarkList() {
-        api.getAllBookMarks().enqueue(object : Callback<BookMarkListResponse> {
+        bookMarkApi.getAllBookMarks().enqueue(object : Callback<BookMarkListResponse> {
             override fun onResponse(call: Call<BookMarkListResponse>, response: Response<BookMarkListResponse>) {
                 // 성공
                 bookMarkDataList.clear()
@@ -86,11 +93,11 @@ class BookMarkActivity : AppCompatActivity() {
                 binding.rvBookMark.adapter = bookMarkAdapter
                 binding.rvBookMark.layoutManager =
                     LinearLayoutManager(this@BookMarkActivity, LinearLayoutManager.VERTICAL, false)
-                
-                // 북마크 하나 별 눌렀을때 북마크 해제
+
+                // 북마크 상세보기 (게시물 상세보기)
                 bookMarkAdapter.setItemClickListener(object : BookMarkAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {
-                        deleteBookMark(bookMarkDataList[position].bookMarkId)
+                        getAllBoards()
                     }
                 })
             }
@@ -104,7 +111,7 @@ class BookMarkActivity : AppCompatActivity() {
     
     // 북마크 아이디로 한개 삭제
     private fun deleteBookMark(bookMarkId : Long) {
-        api.deleteBookMark(bookMarkId).enqueue(object : Callback<BoolResponse> {
+        bookMarkApi.deleteBookMark(bookMarkId).enqueue(object : Callback<BoolResponse> {
             override fun onResponse(call: Call<BoolResponse>, response: Response<BoolResponse>) {
                 // 성공
                 Toast.makeText(this@BookMarkActivity, "즐겨찾기를 해제했습니다.", Toast.LENGTH_SHORT).show()
@@ -114,6 +121,46 @@ class BookMarkActivity : AppCompatActivity() {
                 // 실패
                 Log.d("북마크 통신 실패", "북마크 하나 삭제 실패")
             }
+        })
+    }
+
+    private fun getAllBoards() {
+        boardApi.getAllBoards().enqueue(object : Callback<BoardListResponse> {
+            override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
+                Log.d("GET Board ALL", response.toString())
+                Log.d("GET Board ALL", response.body().toString())
+                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
+
+                // 받아온 리스트 boardDataList 안에 넣기
+                response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
+
+
+                bookMarkAdapter.setItemClickListener(object :
+                    BookMarkAdapter.OnItemClickListener {
+                    override fun onClick(v: View, position: Int) {
+                        // 클릭 시 이벤트 작성
+                        val intent = Intent(this@BookMarkActivity, BoardDetailActivity::class.java)
+                        intent.putExtra("detailBoardId", boardDataList[position].boardId)
+                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
+                        intent.putExtra("detailTitle", boardDataList[position].title)
+                        intent.putExtra("detailContent", boardDataList[position].content)
+                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
+                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
+                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
+                        intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
+                        intent.putExtra("detailClassDate", boardDataList[position].classDate)
+
+                        startActivity(intent)
+                    }
+                })
+            }
+
+            override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
+                // 실패
+                Log.d("GET Board ALL", t.message.toString())
+                Log.d("GET Board ALL", "fail")
+            }
+
         })
     }
 }
