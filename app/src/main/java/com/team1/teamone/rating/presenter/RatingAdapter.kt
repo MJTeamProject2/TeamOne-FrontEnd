@@ -16,7 +16,7 @@ class RatingAdapter(private val ratingList: MutableList<RatingResponse>) : Recyc
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.free_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.rating_item_list, parent, false)
         return CustomViewHolder(view)
     }
 
@@ -26,9 +26,6 @@ class RatingAdapter(private val ratingList: MutableList<RatingResponse>) : Recyc
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindItems(ratingList[position])
-        holder.itemView.setOnClickListener {
-            itemClickListener.onClick(it, position)
-        }
     }
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
@@ -42,17 +39,20 @@ class RatingAdapter(private val ratingList: MutableList<RatingResponse>) : Recyc
 
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.tv_free_list_item_title)
-        val writerNickname: TextView = itemView.findViewById(R.id.tv_free_list_item_writerNickname)
-//        val createdDate: TextView = itemView.findViewById(R.id.tv_freeBoardCreatedDate)
-//        val viewCount: TextView = itemView.findViewById(R.id.tv_freeBoardViewCount)
-
+        private val ratedMemberNickname: TextView = itemView.findViewById(R.id.tv_rating_item_list_ratedMemberNickname)
+        private val ratedStar: TextView = itemView.findViewById(R.id.tv_rating_item_list_star)
+        private val badge: TextView = itemView.findViewById(R.id.tv_rating_item_list_badge)
 
         fun bindItems(item: RatingResponse){
-//            title.text = item.title
-//            writerNickname.text = item.writer?.nickname.toString()
-//            createdDate.text = item.createdDate
-//            viewCount.text = item.viewCount.toString()
+            ratedMemberNickname.text = item.ratedMember.nickname
+            ratedStar.text = item.star.toString()
+            badge.text = when(item.badge) {
+                1 -> "답장이 빨라요"
+                2 -> "시간약속을 잘 지켜요"
+                3 -> "발표를 잘해요"
+                4 -> "리더십 있어요"
+                else -> "하드캐리"
+            }
         }
     }
 
