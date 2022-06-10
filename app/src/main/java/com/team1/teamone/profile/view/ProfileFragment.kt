@@ -14,6 +14,7 @@ import com.team1.teamone.bookmark.view.BookMarkActivity
 import com.team1.teamone.caution.view.CautionActivity
 import com.team1.teamone.databinding.FragmentProfileBinding
 import com.team1.teamone.profile.model.ProfileApi
+import com.team1.teamone.rating.view.RatingActivity
 import com.team1.teamone.util.network.MemberResponse
 import com.team1.teamone.util.network.RetrofitClient
 import com.team1.teamone.util.view.PreferenceUtil.Companion.prefs
@@ -55,6 +56,11 @@ class ProfileFragment : Fragment() {
         binding.btnCautionList.setOnClickListener {
             val cautionListIntent = Intent(context, CautionActivity::class.java)
             startActivity(cautionListIntent)
+        }
+
+        binding.btnReview.setOnClickListener {
+            val reviewIntent = Intent(context, RatingActivity::class.java)
+            startActivity(reviewIntent)
         }
 
         return binding.root
