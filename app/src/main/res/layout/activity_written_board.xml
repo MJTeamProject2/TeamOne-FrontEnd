@@ -28,7 +28,7 @@
                         android:id="@+id/toolbar_homeFragment"
                         android:layout_width="match_parent"
                         android:layout_height="95dp"
-                        android:background="@color/purple_500"
+                        android:background="@color/main_color1"
                         android:fitsSystemWindows="true"
                         android:text="test"
                         app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed">
