@@ -44,7 +44,7 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
-        holder.tvTitle.text = "제목 : "+bookMarkList[position].board.title
+        holder.tvTitle.text = bookMarkList[position].board.title
         holder.tvType.text = when(bookMarkList[position].board.boardType) {
             "FREE" -> "자유"
             "APPEAL" -> "어필해요"
@@ -70,7 +70,7 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
     private lateinit var itemClickListener : OnItemClickListener
 
     class BookMarkViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        val btnBookMark: ImageView = itemView.findViewById(R.id.btn_bookMarkImg)
+//        val btnBookMark: ImageView = itemView.findViewById(R.id.btn_bookMarkImg)
         val tvTitle: TextView = itemView.findViewById(R.id.tv_bookmark_title)
         val tvType:TextView = itemView.findViewById(R.id.tv_bookmark_boardType)
         val tvTime: TextView = itemView.findViewById(R.id.tv_bookmark_createTime)
