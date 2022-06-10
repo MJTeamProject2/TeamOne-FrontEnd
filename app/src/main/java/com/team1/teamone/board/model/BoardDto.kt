@@ -70,7 +70,8 @@ data class MemberBoardResponse(
     val memberBoardId: Long? = null,
     val admission: String? = null,
     val createdDate: String? = null,
-    val memberId: Long? = null,
+    val member: MemberResponse? = null,
+    val board : BoardResponse? = null,
     val nickname: String? = null,
 
 )
@@ -82,4 +83,9 @@ data class MemberBoardListResponse(
 data class MemberBoardApprovalRequest(
     val memberId: Long? = null,
     val boardId: Long? = null
+)
+
+data class MemberBoardRequest(
+    val memberId : Long? = null,
+    val boardId : Long? = null
 )
