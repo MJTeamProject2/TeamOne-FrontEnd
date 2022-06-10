@@ -170,8 +170,8 @@ class BoardDetailActivity : AppCompatActivity() {
         drawCommentList(boardId)
         updateBookMarkStar(boardId)
 
-        Log.e("hihi","${userid}")
-        Log.e("hihi","${writerUserId}")
+//        Log.e("hihi","${userid}")
+//        Log.e("hihi","${writerUserId}")
 
         if(userid == writerUserId.toString()) {
             // 게시글 삭제 버튼

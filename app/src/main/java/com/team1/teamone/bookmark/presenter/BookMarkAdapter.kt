@@ -40,38 +40,40 @@ class BookMarkAdapter(private val bookMarkList : MutableList<BookMarkResponse>) 
      */
     override fun onBindViewHolder(holder: BookMarkViewHolder, position: Int) {
 
-        // 북마크 버튼 다시 누르기 -> 북마크 해제
-        holder.btnBookMark.setOnClickListener {
+        // 게시물 상세 보기
+        holder.itemView.setOnClickListener {
             itemClickListener.onClick(it, position)
         }
-        holder.tvTitle.text = "게시글 제목 : "+bookMarkList[position].board.title
-//        holder.tvBookMarkId.text = "ID : " + bookMarkList[position].bookMarkId.toString()
-        holder.tvType.text = "게시물 종류 : "+when(bookMarkList[position].board.boardType) {
+        holder.tvTitle.text = bookMarkList[position].board.title
+        holder.tvType.text = when(bookMarkList[position].board.boardType) {
             "FREE" -> "자유"
             "APPEAL" -> "어필해요"
             "WANTED" -> "팀원구해요"
             else -> "오류"
         }
         holder.tvTime.text = bookMarkList[position].createdDate
+        holder.imgBookMarkType.setImageResource(when(bookMarkList[position].board.boardType) {
+            "APPEAL" -> R.drawable.appeal
+            "WANTED" -> R.drawable.wanted
+            else -> R.drawable.board
+        })
 
     }
 
     interface OnItemClickListener {
         fun onClick(v: View, position: Int)
     }
-    // (3) 외부에서 클릭 시 이벤트 설정
     fun setItemClickListener(onItemClickListener: OnItemClickListener) {
         this.itemClickListener = onItemClickListener
     }
-    // (4) setItemClickListener로 설정한 함수 실행
+
     private lateinit var itemClickListener : OnItemClickListener
 
-    // ViewHolder 를 정의
     class BookMarkViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
-//        val tvBookMarkId: TextView = itemView.findViewById(R.id.)
-        val btnBookMark: ImageView = itemView.findViewById(R.id.btn_bookMarkImg)
+//        val btnBookMark: ImageView = itemView.findViewById(R.id.btn_bookMarkImg)
         val tvTitle: TextView = itemView.findViewById(R.id.tv_bookmark_title)
         val tvType:TextView = itemView.findViewById(R.id.tv_bookmark_boardType)
         val tvTime: TextView = itemView.findViewById(R.id.tv_bookmark_createTime)
+        val imgBookMarkType: ImageView = itemView.findViewById(R.id.img_bookMarkType)
     }
 }
