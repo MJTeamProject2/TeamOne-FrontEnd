@@ -8,7 +8,7 @@ data class RatingRequest(
     var ratingMemberId : Long,
     var ratedMemberId : Long,
     var star : Double,
-    var badgeId : Long
+    var badge : Int
 )
 
 data class RatingResponse(
@@ -16,7 +16,8 @@ data class RatingResponse(
     var memberBoardId : Long,
     var ratingMember : MemberResponse,
     var ratedMember : MemberResponse,
-    var star : Double
+    var star : Double,
+    var badge : Int
 )
 
 data class RatingListResponse(

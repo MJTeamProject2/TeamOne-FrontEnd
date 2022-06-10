@@ -30,16 +30,17 @@
                 android:id="@+id/imageView22"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/board" />
+                android:src="@drawable/favorite" />
 
             <TextView
-                android:text="자유"
+                android:text="점수"
+                android:id="@+id/tv_rating_item_list_star"
                 android:layout_marginTop="4dp"
                 android:textSize="16dp"
                 android:fontFamily="@font/sd4"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
 
 
@@ -55,10 +56,10 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_free_list_item_title"
+                    android:id="@+id/tv_rating_item_list_ratedMemberNickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="게시물 제목"
+                    android:text="평가한 유저 닉네임"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="20dp"
@@ -77,16 +78,17 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/user"
+                    android:src="@drawable/badge"
                     android:layout_width="20dp"
                     android:layout_height="20dp"/>
 
 
                 <TextView
-                    android:id="@+id/tv_free_list_item_writerNickname"
+                    android:id="@+id/tv_rating_item_list_badge"
                     android:layout_width="wrap_content"
                     android:layout_height="21dp"
-                    android:text="작성자 닉네임"
+                    android:text="뱃지"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
