@@ -126,8 +126,8 @@ interface BoardApi {
     ): Call<MemberBoardResponse>
 
     // 종료 하기
-    @GET("/boards/finish/{boardId}")
-    fun getFinishBoard(
+    @PUT("/boards/finish/{boardId}")
+    fun putFinishBoard(
         @Path("boardId") boardId: Long
     ): Call<BoardResponse>
 

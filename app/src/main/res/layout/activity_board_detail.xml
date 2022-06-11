@@ -166,27 +166,43 @@
             <TextView
                 android:id="@+id/tv_detailWriter"
                 android:layout_marginTop="7dp"
+                android:layout_marginStart="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="작성자 : 조기천" />
 
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="모집종료"
+                android:id="@+id/btn_boardDetail_end"
+                android:fontFamily="@font/sd5"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/ic_baseline_thumb_up_24"
+                android:layout_marginStart="5dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:text="       " />
-
+                android:layout_marginTop="7dp"
+                android:text="모집완료됨"
+                android:fontFamily="@font/sd5"
+                android:layout_marginStart="-75dp"
+                android:id="@+id/tv_boardDetail_end"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="5dp">
 
                 <TextView
                     android:id="@+id/tv_currentPerson"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="7dp"
                     android:text="현재 인원 : "
                     android:textColor="@color/design_default_color_error" />
@@ -249,6 +265,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <LinearLayout
             android:layout_margin="10dp"
