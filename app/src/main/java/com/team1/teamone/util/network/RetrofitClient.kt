@@ -55,7 +55,7 @@ class RetrofitClient {
 
         // 쿠키매니저에서 쿠키정보 가져오는 편의 메소드
         fun getAuth() : String {
-            return CookieManager.getInstance().getCookie(BASE_URL)
+            return CookieManager.getInstance().getCookie(BASE_URL) ?: ""
         }
 
         fun clearCookieManager() {

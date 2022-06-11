@@ -42,18 +42,18 @@ class SearchBoardActivity : AppCompatActivity() {
             "TITLE_CONTENT" -> "제목+내용으로 검색"
             else -> "수업이름으로 검색"
         }
-        binding.tvSearchResult.text = tempSearchWay + "한 " + keyword
+//        binding.tvSearchResult.text = tempSearchWay + "한 " + keyword
 
 //        binding.tvSearchResult.text = ""
         binding.btnBoardSearch2.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.tvSearchResult.text = ""
+//                binding.tvSearchResult.text = ""
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 // 타이핑 중
-                binding.tvSearchResult.text = ""
+//                binding.tvSearchResult.text = ""
                 return true
             }
         })

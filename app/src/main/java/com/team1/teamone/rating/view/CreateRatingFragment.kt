@@ -37,23 +37,22 @@ class CreateRatingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         finishList()
-
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_create_rating, container, false)
         return binding.root
     }
 
     private fun finishList() {
         // 종료된 가입된 목록 가져 오기
+        Log.e("호출", "호출됨")
         api.getFinishBoardList(userid.toLong()).enqueue(object :
             Callback<MemberBoardListResponse> {
             override fun onResponse(
                 call: Call<MemberBoardListResponse>,
                 response: Response<MemberBoardListResponse>
             ) {
-                Log.d("API GetFinishBoardList",response.body().toString())
+
+                Log.e("API GetFinishBoardList",response.body().toString())
 
                 response.body()?.memberBoardResponseList?.let { it1 -> boardMemberDataList.addAll(it1) }
                 createRatingRVAdapter = CreateRatingRVAdapter(boardMemberDataList)

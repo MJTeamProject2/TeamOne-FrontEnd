@@ -16,8 +16,8 @@ data class MemberResponse(
     var stars: Double? = null,
     var points: Int? = null,
     var introduce: String? = null,
-    var authToken: String? = null,
-    var memberType: String? = null
+//    var authToken: String? = null,
+//    var memberType: String? = null
 )
 
 data class MemberResponseWithSession(

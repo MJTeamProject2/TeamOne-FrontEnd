@@ -94,6 +94,7 @@ class BoardDetailActivity : AppCompatActivity() {
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
             }
+            binding.btnBoardDetailEnd.visibility = INVISIBLE
         }
 
         if(boardType.toString() == "APPEAL") {
@@ -120,6 +121,7 @@ class BoardDetailActivity : AppCompatActivity() {
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
             }
+            binding.btnBoardDetailEnd.visibility = INVISIBLE
         }
 
         if(boardType.toString() == "WANTED") {
@@ -195,8 +197,6 @@ class BoardDetailActivity : AppCompatActivity() {
         binding.btnBoardDetailBookMark.setOnClickListener {
             toggleBookMark(boardId)
         }
-
-
         Log.d("waitMemberList", boardId.toString())
 
         participateMemberList(boardId)
@@ -204,9 +204,42 @@ class BoardDetailActivity : AppCompatActivity() {
 
         // 참가하기
         binding.btnJoinBoard.setOnClickListener {
-
             joinMemberBoard(MemberBoardApprovalRequest(userid.toLong() , boardId))
         }
+
+        // 모집종료
+        binding.btnBoardDetailEnd.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("모집 종료")
+                .setMessage("팀원 모집을 종료하시겠습니까?")
+                .setPositiveButton("예") { dialog, id ->
+                    putFinishBoard(boardId)
+                }.setNegativeButton("아니오") { dialog, id ->
+                }
+                .show()
+        }
+    }
+
+    /**
+     * 게시물 팀원 모집종료--------------------------------------------------------------------------------
+     */
+    private fun putFinishBoard(boardId: Long) {
+        boardApi.putFinishBoard(boardId).enqueue(object : Callback<BoardResponse> {
+            override fun onResponse(
+                call: Call<BoardResponse>,
+                response: Response<BoardResponse>
+            ) {
+                //
+                Toast.makeText(this@BoardDetailActivity, "팀원 모집을 종료했습니다", Toast.LENGTH_SHORT).show()
+                binding.btnBoardDetailEnd.visibility = INVISIBLE
+                binding.btnJoinBoard.visibility = INVISIBLE
+
+            }
+
+            override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
+                //
+            }
+        })
     }
 
 

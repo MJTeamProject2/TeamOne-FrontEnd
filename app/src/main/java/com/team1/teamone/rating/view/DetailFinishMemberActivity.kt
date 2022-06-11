@@ -21,14 +21,14 @@ class DetailFinishMemberActivity : AppCompatActivity() {
     private val api = RetrofitClient.create(BoardApi::class.java, RetrofitClient.getAuth())
     private lateinit var detailFinishMemberRVAdapter: DetailFinishMemberRVAdapter
     private val boardMemberDataList = mutableListOf<MemberBoardResponse>()
-    lateinit var binding : DetailFinishMemberActivity
+    lateinit var binding: DetailFinishMemberActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_finish_member)
 
         // 자신의 ID 가져오기
-        val userid = PreferenceUtil.prefs.getString("userid",  "")
+        val userid = PreferenceUtil.prefs.getString("userid", "")
         Log.d("userid", userid)
 
         val boardId = intent.getStringExtra("boardId")
@@ -41,25 +41,26 @@ class DetailFinishMemberActivity : AppCompatActivity() {
 
     }
 
-    fun postMemberList(memberId: Long,  boardId : Long) {
+    private fun postMemberList(memberId: Long, boardId: Long) {
+        Log.e("호출", "호출됨")
         api.postFinishMemberList(MemberBoardRequest(memberId, boardId)).enqueue(object :
             Callback<MemberBoardListResponse> {
             override fun onResponse(
                 call: Call<MemberBoardListResponse>,
                 response: Response<MemberBoardListResponse>
             ) {
-                Log.d("API PostFinishMemberList",response.body().toString())
-
-
+                Log.e("API PostFinishMemberList", response.body().toString())
                 // 여기 오류남 고쳐야됨됨
-//               response.body()?.memberBoardResponseList?.let { it1 -> boardMemberDataList.addAll(it1) }
-//                detailFinishMemberRVAdapter = DetailFinishMemberRVAdapter(boardMemberDataList)
-//                binding.rv_ratingMemberList.adapter = detailFinishMemberRVAdapter
-//                binding.rv_ratingMemberList.layoutManager = LinearLayoutManager(
-//                    this@DetailFinishMemberActivity,
-//                    LinearLayoutManager.VERTICAL,
-//                    false
-//                )
+                response.body()?.memberBoardResponseList?.let { it1 -> boardMemberDataList.addAll(it1) }
+                // 데이터는 잘 받아오는데 어댑터를 연결하는데서 뭔가 오류가있음
+                detailFinishMemberRVAdapter = DetailFinishMemberRVAdapter(boardMemberDataList)
+                // ㅇㅋ
+                binding.rv_detailFinishMember.adapter = detailFinishMemberRVAdapter
+                binding.rv_detailFinishMember.layoutManager = LinearLayoutManager(
+                    this@DetailFinishMemberActivity,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
             }
 
             override fun onFailure(call: Call<MemberBoardListResponse>, t: Throwable) {

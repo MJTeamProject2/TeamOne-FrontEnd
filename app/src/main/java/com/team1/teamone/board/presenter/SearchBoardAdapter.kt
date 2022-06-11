@@ -47,7 +47,7 @@ class SearchBoardAdapter(private val boardList: MutableList<BoardResponse>) : Re
                 else -> "자유"
             }
             writerNickname.text = "작성자 : " + item.writer?.nickname
-            title.text = "제목 : " + item.title
+            title.text = item.title
         }
     }
 
