@@ -43,14 +43,10 @@ class DetailFinishMemberRVAdapter(private val ratingList: MutableList<MemberBoar
     private lateinit var itemClickListener : OnItemClickListener
 
     inner class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val title: TextView = itemView.findViewById(R.id.tv_item_title)
-        private val writerNickname: TextView = itemView.findViewById(R.id.tv_item_writerNickname)
-
+        private val ratingNickname: TextView = itemView.findViewById(R.id.tv_rating_nickname)
 
         fun bindItems(item: MemberBoardResponse){
-            title.text = item.board?.title
-            writerNickname.text = item.board?.writer?.nickname
-
+            ratingNickname.text = item.board?.writer?.nickname
         }
     }
 }

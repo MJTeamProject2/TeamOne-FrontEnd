@@ -27,13 +27,14 @@
                 app:searchIcon="@drawable/ic_baseline_search_24"
                 tools:layout_editor_absoluteX="0dp"/>
 
-            <TextView
-                android:id="@+id/tv_searchResult"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="50dp"
-                android:text="검색결과" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_searchResult"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:fontFamily="@font/sd5"-->
+<!--                android:text="검색결과"-->
+<!--                tools:layout_editor_absoluteX="0dp"-->
+<!--                tools:layout_editor_absoluteY="-78dp" />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_searchBoardList"

@@ -22,39 +22,65 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_board"
+                android:layout_marginTop="15dp"
+                android:id="@+id/btn_bookMarkImg"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.465"
+                android:src="@drawable/board"
+                android:layout_marginStart="10dp"/>
 
             <TextView
-                android:id="@+id/tv_searchBoardType"
+                android:id="@+id/tv_searchBoardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="게시물 종류"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
-                android:textSize="20sp"/>
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="92dp"
+                android:text="진짜 글 제목"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/sd6"/>
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:id="@+id/img_searchBoard_boardType"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.465"
+                android:src="@drawable/wanted"
+                android:layout_marginStart="20dp"/>
+
             <TextView
-                android:id="@+id/tv_searchBoardTitle"
-                android:layout_width="wrap_content"
-                android:text="게시글 제목"
-                android:layout_height="18dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="8dp"/>
+                android:id="@+id/tv_searchBoardType"
+                android:layout_width="204dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="92dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/sd5"
+                android:text="게시글 종류"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_realTitle"
+                app:layout_constraintVertical_bias="0.0" />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -63,14 +89,15 @@
 
             <TextView
                 android:id="@+id/tv_searchBoardWriter"
-                android:layout_width="88dp"
-                android:layout_height="21dp"
-                android:text="작성자 닉네임"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="15sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="Time"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="25dp"
+                android:fontFamily="@font/sd5"/>
 
         </LinearLayout>
 
