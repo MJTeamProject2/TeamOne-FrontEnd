@@ -1,15 +1,19 @@
 package com.team1.teamone.rating.presenter
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.RatingBar.OnRatingBarChangeListener
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.BoardApi
 import com.team1.teamone.board.model.MemberBoardResponse
+import com.team1.teamone.home.view.HomeActivity
+import com.team1.teamone.profile.view.MemberInfoActivity
 import com.team1.teamone.rating.model.RatingApi
 import com.team1.teamone.rating.model.RatingRequest
 import com.team1.teamone.rating.model.RatingResponse
@@ -111,6 +115,8 @@ class DetailFinishMemberRVAdapter(private val ratingList: MutableList<MemberBoar
                     ) {
                         Log.e("postRating", " postRating Success")
                         Toast.makeText(itemView.context, "평가 완료!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(itemView.context, HomeActivity::class.java)
+                        ContextCompat.startActivity(itemView.context, intent, null)
                     }
 
                     override fun onFailure(call: Call<RatingResponse>, t: Throwable) {
