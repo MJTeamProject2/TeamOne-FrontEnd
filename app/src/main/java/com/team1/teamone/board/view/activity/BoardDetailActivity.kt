@@ -72,9 +72,12 @@ class BoardDetailActivity : AppCompatActivity() {
         val writerUserId = intent.getLongExtra("detailUserId", 0)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
 
+
+        // 상세 프로필 이동
         binding.profileGo1.setOnClickListener {
+            Log.e("profileGo1 writerUserId", writerUserId.toString())
             val intent = Intent(applicationContext, MemberInfoActivity::class.java)
-            intent.putExtra("targetId", writerUserId)
+            intent.putExtra("targetId", writerUserId.toString())
             startActivity(intent)
         }
 
@@ -103,13 +106,19 @@ class BoardDetailActivity : AppCompatActivity() {
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
                     binding.approvalList.visibility = VISIBLE
+                    binding.btnBoardDetailEnd.text = "모집 종료"
+                    binding.btnBoardDetailEnd.isEnabled = true
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
                 binding.approvalList.visibility = INVISIBLE
+                binding.btnBoardDetailEnd.text = "모집 중"
+                binding.btnBoardDetailEnd.isEnabled = false
             }
             binding.btnBoardDetailEnd.visibility = INVISIBLE
             binding.approvalList.visibility = INVISIBLE
+            binding.btnBoardDetailEnd.text = "모집 중"
+            binding.btnBoardDetailEnd.isEnabled = false
         }
 
         if(boardType.toString() == "APPEAL") {
@@ -133,13 +142,20 @@ class BoardDetailActivity : AppCompatActivity() {
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
                     binding.approvalList.visibility = VISIBLE
+                    binding.btnBoardDetailEnd.text = "모집 종료"
+                    binding.btnBoardDetailEnd.isEnabled = true
+
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
                 binding.approvalList.visibility = INVISIBLE
+                binding.btnBoardDetailEnd.text = "모집 중"
+                binding.btnBoardDetailEnd.isEnabled = false
             }
             binding.btnBoardDetailEnd.visibility = INVISIBLE
             binding.approvalList.visibility = INVISIBLE
+            binding.btnBoardDetailEnd.text = "모집 중"
+            binding.btnBoardDetailEnd.isEnabled = false
         }
 
         if(boardType.toString() == "WANTED") {
@@ -181,10 +197,14 @@ class BoardDetailActivity : AppCompatActivity() {
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
                     binding.approvalList.visibility = VISIBLE
+                    binding.btnBoardDetailEnd.text = "모집 종료"
+                    binding.btnBoardDetailEnd.isEnabled = true
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
                 binding.approvalList.visibility = INVISIBLE
+                binding.btnBoardDetailEnd.text = " "
+                binding.btnBoardDetailEnd.isEnabled = false
             }
 
         }

@@ -111,14 +111,14 @@ class MemberInfoActivity : AppCompatActivity() {
                 val tvProfileEmail = findViewById<TextView>(R.id.tv_profileEmail)
                 val tvProfileDepartment = findViewById<TextView>(R.id.tv_profile_departmnet)
                 val tvProfileSchoolId = findViewById<TextView>(R.id.tv_profile_schoolId)
-                val tvProfilePoint = findViewById<TextView>(R.id.tvProfilePoint)
+                //val tvProfilePoint = findViewById<TextView>(R.id.tvProfilePoint)
 
                 tv_profileName.text= response.body()?.userName
                 tvProfileNickname.text= response.body()?.nickname
                 tvProfileEmail.text= response.body()?.email
                 tvProfileDepartment.text= response.body()?.department
                 tvProfileSchoolId.text= response.body()?.schoolId
-                tvProfilePoint.text= response.body()?.points.toString()
+                //tvProfilePoint.text= "14"
             }
 
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {

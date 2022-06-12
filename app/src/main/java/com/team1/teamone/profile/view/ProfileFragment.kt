@@ -79,7 +79,7 @@ class ProfileFragment : Fragment() {
                 binding.tvProfileNickname.text = response.body()?.nickname
                 binding.tvProfileDepartmnet.text = response.body()?.department
                 binding.tvProfileSchoolId.text = response.body()?.schoolId
-                binding.tvProfilePoint.text = response.body()?.points.toString()
+                //binding.tvProfilePoint.text = response.body()?.points.toString()
             }
 
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {

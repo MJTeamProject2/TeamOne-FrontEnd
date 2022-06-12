@@ -49,7 +49,7 @@ class FreeBoardListFragment : Fragment() {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
                 Log.d("GET Board ALL33 ", response.body()?.boards.toString())
-
+                boardDataList.clear()
                 // 받아온 리스트 boardDataList 안에 넣기
                 response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
 
@@ -63,7 +63,7 @@ class FreeBoardListFragment : Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-
+                boardDataList.reverse()
                 freeBoardAdapter.setItemClickListener(object :
                     FreeBoardAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {

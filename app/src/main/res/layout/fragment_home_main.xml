@@ -186,18 +186,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1등"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/sd7"
                         android:textSize="30sp"/>
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_account_circle_24"
+                        android:src="@drawable/user"
                         android:layout_width="50dp"
                         android:layout_height="50dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="포인트: 300 점"
+                        android:text="포인트: 122 점"
                         android:fontFamily="@font/sd7"
                         android:textSize="14sp"/>
 
@@ -213,18 +214,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2등"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/sd7"
                         android:textSize="30sp"/>
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_account_circle_24"
+                        android:src="@drawable/user"
                         android:layout_width="50dp"
                         android:layout_height="50dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="포인트: 300 점"
+                        android:text="포인트: 65 점"
                         android:fontFamily="@font/sd7"
                         android:textSize="14sp"/>
 
@@ -240,18 +242,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3등"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/sd7"
                         android:textSize="30sp"/>
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_account_circle_24"
+                        android:src="@drawable/user"
                         android:layout_width="50dp"
                         android:layout_height="50dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="포인트: 300 점"
+                        android:text="포인트: 53 점"
                         android:fontFamily="@font/sd7"
                         android:textSize="14sp"/>
 
