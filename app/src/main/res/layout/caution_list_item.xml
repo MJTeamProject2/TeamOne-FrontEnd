@@ -40,6 +40,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/sd6"
+                android:textColor="@color/black"
                 android:textSize="16dp"
                 android:text="유의된 사용자 아이디" />
 
@@ -69,6 +70,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/sd6"
+                android:textColor="@color/black"
                 android:text="유의된 사용자 닉네임" />
 
 
