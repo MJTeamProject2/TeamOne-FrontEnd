@@ -8,10 +8,12 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.get
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team1.teamone.R
@@ -26,6 +28,7 @@ import com.team1.teamone.caution.presenter.CautionAdapter
 import com.team1.teamone.databinding.ActivityBoardDetailBinding
 import com.team1.teamone.home.view.HomeActivity
 import com.team1.teamone.message.presenter.MessageRoomListRVAdaper
+import com.team1.teamone.profile.view.MemberInfoActivity
 import com.team1.teamone.util.network.BoolResponse
 import com.team1.teamone.util.network.MemberResponse
 import com.team1.teamone.util.network.RetrofitClient
@@ -49,6 +52,7 @@ class BoardDetailActivity : AppCompatActivity() {
     private lateinit var commentAdapter: CommentAdapter
     private lateinit var binding: ActivityBoardDetailBinding
     private lateinit var participateAdapter : ParticipatingMemberRVAdapter
+    var boardIdGlobal : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +68,16 @@ class BoardDetailActivity : AppCompatActivity() {
         val writer = intent.getStringExtra("detailWriter")
         val updateDate = intent.getStringExtra("detailUpdateDate")
         val boardId = intent.getLongExtra("detailBoardId",0)
+        boardIdGlobal = boardId.toLong()
         val writerUserId = intent.getLongExtra("detailUserId", 0)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_detail)
+
+        binding.profileGo1.setOnClickListener {
+            val intent = Intent(applicationContext, MemberInfoActivity::class.java)
+            intent.putExtra("targetId", writerUserId)
+            startActivity(intent)
+        }
+
 
         binding.detailTitle.text = title
         binding.tvDetailContent.text = content
@@ -90,11 +102,14 @@ class BoardDetailActivity : AppCompatActivity() {
                     val intent = Intent(applicationContext, UpdateFreeBoardActivity::class.java)
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
+                    binding.approvalList.visibility = VISIBLE
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
+                binding.approvalList.visibility = INVISIBLE
             }
             binding.btnBoardDetailEnd.visibility = INVISIBLE
+            binding.approvalList.visibility = INVISIBLE
         }
 
         if(boardType.toString() == "APPEAL") {
@@ -117,11 +132,14 @@ class BoardDetailActivity : AppCompatActivity() {
                     val intent = Intent(applicationContext, UpdateAppealBoardActivity::class.java)
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
+                    binding.approvalList.visibility = VISIBLE
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
+                binding.approvalList.visibility = INVISIBLE
             }
             binding.btnBoardDetailEnd.visibility = INVISIBLE
+            binding.approvalList.visibility = INVISIBLE
         }
 
         if(boardType.toString() == "WANTED") {
@@ -162,9 +180,11 @@ class BoardDetailActivity : AppCompatActivity() {
                     val intent = Intent(applicationContext, UpdateWantedBoardActivity::class.java)
                     intent.putExtra("updateBoardId", boardId)
                     startActivity(intent)
+                    binding.approvalList.visibility = VISIBLE
                 }
             } else {
                 binding.btnBoardDetailUpdateBoard.visibility = INVISIBLE
+                binding.approvalList.visibility = INVISIBLE
             }
 
         }
@@ -189,6 +209,7 @@ class BoardDetailActivity : AppCompatActivity() {
             val commentContent = edt_commentEdit.text.toString()
             val request = CommentRequest(commentContent)
             createComment(request,boardId)
+            binding.edtCommentEdit.setText("")
         }
 
         //코멘트 수정 버튼
@@ -378,6 +399,8 @@ class BoardDetailActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+
+                binding.rvCommentList?.scrollToPosition(commentDataList.size -1)
                 commentAdapter.setItemClickListener(object : CommentAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {
                         deleteComment(position, boardId)
@@ -534,6 +557,8 @@ class BoardDetailActivity : AppCompatActivity() {
                         call: Call<MemberBoardResponse>,
                         response: Response<MemberBoardResponse>
                     ) {
+
+                        participateMemberList(boardIdGlobal)
                         Log.d("GET joinMemberBoard ALL", response.body().toString())
 
                         memberBoardApprovalRequest.boardId?.let { waitMemberList(it) }

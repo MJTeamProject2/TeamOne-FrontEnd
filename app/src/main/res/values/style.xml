@@ -5,5 +5,11 @@
         <item name="android:fontFamily">@font/sd4</item>
         <item name="android:textSize">16dp</item>
     </style>
+    
+    <style name="detailImg">
+        <item name="cornerSizeBottomLeft">40dp</item>
+        <item name="cornerSizeBottomRight">40dp</item>
+
+    </style>
 
 </resources>
