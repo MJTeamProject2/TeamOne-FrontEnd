@@ -37,6 +37,11 @@ class HomeFragment : Fragment() {
 
         var keyword = ""
         var searchWay = ""
+        binding.usernameHome.text = "조기천"
+
+
+
+
 
         // 검색 타입 설정 (드롭다운)
         binding.dropdownSearchType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

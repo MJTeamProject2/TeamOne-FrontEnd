@@ -328,6 +328,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/rankBtn"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:layout_margin="20dp"

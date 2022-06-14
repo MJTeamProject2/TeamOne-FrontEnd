@@ -64,7 +64,6 @@ class OnBoardingActivity : AppCompatActivity() {
             savePrefDate()
             val i = Intent(applicationContext, LoginActivity::class.java)
             startActivity(i)
-            finish()
         }
 
 

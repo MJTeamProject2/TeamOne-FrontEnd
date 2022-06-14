@@ -63,6 +63,10 @@ class ProfileFragment : Fragment() {
             startActivity(reviewIntent)
         }
 
+        binding.rankBtn.setOnClickListener {
+            val rank = Intent(context, RankActivity::class.java)
+            startActivity(rank)
+        }
         return binding.root
     }
 
@@ -72,6 +76,8 @@ class ProfileFragment : Fragment() {
                 call: Call<MemberResponse>,
                 response: Response<MemberResponse>
             ) {
+
+                Log.e("setMemberData  ", response.body().toString())
                 val userName = response.body()?.userName
                 // 프로필 메인 회원 정보 띄우기
                 binding.profileName.text = userName
@@ -79,7 +85,7 @@ class ProfileFragment : Fragment() {
                 binding.tvProfileNickname.text = response.body()?.nickname
                 binding.tvProfileDepartmnet.text = response.body()?.department
                 binding.tvProfileSchoolId.text = response.body()?.schoolId
-                //binding.tvProfilePoint.text = response.body()?.points.toString()
+                binding.tvProfilePoint.text = response.body()?.points.toString()
             }
 
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {

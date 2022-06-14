@@ -36,19 +36,65 @@ class WrittenWantedBoardListFragment : Fragment() {
         drawWrittenFreeBoardList()
         return binding.root
     }
-
+    //        api.getAllWrittenBoardsByType("WANTED").enqueue(object : Callback<BoardListResponse> {
+//            override fun onResponse(
+//                call: Call<BoardListResponse>,
+//                response: Response<BoardListResponse>
+//            ) {
+//                Log.d("GET Board ALL", response.toString())
+//                Log.d("GET Board ALL", response.body().toString())
+//                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
+//
+//                // 받아온 리스트 boardDataList 안에 넣기
+//                response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
+//
+//                // 리사이클러뷰 - 어뎁터 연결
+//                wantedBoardAdapter = WantedBoardAdapter(boardDataList)
+//                binding.rvWrittenBoard.adapter = wantedBoardAdapter
+//
+//                // 리사이클러뷰 보기 형식
+//                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(
+//                    this@WrittenWantedBoardListFragment.context,
+//                    LinearLayoutManager.VERTICAL,
+//                    false
+//                )
+//
+//                wantedBoardAdapter.setItemClickListener(object :
+//                    WantedBoardAdapter.OnItemClickListener {
+//                    override fun onClick(v: View, position: Int) {
+//                        // 클릭 시 이벤트 작성
+//                        val intent = Intent(activity, BoardDetailActivity::class.java)
+//                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
+//                        intent.putExtra("detailTitle", boardDataList[position].title)
+//                        intent.putExtra("detailContent", boardDataList[position].content)
+//                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
+//                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
+//                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
+//                        intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
+//                        intent.putExtra("detailClassDate", boardDataList[position].classDate)
+//                        intent.putExtra("detailMemberCount", boardDataList[position].memberCount)
+//                        intent.putExtra("detailDeadline", boardDataList[position].deadLine)
+//                        startActivity(intent)
+//                    }
+//                })
+//            }
+//
+//            override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
+//                // 실패
+//                Log.d("GET Board ALL", t.message.toString())
+//                Log.d("GET Board ALL", "fail")
+//            }
+//        })
     private fun drawWrittenFreeBoardList() {
-        api.getAllWrittenBoardsByType("WANTED").enqueue(object : Callback<BoardListResponse> {
-            override fun onResponse(
-                call: Call<BoardListResponse>,
-                response: Response<BoardListResponse>
-            ) {
+        api.getBoard(40).enqueue(object : Callback<BoardResponse> {
+
+            override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
-                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
+                Log.d("GET Board ALL33 ", response.body().toString())
 
                 // 받아온 리스트 boardDataList 안에 넣기
-                response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
+                response.body()?.let { it1 -> boardDataList.addAll(listOf(it1)) }
 
                 // 리사이클러뷰 - 어뎁터 연결
                 wantedBoardAdapter = WantedBoardAdapter(boardDataList)
@@ -81,10 +127,7 @@ class WrittenWantedBoardListFragment : Fragment() {
                 })
             }
 
-            override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
-                // 실패
-                Log.d("GET Board ALL", t.message.toString())
-                Log.d("GET Board ALL", "fail")
+            override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
             }
         })
     }

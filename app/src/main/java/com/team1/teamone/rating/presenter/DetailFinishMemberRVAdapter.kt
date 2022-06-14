@@ -77,23 +77,23 @@ class DetailFinishMemberRVAdapter(private val ratingList: MutableList<MemberBoar
                 Log.d("RadioButton", "RadioButton is Clicked")
                 when (checkedId) {
                     R.id.radio1 -> {
-                        saveBadge = 0
+                        saveBadge = 1
                         Log.d(" ", "Apple is selected")
                     }
                     R.id.radio2 -> {
-                        saveBadge = 1
+                        saveBadge = 2
                         Log.d(" ", "Banana is selected")
                     }
                     R.id.radio3 -> {
-                        saveBadge = 2
-                        Log.d(" ", "Orange is selected")
-                    }
-                    R.id.radio4 -> {
                         saveBadge = 3
                         Log.d(" ", "Orange is selected")
                     }
-                    R.id.radio5 -> {
+                    R.id.radio4 -> {
                         saveBadge = 4
+                        Log.d(" ", "Orange is selected")
+                    }
+                    R.id.radio5 -> {
+                        saveBadge = 5
                         Log.d(" ", "Orange is selected")
                     }
                 }

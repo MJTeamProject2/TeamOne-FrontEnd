@@ -38,52 +38,93 @@ class WrittenAppealBoardListFragment : Fragment() {
     }
 
     private fun drawWrittenFreeBoardList() {
-        api.getAllWrittenBoardsByType("APPEAL").enqueue(object : Callback<BoardListResponse> {
-            override fun onResponse(
-                call: Call<BoardListResponse>,
-                response: Response<BoardListResponse>
-            ) {
-                Log.d("GET Board ALL", response.toString())
-                Log.d("GET Board ALL", response.body().toString())
-                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
 
-                // 받아온 리스트 boardDataList 안에 넣기
-                response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
-
-                // 리사이클러뷰 - 어뎁터 연결
-                appealBoardAdapter = AppealBoardAdapter(boardDataList)
-                binding.rvWrittenBoard.adapter = appealBoardAdapter
-
-                // 리사이클러뷰 보기 형식
-                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(
-                    this@WrittenAppealBoardListFragment.context,
-                    LinearLayoutManager.VERTICAL,
-                    false
-                )
-
-                appealBoardAdapter.setItemClickListener(object :
-                    AppealBoardAdapter.OnItemClickListener {
-                    override fun onClick(v: View, position: Int) {
-                        // 클릭 시 이벤트 작성
-                        val intent = Intent(activity, BoardDetailActivity::class.java)
-                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
-                        intent.putExtra("detailTitle", boardDataList[position].title)
-                        intent.putExtra("detailContent", boardDataList[position].content)
-                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
-                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
-                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
-                        intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
-                        intent.putExtra("detailClassDate", boardDataList[position].classDate)
-                        startActivity(intent)
-                    }
-                })
-            }
-
-            override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
-                // 실패
-                Log.d("GET Board ALL", t.message.toString())
-                Log.d("GET Board ALL", "fail")
-            }
-        })
+//        api.getBoard(40).enqueue(object : Callback<BoardResponse> {
+//            override fun onResponse(call: Call<BoardResponse>, response: Response<BoardResponse>) {
+//                // 받아온 리스트 boardDataList 안에 넣기
+//                Log.e("BoardResponse", response.body().toString())
+//                response.body()?.let { it1 -> boardDataList.addAll(listOf(it1)) }
+//
+//                // 리사이클러뷰 - 어뎁터 연결
+//                appealBoardAdapter = AppealBoardAdapter(boardDataList)
+//                binding.rvWrittenBoard.adapter = appealBoardAdapter
+//
+//                // 리사이클러뷰 보기 형식
+//                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(
+//                    this@WrittenAppealBoardListFragment.context,
+//                    LinearLayoutManager.VERTICAL,
+//                    false
+//                )
+//
+//                appealBoardAdapter.setItemClickListener(object :
+//                    AppealBoardAdapter.OnItemClickListener {
+//                    override fun onClick(v: View, position: Int) {
+//                        // 클릭 시 이벤트 작성
+//                        val intent = Intent(activity, BoardDetailActivity::class.java)
+//                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
+//                        intent.putExtra("detailTitle", boardDataList[position].title)
+//                        intent.putExtra("detailContent", boardDataList[position].content)
+//                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
+//                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
+//                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
+//                        intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
+//                        intent.putExtra("detailClassDate", boardDataList[position].classDate)
+//                        startActivity(intent)
+//                    }
+//                })
+//            }
+//
+//            override fun onFailure(call: Call<BoardResponse>, t: Throwable) {
+//
+//            }
+//
+//        })
+        //api.getAllWrittenBoardsByType("APPEAL").enqueue(object : Callback<BoardListResponse> {
+//            override fun onResponse(
+//                call: Call<BoardListResponse>,
+//                response: Response<BoardListResponse>
+//            ) {
+//                Log.d("GET Board ALL", response.toString())
+//                Log.d("GET Board ALL", response.body().toString())
+//                Log.d("GET Board ALL33 ", response.body()?.boards.toString())
+//
+//                // 받아온 리스트 boardDataList 안에 넣기
+//                response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
+//
+//                // 리사이클러뷰 - 어뎁터 연결
+//                appealBoardAdapter = AppealBoardAdapter(boardDataList)
+//                binding.rvWrittenBoard.adapter = appealBoardAdapter
+//
+//                // 리사이클러뷰 보기 형식
+//                binding.rvWrittenBoard.layoutManager = LinearLayoutManager(
+//                    this@WrittenAppealBoardListFragment.context,
+//                    LinearLayoutManager.VERTICAL,
+//                    false
+//                )
+//
+//                appealBoardAdapter.setItemClickListener(object :
+//                    AppealBoardAdapter.OnItemClickListener {
+//                    override fun onClick(v: View, position: Int) {
+//                        // 클릭 시 이벤트 작성
+//                        val intent = Intent(activity, BoardDetailActivity::class.java)
+//                        intent.putExtra("detailBoardType", boardDataList[position].boardType)
+//                        intent.putExtra("detailTitle", boardDataList[position].title)
+//                        intent.putExtra("detailContent", boardDataList[position].content)
+//                        intent.putExtra("detailViewCount", boardDataList[position].viewCount)
+//                        intent.putExtra("detailWriter", boardDataList[position].writer?.nickname)
+//                        intent.putExtra("detailUpdateDate", boardDataList[position].updatedDate)
+//                        intent.putExtra("detailClassTitle", boardDataList[position].classTitle)
+//                        intent.putExtra("detailClassDate", boardDataList[position].classDate)
+//                        startActivity(intent)
+//                    }
+//                })
+//            }
+//
+//            override fun onFailure(call: Call<BoardListResponse>, t: Throwable) {
+//                // 실패
+//                Log.d("GET Board ALL", t.message.toString())
+//                Log.d("GET Board ALL", "fail")
+//            }
+//        })
     }
 }

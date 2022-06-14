@@ -69,6 +69,8 @@ class ApprovalMemberRVAdapter(private val items: MutableList<MemberBoardResponse
                             call: Call<MemberBoardResponse>,
                             response: Response<MemberBoardResponse>
                         ) {
+                            Toast.makeText(itemView.context, "승인 완료!", Toast.LENGTH_SHORT).show()
+
                             Log.d("ApprovalMemberRVAdapter postApprovalMemberBoard", response.body().toString())
                         }
 
@@ -89,6 +91,7 @@ class ApprovalMemberRVAdapter(private val items: MutableList<MemberBoardResponse
                             call: Call<MemberBoardResponse>,
                             response: Response<MemberBoardResponse>
                         ) {
+                            Toast.makeText(itemView.context, "승인 거부", Toast.LENGTH_SHORT).show()
                             Log.d("ApprovalMemberRVAdapter postNoApprovalMemberBoard", response.body().toString())
                         }
 
@@ -101,7 +104,8 @@ class ApprovalMemberRVAdapter(private val items: MutableList<MemberBoardResponse
                 }
 
             }
+
+
         }
     }
-
 }

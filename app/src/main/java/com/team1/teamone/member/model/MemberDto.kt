@@ -14,7 +14,7 @@ data class MemberResponse(
     var phoneNumber: String? = null,
     var nickname: String? = null,
     var stars: Double? = null,
-    var points: Int? = null,
+    var points: Double? = null,
     var introduce: String? = null,
 //    var authToken: String? = null,
 //    var memberType: String? = null

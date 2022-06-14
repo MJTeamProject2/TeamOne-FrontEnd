@@ -163,6 +163,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_margin="5dp"
                                             android:text="조회수"
+                                            android:visibility="invisible"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />
@@ -248,7 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:text="모집완료됨"
+                        android:text="모집          "
                         android:fontFamily="@font/sd5"
                         android:layout_marginStart="-75dp"
                         android:id="@+id/tv_boardDetail_end"/>
