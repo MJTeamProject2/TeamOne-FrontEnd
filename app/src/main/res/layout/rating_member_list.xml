@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="24dp"
-    android:layout_marginEnd="24dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     android:layout_marginTop="12dp"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="18dp"
@@ -57,12 +57,14 @@
                 android:gravity="center">
 
                 <RatingBar
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="5dp"
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp" />
 
             </LinearLayout>
 
@@ -71,16 +73,52 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/ratingBadge"
+<!--                <Spinner-->
+<!--                    android:id="@+id/ratingBadge"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:layout_height="40dp"/>-->
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_marginStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/radio1"
+                        android:text="답장이 빨라요"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/radio2"
+                        android:text="시간약속을 잘 지켜요"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/radio3"
+                        android:text="발표를 잘해요"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/radio4"
+                        android:text="리더십 있어요"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/radio5"
+                        android:text="하드캐리"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
+
+
 
 
                 <Button
                     android:id="@+id/ratingBtnGo"
-                    android:text="평가하러 가기"
+                    android:text="평가하기"
                     android:textSize="19sp"
                     android:layout_width="match_parent"
                     android:layout_marginStart="10dp"

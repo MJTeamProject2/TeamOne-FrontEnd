@@ -375,7 +375,9 @@ class RegisterActivity : AppCompatActivity() {
             ) {
                 Log.d("btnCheckID", "success")
                 val body = response.body()?.result
-                isCheckUserId1 = !body!!
+                if (body != null) {
+                    isCheckUserId1 = body
+                }
                 Log.d("btnCheckID", isCheckUserId1.toString())
 
                 if (isCheckUserId1) {

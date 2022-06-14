@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.team1.teamone.R
 import com.team1.teamone.board.model.*
 import com.team1.teamone.databinding.FragmentCreateRatingBinding
@@ -55,12 +56,15 @@ class DetailFinishMemberActivity : AppCompatActivity() {
                 // 데이터는 잘 받아오는데 어댑터를 연결하는데서 뭔가 오류가있음
                 detailFinishMemberRVAdapter = DetailFinishMemberRVAdapter(boardMemberDataList)
                 // ㅇㅋ
-                binding.rv_detailFinishMember.adapter = detailFinishMemberRVAdapter
-                binding.rv_detailFinishMember.layoutManager = LinearLayoutManager(
-                    this@DetailFinishMemberActivity,
-                    LinearLayoutManager.VERTICAL,
-                    false
-                )
+                val rvDetail = findViewById<RecyclerView>(R.id.rv_detailFinishMember)
+                rvDetail.adapter = detailFinishMemberRVAdapter
+                rvDetail.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+//                binding.rv_detailFinishMember.adapter = detailFinishMemberRVAdapter
+//                binding.rv_detailFinishMember.layoutManager = LinearLayoutManager(
+//                    this@DetailFinishMemberActivity,
+//                    LinearLayoutManager.VERTICAL,
+//                    false
+//                )
             }
 
             override fun onFailure(call: Call<MemberBoardListResponse>, t: Throwable) {

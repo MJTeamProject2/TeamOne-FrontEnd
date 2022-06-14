@@ -34,6 +34,7 @@
 
             <TextView
                 android:text="자유"
+                android:textColor="@color/black"
                 android:layout_marginTop="4dp"
                 android:textSize="16dp"
                 android:fontFamily="@font/sd4"

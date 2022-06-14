@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.team1.teamone.R
+import com.team1.teamone.caution.model.CautionApi
+import com.team1.teamone.caution.model.CautionResponse
 import com.team1.teamone.databinding.ActivityMemberInfoBinding
 import com.team1.teamone.member.view.activity.LoginActivity
 import com.team1.teamone.message.model.MessageApi
@@ -27,6 +29,7 @@ class MemberInfoActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMemberInfoBinding
     private val apiProfile = RetrofitClient.create(ProfileApi::class.java, RetrofitClient.getAuth())
     private val apiMessage = RetrofitClient.create(MessageApi::class.java, RetrofitClient.getAuth())
+    private val apiCaution = RetrofitClient.create(CautionApi::class.java, RetrofitClient.getAuth())
     private var targetUserId : String? = null
     private var senderId : Long? = null
     private var receiverId : Long? = null
@@ -70,6 +73,26 @@ class MemberInfoActivity : AppCompatActivity() {
             }, 2000)
 
         }
+        val blockBtn = findViewById<Button>(R.id.btn_block)
+        blockBtn.setOnClickListener {
+            blockMember(targetUserId!!.toLong())
+        }
+    }
+
+    private fun blockMember(targetUserId : Long) {
+        apiCaution.postCaution(targetUserId).enqueue(object : Callback<CautionResponse> {
+            override fun onResponse(
+                call: Call<CautionResponse>,
+                response: Response<CautionResponse>
+            ) {
+                Toast.makeText(applicationContext, "차단 했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<CautionResponse>, t: Throwable) {
+
+            }
+
+        })
     }
 
     private fun getMember(targetUserId : String) {
@@ -88,14 +111,14 @@ class MemberInfoActivity : AppCompatActivity() {
                 val tvProfileEmail = findViewById<TextView>(R.id.tv_profileEmail)
                 val tvProfileDepartment = findViewById<TextView>(R.id.tv_profile_departmnet)
                 val tvProfileSchoolId = findViewById<TextView>(R.id.tv_profile_schoolId)
-                val tvProfilePoint = findViewById<TextView>(R.id.tvProfilePoint)
+                //val tvProfilePoint = findViewById<TextView>(R.id.tvProfilePoint)
 
                 tv_profileName.text= response.body()?.userName
                 tvProfileNickname.text= response.body()?.nickname
                 tvProfileEmail.text= response.body()?.email
                 tvProfileDepartment.text= response.body()?.department
                 tvProfileSchoolId.text= response.body()?.schoolId
-                tvProfilePoint.text= response.body()?.points.toString()
+                //tvProfilePoint.text= "14"
             }
 
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {

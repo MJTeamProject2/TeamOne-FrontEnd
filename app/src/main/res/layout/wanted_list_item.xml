@@ -35,6 +35,7 @@
                 android:src="@drawable/cv" />
 
             <TextView
+                android:textColor="@color/black"
                 android:text="모집"
                 android:layout_marginTop="4dp"
                 android:textSize="16dp"
@@ -68,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="게시물 제목"
+                    android:textColor="@color/black"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="20dp"
@@ -94,6 +96,7 @@
                     android:id="@+id/tv_wanted_list_item_classTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
+                    android:textColor="@color/black"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="12dp"
@@ -102,6 +105,7 @@
                     android:text="수업이름" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="8dp"
@@ -111,6 +115,7 @@
                     android:text="|" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/tv_wanted_list_item_classDate"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
@@ -121,6 +126,7 @@
                     android:text="수업날짜" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginTop="8dp"
@@ -130,6 +136,7 @@
                     android:text="|" />
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/tv_wanted_list_item_memberCount"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"

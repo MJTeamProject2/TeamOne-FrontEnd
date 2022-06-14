@@ -18,8 +18,8 @@ class RatingActivityStateAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> CreateRatingFragment()
-            1 -> RatingListFragment()
-            else -> RatedListFragment()
+            1 -> RatedListFragment()
+            else -> RatingListFragment()
         }
     }
 }

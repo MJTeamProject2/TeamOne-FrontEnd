@@ -144,6 +144,8 @@ class BookMarkActivity : AppCompatActivity() {
                 intent.putExtra("detailUpdateDate", findBoard?.updatedDate)
                 intent.putExtra("detailClassTitle", findBoard?.classTitle)
                 intent.putExtra("detailClassDate", findBoard?.classDate)
+                intent.putExtra("detailMemberCount", findBoard?.memberCount)
+                intent.putExtra("detailCurrentMemberCount", findBoard?.currentMemberCount)
 
                 startActivity(intent)
             }

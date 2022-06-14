@@ -44,13 +44,23 @@ class WantedBoardListFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        drawWantedBoardList()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        drawWantedBoardList()
+    }
+
     private fun drawWantedBoardList() {
         api.getAllBoardsByType(boardType = "wanted").enqueue(object : Callback<BoardListResponse> {
             override fun onResponse(call: Call<BoardListResponse>, response: Response<BoardListResponse>) {
                 Log.d("GET Board ALL", response.toString())
                 Log.d("GET Board ALL", response.body().toString())
                 Log.d("GET Board ALL33 ", response.body()?.boards.toString())
-
+                boardDataList.clear()
                 // 받아온 리스트 boardDataList 안에 넣기
                 response.body()?.boards?.let { it1 -> boardDataList.addAll(it1) }
 
@@ -64,6 +74,8 @@ class WantedBoardListFragment : Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
+
+                boardDataList.reverse()
 
                 boardAdapter.setItemClickListener(object : WantedBoardAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {

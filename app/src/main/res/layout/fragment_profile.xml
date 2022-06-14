@@ -328,6 +328,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/rankBtn"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:layout_margin="20dp"
@@ -379,7 +380,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/sd5"
-                                    android:text="300"
+                                    android:text="14"
                                     android:textColor="@color/black"
                                     android:textSize="24sp" />
                                 <TextView
